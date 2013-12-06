@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name = 'tmdbsimple',
-    version = '0.21',
+    version = '0.2',
     author = 'Celia Oakley',
     author_email = 'celia.oakley@alumni.stanford.edu',
     description = 'A Python wrapper for The Movie Database API v3',

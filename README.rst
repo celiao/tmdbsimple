@@ -4,23 +4,23 @@ tmdbsimple
 A wrapper for The Movie Database v3
 -----------------------------------
 
-*tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in *tmdbsimple*, you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
+``tmdbsimple`` is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in ``tmdbsimple`` you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
 
 Features
 --------
 
 - Supports Python 3
-- One-to-one mapping between *tmdbsimple* functions and TMDb methods.
+- One-to-one mapping between ``tmdbsimple`` functions and TMDb methods.
 - Implements all TMDb methods, including Authentication and Accounts.
 - Implements new TV features.
 - Easy to access data using Python class attributes.
-- Easy to experiment with *tmdbsimple* functions inside the Python interpreter.
+- Easy to experiment with ``tmdbsimple`` functions inside the Python interpreter.
 - Code tested with unittests, which illustrate the function call syntax.
 
 Installation
 ------------
 
-You can install *tmdbsimple* using one of the following techniques.
+You can install ``tmdbsimple`` using one of the following techniques.
 
 - Use pip:
 ::
@@ -48,7 +48,7 @@ You will need an API key to The Movie Database to access the API.  To obtain a k
 
 Examples
 --------
-Once you have the *tmdbsimple* package installed and a TMDb API key, you can start to play with the data.
+Once you have the ``tmdbsimple`` package installed and a TMDb API key, you can start to play with the data.
 
 First, import the library and create an instance of a TMDB object.
 
@@ -74,7 +74,7 @@ To communicate with The Movie Database API, create an instance of one of the obj
     ... 
     'R'
 
-Let's play with the interface a bit more.  Suppose you and your friend are arguing over which movie in the Bourne series was most popular.  Your friend says the first in a series is *always* most popular.  You disagree.
+Let's play with the interface a bit more.  Suppose you and your friend are arguing over which movie in the Bourne series was most popular.  Your friend says the first in a series is always most popular.  You disagree.
 
 .. code-block:: python
 
