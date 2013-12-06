@@ -1,5 +1,6 @@
 # Python files
 *.py[cod]
+*.py.swo
 *.egg-info
 __pycache__
 keys.py
