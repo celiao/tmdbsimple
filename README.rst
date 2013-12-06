@@ -22,29 +22,25 @@ Installation
 
 You can install ``tmdbsimple`` using one of the following techniques.
 
-- Use pip:
+- Use pip
+
 ::
 
-        pip install tmdbsimple
+    pip install tmdbsimple
 
 - Download the .zip or .tar.gz file from PyPI and install it yourself
-- Download the `source from Github` and install it yourself
-If you install it yourself, also install requests_.
+- Download the `source from Github <http://github.com/celiao/tmdbsimple>`_ and install it yourself
 
-.. _source from Github: http://github.com/celiao/tmdbsimple
-.. _requests: http://www.python-requests.org/en/latest/
+If you install it yourself, also install `requests <http://www.python-requests.org/en/latest>`_.
 
 API Key
 -------
 You will need an API key to The Movie Database to access the API.  To obtain a key, follow these steps:
 
-1) Register for and verify an account_.
-2) `Log into`_ your account.
+1) Register for and verify an `account <https://www.themoviedb.org/account/signup>`_.
+2) `Log into <https://www.themoviedb.org/login>`_ your account.
 3) Select the API section on left side of your account page.
 4) Click on the link to generate a new API key and follow the instructions.
-
-.. _account: https://www.themoviedb.org/account/signup
-.. _Log into: https://www.themoviedb.org/login
 
 Examples
 --------
@@ -52,14 +48,14 @@ Once you have the ``tmdbsimple`` package installed and a TMDb API key, you can s
 
 First, import the library and create an instance of a TMDB object.
 
-.. code-block:: python
+::
 
     >>> import tmdbsimple
     >>> tmdb = TMDB('YOUR_API_KEY_HERE')
 
 To communicate with The Movie Database API, create an instance of one of the object types, call one of the methods on the instance, and access the instance attributes.  Use keys to access the values of attributes that are dictionaries.
 
-.. code-block:: python
+::
 
     >>> movie = tmdb.Movies(603)
     >>> movie.info()
@@ -71,18 +67,18 @@ To communicate with The Movie Database API, create an instance of one of the obj
     >>> for c in movie.countries:
     ...    if c['iso_3166_1'] == 'US':
     ...         print(c['certification'])
-    ... 
+    ...
     'R'
 
 Let's play with the interface a bit more.  Suppose you and your friend are arguing over which movie in the Bourne series was most popular.  Your friend says the first in a series is always most popular.  You disagree.
 
-.. code-block:: python
+::
 
     >>> search = tmdb.Search()
     >>> search.movie({'query': 'The Bourne'})
     >>> for s in search.results:
     ...     print(s['title'], s['id'], s['release_date'], s['popularity'])
-    ... 
+    ...
     The Bourne Ultimatum 2503 2007-08-03 55.2447062124256
     The Bourne Supremacy 2502 2004-07-23 43.4553609681985
     The Bourne Identity 2501 2002-06-06 38.5531563780592
@@ -92,7 +88,7 @@ Let's play with the interface a bit more.  Suppose you and your friend are argui
 
 You are correct!  Now you claim the producers should be able to make sequels cheaper, based on what they learned from making the first movie.  To be fair, you compute the budget per minute of runtime.  Your friend disagrees, claiming the producers spend more money trying to out do the previous sequel.
 
-.. code-block:: python
+::
 
     >>> identity = tmdb.Movies(2501)
     >>> response = identity.info()
@@ -117,7 +113,7 @@ In this case you are both correct.  The third movie was cheaper than the second,
 
 You also can call one of the methods without explicitly instanciating an object.
 
-.. code-block:: python
+::
 
     >>> response = tmdb.Movies(603).info()
     >>> response['budget']
