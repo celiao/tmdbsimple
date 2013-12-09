@@ -14,7 +14,7 @@ setup(
     description = 'A Python wrapper for The Movie Database API v3',
     keywords = ['movie', 'the movie database', 'movie database', 'tmdb', 'wrapper', 'database', 'moviedb'],
     url = 'https://github.com/celiao/tmdbsimple',   # URL to github repo
-    download_url = 'https://github.com/celiao/tmdbsimple/tarball/0.2',
+    download_url = 'https://github.com/celiao/tmdbsimple/tarball/0.2.2',
     packages = ['tmdbsimple'],
     long_description=read('README.rst'),
     install_requires = ['requests>=0.11.1'],
