@@ -50,7 +50,7 @@ First, import the library and create an instance of a TMDB object.
 
 ::
 
-    >>> import tmdbsimple
+    >>> from tmdbsimple import TMDB
     >>> tmdb = TMDB('YOUR_API_KEY_HERE')
 
 To communicate with The Movie Database API, create an instance of one of the object types, call one of the methods on the instance, and access the instance attributes.  Use keys to access the values of attributes that are dictionaries.

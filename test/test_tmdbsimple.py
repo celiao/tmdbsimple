@@ -8,7 +8,6 @@ Created by Celia Oakley on 2013-11-05
 
 import unittest
 import sys
-sys.path.append("../tmdbsimple")
 
 from tmdbsimple import TMDB
 
@@ -686,4 +685,4 @@ if __name__ == "__main__":
 #   python3 test_tmdbsimple.py ConfigurationCheck
 #   ... or other Check classes
 #   python3 test_tmdbsimple.py -v
-#   python3 test_tmdbsimple.psy
+#   python3 test_tmdbsimple.py
