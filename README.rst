@@ -20,7 +20,7 @@ Features
 Installation
 ------------
 
-``tmdbsimple`` is available on the Python Package Index at `https://pypi.python.org/pypi/tmdbsimple`_.
+``tmdbsimple`` is available on the Python Package Index at https://pypi.python.org/pypi/tmdbsimple.
 
 You can install ``tmdbsimple`` using one of the following techniques.
 
