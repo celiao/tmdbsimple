@@ -1,8 +1,8 @@
 tmdbsimple
 ==========
 
-A wrapper for The Movie Database v3
------------------------------------
+A wrapper for The Movie Database API v3
+---------------------------------------
 
 ``tmdbsimple`` is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in ``tmdbsimple`` you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
 
@@ -19,6 +19,8 @@ Features
 
 Installation
 ------------
+
+``tmdbsimple`` is available on the Python Package Index at `https://pypi.python.org/pypi/tmdbsimple`_.
 
 You can install ``tmdbsimple`` using one of the following techniques.
 
