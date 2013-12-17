@@ -9,7 +9,7 @@ A wrapper for The Movie Database API v3
 Features
 --------
 
-- Supports Python 3
+- Supports Python 2.7 and 3
 - One-to-one mapping between ``tmdbsimple`` functions and TMDb methods.
 - Implements all TMDb methods, including Authentication and Accounts.
 - Implements new TV features.

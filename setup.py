@@ -8,13 +8,13 @@ def read(fname):
 
 setup(
     name = 'tmdbsimple',
-    version = '0.2.2',
+    version = '0.3.0',
     author = 'Celia Oakley',
     author_email = 'celia.oakley@alumni.stanford.edu',
     description = 'A Python wrapper for The Movie Database API v3',
     keywords = ['movie', 'the movie database', 'movie database', 'tmdb', 'wrapper', 'database', 'moviedb'],
     url = 'https://github.com/celiao/tmdbsimple',   # URL to github repo
-    download_url = 'https://github.com/celiao/tmdbsimple/tarball/0.2.2',
+    download_url = 'https://github.com/celiao/tmdbsimple/tarball/0.3.0',
     packages = ['tmdbsimple'],
     long_description=read('README.rst'),
     install_requires = ['requests>=0.11.1'],
