@@ -77,7 +77,7 @@ Let's play with the interface a bit more.  Suppose you and your friend are argui
 ::
 
     >>> search = tmdb.Search()
-    >>> search.movie({'query': 'The Bourne'})
+    >>> response = search.movie({'query': 'The Bourne'})
     >>> for s in search.results:
     ...     print(s['title'], s['id'], s['release_date'], s['popularity'])
     ...
