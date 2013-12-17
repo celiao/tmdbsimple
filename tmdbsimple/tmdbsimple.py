@@ -14,6 +14,7 @@ class TMDB:
         TMDB.api_key = str(api_key)
         TMDB.url = 'https://api.themoviedb.org' + '/' + str(version)
 
+    @staticmethod
     def _request(method, path, params={}, json_body={}):
         url = TMDB.url + '/' + path + '?api_key=' + TMDB.api_key
         if method == 'GET':
@@ -46,6 +47,7 @@ class TMDB:
     # >>> response = movie.info()
     # >>> movie.title  # instead of response['title']
     #
+    @staticmethod
     def _set_attrs_to_values(object, response={}):
         for key in response.keys():
             setattr(object, key, response[key])
