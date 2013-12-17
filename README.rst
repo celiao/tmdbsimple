@@ -60,12 +60,12 @@ To communicate with The Movie Database API, create an instance of one of the obj
 ::
 
     >>> movie = tmdb.Movies(603)
-    >>> movie.info()
+    >>> response = movie.info()
     >>> movie.title
     'The Matrix'
     >>> movie.budget
     63000000
-    >>> movie.releases()
+    >>> response = movie.releases()
     >>> for c in movie.countries:
     ...    if c['iso_3166_1'] == 'US':
     ...         print(c['certification'])
