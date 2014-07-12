@@ -4,60 +4,67 @@ tmdbsimple
 A wrapper for The Movie Database API v3
 ---------------------------------------
 
-``tmdbsimple`` is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in ``tmdbsimple`` you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
+*tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in *tmdbsimple* you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
 
 Features
 --------
 
-- Supports Python 2.7 and 3
-- One-to-one mapping between ``tmdbsimple`` functions and TMDb methods.
-- Implements all TMDb methods, including Authentication and Accounts.
+- COMPLETELY UPDATED AND FULLY TESTED.  Updated with the latest Account, Authentication, Certification, GuestSession, List, Movie, People, Timezones, TV, TV Season, and TV Episode methods. 
+- Supports and tested under Python 2.7.6, 3.3.5, and 3.4.0
+- One-to-one mapping between *tmdbsimple* functions and TMDb methods.
+- Implements all TMDb methods, including Accounts and Authentication.
 - Implements new TV features.
 - Easy to access data using Python class attributes.
-- Easy to experiment with ``tmdbsimple`` functions inside the Python interpreter.
+- Easy to experiment with *tmdbsimple* functions inside the Python interpreter.
 - Code tested with unittests, which illustrate the function call syntax.
 
 Installation
 ------------
 
-``tmdbsimple`` is available on the Python Package Index (PyPI) at https://pypi.python.org/pypi/tmdbsimple.
+*tmdbsimple* is available on the Python Package Index (PyPI) at https://pypi.python.org/pypi/tmdbsimple.
 
-You can install ``tmdbsimple`` using one of the following techniques.
+You can install *tmdbsimple* using one of the following techniques.
 
-- Use pip
+- Use pip:
 
 ::
 
     pip install tmdbsimple
 
 - Download the .zip or .tar.gz file from PyPI and install it yourself
-- Download the `source from Github <http://github.com/celiao/tmdbsimple>`_ and install it yourself
+- Download the `source from Github`_ and install it yourself
 
-If you install it yourself, also install `requests <http://www.python-requests.org/en/latest>`_.
+If you install it yourself, also install requests_.
+
+.. _source from Github: http://github.com/celiao/tmdbsimple
+.. _requests: http://www.python-requests.org/en/latest
 
 API Key
 -------
 You will need an API key to The Movie Database to access the API.  To obtain a key, follow these steps:
 
-1) Register for and verify an `account <https://www.themoviedb.org/account/signup>`_.
-2) `Log into <https://www.themoviedb.org/login>`_ your account.
+1) Register for and verify an account_.
+2) `Log into`_ your account.
 3) Select the API section on left side of your account page.
 4) Click on the link to generate a new API key and follow the instructions.
 
+.. _account: https://www.themoviedb.org/account/signup
+.. _Log into: https://www.themoviedb.org/login
+
 Examples
 --------
-Once you have the ``tmdbsimple`` package installed and a TMDb API key, you can start to play with the data.
+Once you have the *tmdbsimple* package installed and a TMDb API key, you can start to play with the data.
 
-First, import the library and create an instance of a TMDB object.
+First, import the library and assign your API_KEY.
 
-::
+.. code-block:: python
 
-    >>> from tmdbsimple import TMDB
-    >>> tmdb = TMDB('YOUR_API_KEY_HERE')
+    >>> import tmdbsimple as tmdb
+    >>> tmdb.API_KEY = 'YOUR_API_KEY_HERE'
 
-To communicate with The Movie Database API, create an instance of one of the object types, call one of the methods on the instance, and access the instance attributes.  Use keys to access the values of attributes that are dictionaries.
+To communicate with The Movie Database API, create an instance of one of the object types, call one of the methods on the instance, and access the instance attributes.  Use keys to access the values of attributes that are dictionaries.  In this example, we create a movie instance for 'The Matrix' and determine the budget and certification.
 
-::
+.. code-block:: python
 
     >>> movie = tmdb.Movies(603)
     >>> response = movie.info()
@@ -74,10 +81,10 @@ To communicate with The Movie Database API, create an instance of one of the obj
 
 Let's play with the interface a bit more.  Suppose you and your friend are arguing over which movie in the Bourne series was most popular.  Your friend says the first in a series is always most popular.  You disagree.
 
-::
+.. code-block:: python
 
     >>> search = tmdb.Search()
-    >>> response = search.movie({'query': 'The Bourne'})
+    >>> response = search.movie(query='The Bourne')
     >>> for s in search.results:
     ...     print(s['title'], s['id'], s['release_date'], s['popularity'])
     ...
@@ -90,7 +97,7 @@ Let's play with the interface a bit more.  Suppose you and your friend are argui
 
 You are correct!  Now you claim the producers should be able to make sequels cheaper, based on what they learned from making the first movie.  To be fair, you compute the budget per minute of runtime.  Your friend disagrees, claiming the producers spend more money trying to out do the previous sequel.
 
-::
+.. code-block:: python
 
     >>> identity = tmdb.Movies(2501)
     >>> response = identity.info()
@@ -115,7 +122,7 @@ In this case you are both correct.  The third movie was cheaper than the second,
 
 You also can call one of the methods without explicitly instanciating an object.
 
-::
+.. code-block:: python
 
     >>> response = tmdb.Movies(603).info()
     >>> response['budget']
@@ -123,3 +130,5 @@ You also can call one of the methods without explicitly instanciating an object.
 
 If you use Authentication to access a user Account, be sure to check out
 https://www.themoviedb.org/documentation/api/sessions.
+
+If you like this wrapper, and would like access to even more movie and TV data, check out *rtsimple* <https://pypi.python.org/pypi/rtsimple>, a wrapper for Rotten Tomatoes, developed by the same author.

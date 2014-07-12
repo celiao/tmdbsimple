@@ -4,10 +4,16 @@
 *.egg-info
 __pycache__
 keys.py
+build
 dist
-
-# Vim files
-.*.swp
 
 # Make files
 Makefile
+
+# editors
+## Vim files
+.*.swp
+
+# other
+notes
+
