@@ -48,8 +48,8 @@ class TMDB(object):
         return self._get_path(key).format(id=self.id,
             season_number=self.season_number)
 
-    def _get_id_season_number_episode_number_path(self, key):
-        return self._get_path(key).format(id=self.id,
+    def _get_series_id_season_number_episode_number_path(self, key):
+        return self._get_path(key).format(series_id=self.series_id,
             season_number=self.season_number,
             episode_number=self.episode_number)
 
