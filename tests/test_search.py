@@ -28,6 +28,7 @@ QUERY_4 = 'Brad Pitt'
 QUERY_5 = 'Oscars'
 QUERY_6 = 'Sony Pictures'
 QUERY_7 = 'fight'
+QUERY_8 = 'blackjack'
 
 class SearchTestCase(unittest.TestCase):
     def test_search_movies(self):
@@ -72,3 +73,8 @@ class SearchTestCase(unittest.TestCase):
         response = search.keyword(query=query)
         self.assertTrue(hasattr(search, 'results'))
 
+    def test_search_multi(self):
+        query = QUERY_8
+        search = tmdb.Search()
+        response = search.multi(query=query)
+        self.assertTrue(hasattr(search, 'results'))
