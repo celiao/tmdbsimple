@@ -185,10 +185,6 @@ class ListsTestCase(unittest.TestCase):
         response = lst.item_status(movie_id=movie_id)
         self.assertTrue(hasattr(lst, 'item_present'))
 
-    # For some reason, this test fails due to an internal server error.  
-    # A list cannot be created.
-    # http://www.themoviedb.org/talk/536f04b10e0a2647c8011e63
-    # If you see the problem, let me know. Thanks!
     def test_lists_create_add_remove_clear_delete(self):
         kwargs = {
             'name': LIST_NAME,
