@@ -131,4 +131,4 @@ You also can call one of the methods without explicitly instanciating an object.
 If you use Authentication to access a user Account, be sure to check out
 https://www.themoviedb.org/documentation/api/sessions.
 
-If you like this wrapper, and would like access to even more movie and TV data, check out *rtsimple* https://pypi.python.org/pypi/rtsimple, a wrapper for Rotten Tomatoes API.
+If you like this wrapper, and would like access to even more movie and TV data, check out *rtsimple* https://pypi.python.org/pypi/rtsimple, a wrapper for the Rotten Tomatoes API.
