@@ -4,7 +4,7 @@ tmdbsimple
 A wrapper for The Movie Database API v3
 ---------------------------------------
 
-*tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in *tmdbsimple* you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
+*tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in *tmdbsimple* you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To learn more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
 
 Features
 --------
@@ -131,4 +131,4 @@ You also can call one of the methods without explicitly instanciating an object.
 If you use Authentication to access a user Account, be sure to check out
 https://www.themoviedb.org/documentation/api/sessions.
 
-If you like this wrapper, and would like access to even more movie and TV data, check out *rtsimple* https://pypi.python.org/pypi/rtsimple, a wrapper for Rotten Tomatoes.
+If you like this wrapper, and would like access to even more movie and TV data, check out *rtsimple* https://pypi.python.org/pypi/rtsimple, a wrapper for Rotten Tomatoes API.
