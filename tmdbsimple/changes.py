@@ -23,6 +23,7 @@ class Changes(TMDB):
     URLS = {
         'movie': 'movie/changes',
         'person': 'person/changes',
+        'tv': 'tv/changes',
     }
 
     def movie(self, **kwargs):
@@ -56,6 +57,24 @@ class Changes(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_path('person')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def tv(self, **kwargs):
+        """
+        Get a list of TV show ids that have been edited.
+
+        Args:
+            page: (optional) Minimum 1, maximum 1000.
+            start_date: (optional) Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Expected format is 'YYYY-MM-DD'.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_path('tv')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)

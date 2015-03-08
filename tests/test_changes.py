@@ -30,3 +30,7 @@ class ChangesTestCase(unittest.TestCase):
         response = change.movie()
         self.assertTrue(hasattr(change, 'results'))
 
+    def test_changes_tv(self):
+        change = tmdb.Changes()
+        response = change.tv()
+        self.assertTrue(hasattr(change, 'results'))
