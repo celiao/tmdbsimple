@@ -8,6 +8,9 @@ from setuptools import setup
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
+# Install requests==2.5.3 to avoid InsecurePlatformWarning message
+# http://stackoverflow.com/questions/29134512/insecureplatformwarning-a-true-sslcontext-object-is-not-available-this-prevent
+# https://urllib3.readthedocs.org/en/latest/security.html#insecureplatformwarning
 setup(
     name = 'tmdbsimple',
     version = '1.0.0',
@@ -20,7 +23,7 @@ setup(
     download_url = 'https://github.com/celiao/tmdbsimple/tarball/1.0.0',
     packages = ['tmdbsimple'],
     long_description=read('README.rst'),
-    install_requires = ['requests>=2.3.0'],
+    install_requires = ['requests==2.5.3'],
     classifiers = [
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
