@@ -21,7 +21,7 @@ tmdb.API_KEY = API_KEY
 """
 Constants
 """
-MOVIETITLE = 'The Brother From Another Planet'
+MOVIETITLE = 'The Brother from Another Planet'
 TVTITLE = 'Breaking Bad'
 FAVORITE_MOVIE_ID = 62211
 WATCHLIST_MEDIA_ID = 11
