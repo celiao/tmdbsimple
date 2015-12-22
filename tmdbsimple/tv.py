@@ -28,6 +28,7 @@ class TV(TMDB):
         'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
         'rating': '/{id}/rating',
+        'similar': '/{id}/similar',
         'translations': '/{id}/translations',
         'videos': '/{id}/videos',
         'on_the_air': '/on_the_air',
@@ -131,6 +132,24 @@ class TV(TMDB):
         }
 
         response = self._POST(path, kwargs, payload)
+        self._set_attrs_to_values(response)
+        return response
+
+    def similar(self, **kwargs):
+        """
+        Get the similar TV series for a specific TV series id.
+        
+        Args:
+            page: (optional) Minimum value of 1.  Expected value is an integer.
+            language: (optional) ISO 639-1 code.
+            append_to_response: (optional) Comma separated, any TV method.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('similar')
+
+        response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
