@@ -76,6 +76,12 @@ class TVTestCase(unittest.TestCase):
         response = tv.rating(session_id=SESSION_ID, value=RATING)
         self.assertEqual(tv.status_code, status_code)
 
+    def test_tv_similar(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.similar()
+        self.assertTrue(hasattr(tv, 'results'))
+
     def test_tv_translations(self):
         id = TV_ID
         tv = tmdb.TV(id)

@@ -27,7 +27,7 @@ class ChangesTestCase(unittest.TestCase):
 
     def test_changes_person(self):
         change = tmdb.Changes()
-        response = change.movie()
+        response = change.person()
         self.assertTrue(hasattr(change, 'results'))
 
     def test_changes_tv(self):
