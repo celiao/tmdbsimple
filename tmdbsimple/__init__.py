@@ -36,12 +36,6 @@ from .people import People, Credits, Jobs
 from .search import Search
 from .tv import TV, TV_Seasons, TV_Episodes, Networks
 
-def _get_env_key(key):
-    try:
-        return os.environ[key]
-    except KeyError:
-        return None
 
-API_KEY = _get_env_key('TMDB_API_KEY')
+API_KEY = os.environ.get('TMDB_API_KEY', None)
 API_VERSION = '3'
-
