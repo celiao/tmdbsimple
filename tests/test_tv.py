@@ -82,6 +82,12 @@ class TVTestCase(unittest.TestCase):
         response = tv.similar()
         self.assertTrue(hasattr(tv, 'results'))
 
+    def test_tv_recommendations(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.recommendations()
+        self.assertTrue(hasattr(tv, 'results'))
+
     def test_tv_translations(self):
         id = TV_ID
         tv = tmdb.TV(id)
