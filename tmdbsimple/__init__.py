@@ -4,11 +4,11 @@
 tmdbsimple
 ~~~~~~~~~~
 
-*tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb) 
-API v3.  By calling the functions available in *tmdbsimple* you can simplify 
-your code and easily access a vast amount of movie, tv, and cast data.  To find 
-out more about The Movie Database API, check out the overview page 
-http://www.themoviedb.org/documentation/api and documentation page 
+*tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb)
+API v3.  By calling the functions available in *tmdbsimple* you can simplify
+your code and easily access a vast amount of movie, tv, and cast data.  To find
+out more about The Movie Database API, check out the overview page
+http://www.themoviedb.org/documentation/api and documentation page
 http://docs.themoviedb.apiary.io.
 https://www.themoviedb.org/documentation/api/status-codes
 
@@ -44,4 +44,5 @@ def _get_env_key(key):
 
 API_KEY = _get_env_key('TMDB_API_KEY')
 API_VERSION = '3'
+REQUESTS_SESSION = None
 
