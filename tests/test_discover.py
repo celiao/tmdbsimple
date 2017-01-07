@@ -8,7 +8,7 @@ This test suite checks the methods of the Discover class of tmdbsimple.
 
 Created by Celia Oakley on 2013-11-05
 
-:copyright: (c) 2013-2014 by Celia Oakley.
+:copyright: (c) 2013-2017 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
@@ -31,9 +31,17 @@ class DiscoverTestCase(unittest.TestCase):
         response = discover.movie(page=1, year=DISCOVER_YEAR)
         self.assertTrue(hasattr(discover, 'results'))
 
-    def test_discover_tv(self):
+    # Test dot usage
+    def test_discover_tv_dot(self):
         discover = tmdb.Discover()
         kwargs = {'page':2, 'vote_average.gte': DISCOVER_VOTE_AVERAGE_GTE}
         response = discover.tv(**kwargs)
+        self.assertTrue(hasattr(discover, 'results'))
+
+    # Test underscore usage
+    def test_discover_tv_underscore(self):
+        discover = tmdb.Discover()
+        response = discover.tv(page=2, 
+			vote_average_gte=DISCOVER_VOTE_AVERAGE_GTE)
         self.assertTrue(hasattr(discover, 'results'))
 
