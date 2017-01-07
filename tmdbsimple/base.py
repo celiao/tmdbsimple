@@ -27,9 +27,11 @@ class TMDB(object):
     URLS = {}
 
     def __init__(self):
-        from . import API_VERSION
+        from . import API_VERSION, REQUESTS_SESSION, __version__
         self.base_uri = 'https://api.themoviedb.org'
         self.base_uri += '/{version}'.format(version=API_VERSION)
+        self.session = REQUESTS_SESSION or requests.Session()
+        self.session.headers.setdefault('user-agent', 'tmdb_api/{}.{}.{}'.format(*__version__))
 
     def _get_path(self, key):
         return self.BASE_PATH + self.URLS[key]
@@ -40,7 +42,7 @@ class TMDB(object):
     def _get_guest_session_id_path(self, key):
         return self._get_path(key).format(
             guest_session_id=self.guest_session_id)
-    
+
     def _get_credit_id_path(self, key):
         return self._get_path(key).format(credit_id=self.credit_id)
 
@@ -72,8 +74,8 @@ class TMDB(object):
         url = self._get_complete_url(path)
         params = self._get_params(params)
 
-        response = requests.request(
-            method, url, params=params, 
+        response = self.session.request(
+            method, url, params=params,
             data=json.dumps(payload) if payload else payload,
             headers=self.headers)
 
