@@ -29,6 +29,7 @@ class TV(TMDB):
         'images': '/{id}/images',
         'rating': '/{id}/rating',
         'similar': '/{id}/similar',
+        'recommendations': '/{id}/recommendations',
         'translations': '/{id}/translations',
         'videos': '/{id}/videos',
         'on_the_air': '/on_the_air',
@@ -138,7 +139,7 @@ class TV(TMDB):
     def similar(self, **kwargs):
         """
         Get the similar TV series for a specific TV series id.
-        
+
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
             language: (optional) ISO 639-1 code.
@@ -148,6 +149,23 @@ class TV(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('similar')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def recommendations(self, **kwargs):
+        """
+        Get the recommendations for TV series for a specific TV series id.
+
+        Args:
+            page: (optional) Minimum value of 1.  Expected value is an integer.
+            language: (optional) ISO 639-1 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('recommendations')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -258,6 +276,7 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+
 class TV_Seasons(TMDB):
     """
     TV Seasons functionality.
@@ -267,7 +286,7 @@ class TV_Seasons(TMDB):
     BASE_PATH = 'tv/{id}/season/{season_number}'
     URLS = {
         'info': '',
-        'credits': '/credits', 
+        'credits': '/credits',
         'external_ids': '/external_ids',
         'images': '/images',
         'videos': '/videos',
@@ -362,6 +381,7 @@ class TV_Seasons(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+
 class TV_Episodes(TMDB):
     """
     TV Episodes functionality.
@@ -371,7 +391,7 @@ class TV_Episodes(TMDB):
     BASE_PATH = 'tv/{series_id}/season/{season_number}/episode/{episode_number}'
     URLS = {
         'info': '',
-        'credits': '/credits', 
+        'credits': '/credits',
         'external_ids': '/external_ids',
         'images': '/images',
         'rating': '/rating',
@@ -488,6 +508,7 @@ class TV_Episodes(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
+
 
 class Networks(TMDB):
     """
