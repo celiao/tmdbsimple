@@ -25,7 +25,6 @@ class Search(TMDB):
         'collection': '/collection',
         'tv': '/tv',
         'person': '/person',
-        'list': '/list',
         'company': '/company',
         'keyword': '/keyword',
         'multi': '/multi'
@@ -125,25 +124,6 @@ class Search(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_path('person')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-    def list(self, **kwargs):
-        """
-        Search for lists by name and description.
-
-        Args:
-            query: CGI escpaed string.
-            page: (optional) Minimum value of 1. Expected value is an integer.
-            include_adult: (optional) Toggle the inclusion of adult titles. 
-                           Expected value is True or False.
-
-        Returns:
-            A dict respresentation of the JSON returned from the API.
-        """
-        path = self._get_path('list')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)

@@ -25,7 +25,6 @@ QUERY_1 = 'Club'
 QUERY_2 = 'Avenger'
 QUERY_3 = 'Breaking'
 QUERY_4 = 'Brad Pitt'
-QUERY_5 = 'Oscars'
 QUERY_6 = 'Sony Pictures'
 QUERY_7 = 'fight'
 QUERY_8 = 'blackjack'
@@ -53,12 +52,6 @@ class SearchTestCase(unittest.TestCase):
         query = QUERY_4
         search = tmdb.Search()
         response = search.person(query=query)
-        self.assertTrue(hasattr(search, 'results'))
-
-    def test_search_list(self):
-        query = QUERY_5
-        search = tmdb.Search()
-        response = search.list(query=query)
         self.assertTrue(hasattr(search, 'results'))
 
     def test_search_company(self):

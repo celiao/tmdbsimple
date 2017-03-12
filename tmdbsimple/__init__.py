@@ -12,12 +12,12 @@ http://www.themoviedb.org/documentation/api and documentation page
 http://docs.themoviedb.apiary.io.
 https://www.themoviedb.org/documentation/api/status-codes
 
-:copyright: (c) 2013-2014 by Celia Oakley.
+:copyright: (c) 2013-2017 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details
 """
 
 __title__ = 'tmdbsimple'
-__version__ = '1.4.1'
+__version__ = '1.5.0'
 __author__ = 'Celia Oakley'
 __copyright__ = 'Copyright (c) 2013-1017 Celia Oakley'
 __license__ = 'GPLv3'

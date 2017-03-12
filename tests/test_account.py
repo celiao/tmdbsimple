@@ -26,7 +26,7 @@ TVTITLE = 'Breaking Bad'
 FAVORITE_MOVIE_ID = 62211
 WATCHLIST_MEDIA_ID = 11
 LIST_ID = '509ec17b19c2950a0600050d'
-LIST_CREATED_BY = 'Travis Bell'
+LIST_CREATED_BY = 'travisbell'
 LIST_MOVIE_ID = 76203 # Argo
 LIST_NAME = 'My newly created list'
 LIST_DESCRIPTION = 'No duplicates here'
@@ -37,7 +37,7 @@ Status codes and messages
 """
 SUCCESSFUL_UPDATE = 12
 SUCCESSFUL_DELETE = 13
-SUCCESS_PERIOD = 'Success.'
+SUCCESS_PERIOD = 'The item/record was created successfully.'
 
 
 class AccountTestCase(unittest.TestCase):
@@ -211,9 +211,4 @@ class ListsTestCase(unittest.TestCase):
         status_code = SUCCESSFUL_UPDATE
         lst = tmdb.Lists(list_id, SESSION_ID)
         response = lst.clear_list(confirm='true')
-        self.assertEqual(lst.status_code, status_code)
-
-        status_code = SUCCESSFUL_DELETE
-        lst = tmdb.Lists(list_id, SESSION_ID)
-        response = lst.delete_list()
         self.assertEqual(lst.status_code, status_code)
