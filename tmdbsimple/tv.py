@@ -24,6 +24,7 @@ class TV(TMDB):
     BASE_PATH = 'tv'
     URLS = {
         'info': '/{id}',
+        'alternative_titles': '/{id}/alternative_titles',
         'credits': '/{id}/credits',
         'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
@@ -59,6 +60,24 @@ class TV(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
+
+
+    def alternative_titles(self, **kwargs):
+        """
+        Get the alternative titles for a specific tv id.
+        
+        Args:
+            language: (optional) ISO 3166-1 code.
+            append_to_response: (optional) Comma separated, any tv method.
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('alternative_titles')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
 
     def credits(self, **kwargs):
         """
