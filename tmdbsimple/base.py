@@ -40,7 +40,7 @@ class TMDB(object):
     def _get_guest_session_id_path(self, key):
         return self._get_path(key).format(
             guest_session_id=self.guest_session_id)
-    
+
     def _get_credit_id_path(self, key):
         return self._get_path(key).format(credit_id=self.credit_id)
 
@@ -57,11 +57,11 @@ class TMDB(object):
         return '{base_uri}/{path}'.format(base_uri=self.base_uri, path=path)
 
     def _get_params(self, params):
-        from . import API_KEY
+        from . import API_KEY, LANGUAGE
         if not API_KEY:
             raise APIKeyError
 
-        api_dict = {'api_key': API_KEY}
+        api_dict = {'api_key': API_KEY, 'language': LANGUAGE}
         if params:
             params.update(api_dict)
         else:
@@ -73,7 +73,7 @@ class TMDB(object):
         params = self._get_params(params)
 
         response = requests.request(
-            method, url, params=params, 
+            method, url, params=params,
             data=json.dumps(payload) if payload else payload,
             headers=self.headers)
 
