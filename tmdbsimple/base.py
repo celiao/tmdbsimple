@@ -13,6 +13,7 @@ Created by Celia Oakley on 2013-10-31.
 
 import json
 import requests
+from time import sleep
 
 
 class APIKeyError(Exception):
@@ -40,7 +41,7 @@ class TMDB(object):
     def _get_guest_session_id_path(self, key):
         return self._get_path(key).format(
             guest_session_id=self.guest_session_id)
-    
+
     def _get_credit_id_path(self, key):
         return self._get_path(key).format(credit_id=self.credit_id)
 
@@ -69,15 +70,22 @@ class TMDB(object):
         return params
 
     def _request(self, method, path, params=None, payload=None):
+        def get_response():
+            response = requests.request(
+                method, url, params=params,
+                data=json.dumps(payload) if payload else payload,
+                headers=self.headers)
+            if response.status_code == 429:
+                sleep(0.1)
+                return get_response()
+            else:
+                response.raise_for_status()
+                return response
+
         url = self._get_complete_url(path)
         params = self._get_params(params)
 
-        response = requests.request(
-            method, url, params=params, 
-            data=json.dumps(payload) if payload else payload,
-            headers=self.headers)
-
-        response.raise_for_status()
+        response = get_response()
         response.encoding = 'utf-8'
         return response.json()
 
