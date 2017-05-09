@@ -32,7 +32,7 @@ class TV(TMDB):
         'recommendations': '/{id}/recommendations',
         'translations': '/{id}/translations',
         'videos': '/{id}/videos',
-        'latest': '/{id}/latest',
+        'latest': '/latest',
         'on_the_air': '/on_the_air',
         'airing_today': '/airing_today',
         'top_rated': '/top_rated',
