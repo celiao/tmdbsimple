@@ -14,7 +14,6 @@ Created by Celia Oakley on 2013-10-31.
 
 from .base import TMDB
 
-
 class TV(TMDB):
     """
     TV functionality.
@@ -24,6 +23,7 @@ class TV(TMDB):
     BASE_PATH = 'tv'
     URLS = {
         'info': '/{id}',
+        'alternative_titles': '/{id}/alternative_titles',
         'credits': '/{id}/credits',
         'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
@@ -32,6 +32,7 @@ class TV(TMDB):
         'recommendations': '/{id}/recommendations',
         'translations': '/{id}/translations',
         'videos': '/{id}/videos',
+        'latest': '/{id}/latest',
         'on_the_air': '/on_the_air',
         'airing_today': '/airing_today',
         'top_rated': '/top_rated',
@@ -59,6 +60,24 @@ class TV(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
+
+
+    def alternative_titles(self, **kwargs):
+        """
+        Get the alternative titles for a specific tv id.
+        
+        Args:
+            language: (optional) ISO 3166-1 code.
+            append_to_response: (optional) Comma separated, any tv method.
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('alternative_titles')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
 
     def credits(self, **kwargs):
         """
@@ -197,6 +216,23 @@ class TV(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('videos')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def latest(self, **kwargs):
+        """
+        Get the most newly created TV show. This is a live response
+		and will continuously change.
+
+        Args:
+            language: (optional) ISO 639 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('latest')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
