@@ -14,7 +14,6 @@ Created by Celia Oakley on 2013-10-31.
 
 from .base import TMDB
 
-
 class TV(TMDB):
     """
     TV functionality.
@@ -33,6 +32,7 @@ class TV(TMDB):
         'recommendations': '/{id}/recommendations',
         'translations': '/{id}/translations',
         'videos': '/{id}/videos',
+        'latest': '/{id}/latest',
         'on_the_air': '/on_the_air',
         'airing_today': '/airing_today',
         'top_rated': '/top_rated',
@@ -216,6 +216,23 @@ class TV(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('videos')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def latest(self, **kwargs):
+        """
+        Get the most newly created TV show. This is a live response
+		and will continuously change.
+
+        Args:
+            language: (optional) ISO 639 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('latest')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
