@@ -172,7 +172,7 @@ class CollectionsTestCase(unittest.TestCase):
         id = COLLECTION_ID
         collection = tmdb.Collections(id)
         response = collection.images()
-        self.assertTrue(hasattr(collection, 'parts'))
+        self.assertTrue(hasattr(collection, 'backdrops'))
 
 
 class CompaniesTestCase(unittest.TestCase):

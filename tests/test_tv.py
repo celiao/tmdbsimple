@@ -50,6 +50,12 @@ class TVTestCase(unittest.TestCase):
         response = tv.info()
         self.assertEqual(tv.name, name)
 
+    def test_tv_alternative_titles(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.alternative_titles()
+        self.assertTrue(hasattr(tv, 'results'))
+
     def test_tv_credits(self):
         id = TV_ID
         tv = tmdb.TV(id)
@@ -99,6 +105,11 @@ class TVTestCase(unittest.TestCase):
         tv = tmdb.TV(id)
         response = tv.videos()
         self.assertTrue(hasattr(tv, 'results'))
+
+    def test_tv_latest(self):
+        tv = tmdb.TV()
+        response = tv.latest()
+        self.assertTrue(hasattr(tv, 'first_air_date'))
 
     def test_tv_on_the_air(self):
         tv = tmdb.TV()
