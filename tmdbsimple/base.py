@@ -102,5 +102,6 @@ class TMDB(object):
         """
         if isinstance(response, dict):
             for key in response.keys():
-                setattr(self, key, response[key])
+                if not hasattr(self, key):
+                    setattr(self, key, response[key])
 
