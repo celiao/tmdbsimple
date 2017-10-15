@@ -17,7 +17,7 @@ class Changes(TMDB):
     """
     Changes functionality.
 
-    See: http://docs.themoviedb.apiary.io/#changes
+    See: https://developers.themoviedb.org/3/changes
     """
     BASE_PATH = ''
     URLS = {
