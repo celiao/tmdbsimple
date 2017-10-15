@@ -20,7 +20,7 @@ class Configuration(TMDB):
     """
     Configuration functionality.
 
-    See: http://docs.themoviedb.apiary.io/#configuration
+    See: https://developers.themoviedb.org/3/configuration
     """
     BASE_PATH = 'configuration'
     URLS = {
