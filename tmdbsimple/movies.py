@@ -18,7 +18,7 @@ class Movies(TMDB):
     """
     Movies functionality.
 
-    See: http://docs.themoviedb.apiary.io/#movies
+    See: https://developers.themoviedb.org/3/movies
     """
     BASE_PATH = 'movie'
     URLS = {
