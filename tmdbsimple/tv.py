@@ -18,7 +18,7 @@ class TV(TMDB):
     """
     TV functionality.
 
-    See: http://docs.themoviedb.apiary.io/#tv
+    See: https://developers.themoviedb.org/3/tv
     """
     BASE_PATH = 'tv'
     URLS = {
