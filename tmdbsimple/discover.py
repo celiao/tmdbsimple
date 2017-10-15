@@ -17,7 +17,7 @@ class Discover(TMDB):
     """
     Discover functionality.
 
-    See: http://docs.themoviedb.apiary.io/#discover
+    See: https://developers.themoviedb.org/3/discover
     """
     BASE_PATH = 'discover'
     URLS = {
