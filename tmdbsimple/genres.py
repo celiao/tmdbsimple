@@ -18,7 +18,7 @@ class Genres(TMDB):
     """
     Genres functionality.
 
-    See: http://docs.themoviedb.apiary.io/#genres
+    See: https://developers.themoviedb.org/3/genres
     """
     BASE_PATH = 'genre'
     URLS = {
