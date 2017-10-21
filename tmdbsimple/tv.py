@@ -317,7 +317,7 @@ class TV_Seasons(TMDB):
     """
     TV Seasons functionality.
 
-    See: http://docs.themoviedb.apiary.io/#tvseasons
+    See: https://developers.themoviedb.org/3/tv-seasons
     """
     BASE_PATH = 'tv/{id}/season/{season_number}'
     URLS = {
@@ -422,7 +422,7 @@ class TV_Episodes(TMDB):
     """
     TV Episodes functionality.
 
-    See: http://docs.themoviedb.apiary.io/#tvepisodes
+    See: https://developers.themoviedb.org/3/tv-episodes
     """
     BASE_PATH = 'tv/{series_id}/season/{season_number}/episode/{episode_number}'
     URLS = {
@@ -550,7 +550,7 @@ class Networks(TMDB):
     """
     Networks functionality.
 
-    See: http://docs.themoviedb.apiary.io/#networks
+    See: https://developers.themoviedb.org/3/networks
     """
     BASE_PATH = 'network'
     URLS = {

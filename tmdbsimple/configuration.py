@@ -45,7 +45,7 @@ class Certifications(TMDB):
     """
     Certifications functionality.
 
-    See: http://docs.themoviedb.apiary.io/#certifications
+    See: https://developers.themoviedb.org/3/certifications
     """
     BASE_PATH = 'certification'
     URLS = {
@@ -70,7 +70,7 @@ class Timezones(TMDB):
     """
     Timezones functionality.
 
-    See: http://docs.themoviedb.apiary.io/#timezones
+    See: https://developers.themoviedb.org/3/timezones
     """
     BASE_PATH = 'timezones'
     URLS = {

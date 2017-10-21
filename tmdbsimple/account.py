@@ -243,7 +243,7 @@ class Authentication(TMDB):
     """
     Authentication functionality.
 
-    See: http://docs.themoviedb.apiary.io/#authentication
+    See: https://developers.themoviedb.org/3/authentication
          https://www.themoviedb.org/documentation/api/sessions
     """
     BASE_PATH = 'authentication'
@@ -332,7 +332,7 @@ class GuestSessions(TMDB):
     """
     Guest Sessions functionality.
 
-    See: http://docs.themoviedb.apiary.io/#guestsessions
+    See: https://developers.themoviedb.org/3/guest-sessions
     """
     BASE_PATH = 'guest_session'
     URLS = {
@@ -366,7 +366,7 @@ class Lists(TMDB):
     """
     Lists functionality.
 
-    See: http://docs.themoviedb.apiary.io/#lists
+    See: https://developers.themoviedb.org/3/lists
     """
     BASE_PATH = 'list'
     URLS = {

@@ -390,7 +390,7 @@ class Collections(TMDB):
     """
     Collections functionality. 
 
-    See: http://docs.themoviedb.apiary.io/#collections
+    See: https://developers.themoviedb.org/3/collections
     """
     BASE_PATH = 'collection'
     URLS = {
@@ -447,7 +447,7 @@ class Companies(TMDB):
     """
     Companies functionality. 
 
-    See: http://docs.themoviedb.apiary.io/#companies
+    See: https://developers.themoviedb.org/3/companies
     """
     BASE_PATH = 'company'
     URLS = {
@@ -498,7 +498,7 @@ class Keywords(TMDB):
     """
     Keywords functionality. 
 
-    See: http://docs.themoviedb.apiary.io/#keywords
+    See: https://developers.themoviedb.org/3/keywords
     """
     BASE_PATH = 'keyword'
     URLS = {
@@ -544,7 +544,7 @@ class Reviews(TMDB):
     """
     Reviews functionality. 
 
-    See: http://docs.themoviedb.apiary.io/#reviews
+    See: https://developers.themoviedb.org/3/reviews
     """
     BASE_PATH = 'review'
     URLS = {
