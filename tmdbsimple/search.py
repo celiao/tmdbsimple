@@ -17,7 +17,7 @@ class Search(TMDB):
     """
     Search functionality
 
-    See: http://docs.themoviedb.apiary.io/#search
+    See: https://developers.themoviedb.org/3/search
     """
     BASE_PATH = 'search'
     URLS = {

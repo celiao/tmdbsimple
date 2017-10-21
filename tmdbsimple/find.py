@@ -17,7 +17,7 @@ class Find(TMDB):
     """
     Find functionality.
 
-    See: http://docs.themoviedb.apiary.io/#find
+    See: https://developers.themoviedb.org/3/find
     """
     BASE_PATH = 'find'
     URLS = {

@@ -19,7 +19,7 @@ class Account(TMDB):
     """
     Account functionality.
 
-    See: http://docs.themoviedb.apiary.io/#account
+    See: https://developers.themoviedb.org/3/account
          https://www.themoviedb.org/documentation/api/sessions
     """
     BASE_PATH = 'account'

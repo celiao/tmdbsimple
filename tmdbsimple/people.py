@@ -18,7 +18,7 @@ class People(TMDB):
     """
     People functionality.
 
-    See: http://docs.themoviedb.apiary.io/#people
+    See: https://developers.themoviedb.org/3/people
     """
     BASE_PATH = 'person'
     URLS = {
