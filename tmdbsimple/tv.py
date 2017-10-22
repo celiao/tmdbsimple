@@ -24,8 +24,8 @@ class TV(TMDB):
     URLS = {
         'info': '/{id}',
         'alternative_titles': '/{id}/alternative_titles',
-        'credits': '/{id}/credits',
         'content_ratings': '/{id}/content_ratings',
+        'credits': '/{id}/credits',
         'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
         'rating': '/{id}/rating',
