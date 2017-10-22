@@ -78,6 +78,13 @@ class MoviesTestCase(unittest.TestCase):
         movie = tmdb.Movies(id)
         response = movie.keywords()
         self.assertTrue(hasattr(movie, 'keywords'))
+        # Confirm we can call keywords() again without error
+        raised = False
+        try:
+            movie.keywords()
+        except:
+            raised = True
+        self.assertFalse(raised)
 
     def test_movies_releases(self):
         id = MOVIE_ID
