@@ -56,6 +56,12 @@ class TVTestCase(unittest.TestCase):
         response = tv.alternative_titles()
         self.assertTrue(hasattr(tv, 'results'))
 
+    def test_tv_content_ratings(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.content_ratings()
+        self.assertTrue(hasattr(tv, 'results'))
+
     def test_tv_credits(self):
         id = TV_ID
         tv = tmdb.TV(id)
