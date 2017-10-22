@@ -44,8 +44,8 @@ class TMDB(object):
     def _get_credit_id_path(self, key):
         return self._get_path(key).format(credit_id=self.credit_id)
 
-    def _get_id_season_number_path(self, key):
-        return self._get_path(key).format(id=self.id,
+    def _get_series_id_season_number_path(self, key):
+        return self._get_path(key).format(series_id=self.series_id,
             season_number=self.season_number)
 
     def _get_series_id_season_number_episode_number_path(self, key):
@@ -102,5 +102,6 @@ class TMDB(object):
         """
         if isinstance(response, dict):
             for key in response.keys():
-                setattr(self, key, response[key])
+                if not hasattr(self, key):
+                    setattr(self, key, response[key])
 

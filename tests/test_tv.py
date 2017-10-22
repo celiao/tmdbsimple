@@ -140,39 +140,39 @@ class TVTestCase(unittest.TestCase):
 
 class TVSeasonsTestCase(unittest.TestCase):
     def test_tv_seasons_info(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
         name = TV_SEASON_NAME
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.info()
         self.assertEqual(tv_seasons.name, name)
 
     def test_tv_seasons_credits(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.credits()
         self.assertTrue(hasattr(tv_seasons, 'crew'))
 
     def test_tv_seasons_external_ids(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
         tvdb_id = TV_SEASON_TVDB_ID
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.external_ids()
         self.assertEqual(tv_seasons.tvdb_id, tvdb_id)
 
     def test_tv_seasons_images(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.images()
         self.assertTrue(hasattr(tv_seasons, 'posters'))
 
     def test_tv_seasons_videos(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.videos()
         self.assertTrue(hasattr(tv_seasons, 'results'))
 
