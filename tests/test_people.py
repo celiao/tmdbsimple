@@ -79,7 +79,7 @@ class PeopleTestCase(unittest.TestCase):
     def test_people_latest(self):
         person = tmdb.People()
         response = person.latest()
-        self.assertTrue(hasattr(person, 'birthday'))
+        self.assertTrue(hasattr(person, 'name'))
 
 
 class CreditsTestCase(unittest.TestCase):
