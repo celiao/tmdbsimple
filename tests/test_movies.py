@@ -86,6 +86,12 @@ class MoviesTestCase(unittest.TestCase):
             raised = True
         self.assertFalse(raised)
 
+    def test_movies_release_dates(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        response = movie.release_dates()
+        self.assertTrue(hasattr(movie, 'results'))
+
     def test_movies_releases(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
