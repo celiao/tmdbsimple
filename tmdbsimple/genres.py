@@ -22,6 +22,8 @@ class Genres(TMDB):
     """
     BASE_PATH = 'genre'
     URLS = {
+        'tv_list': '/tv/list',
+        'movie_list': '/movie/list',
         'list': '/list',
         'movies': '/{id}/movies',
     }
@@ -41,6 +43,38 @@ class Genres(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_path('list')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def tv_list(self, **kwargs):
+        """
+        Get the list of TV genres.
+
+        Args:
+            language: (optional) ISO 639-1 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_path('tv_list')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def movie_list(self, **kwargs):
+        """
+        Get the list of Movie genres.
+
+        Args:
+            language: (optional) ISO 639-1 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_path('movie_list')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
