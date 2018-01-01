@@ -42,6 +42,7 @@ class Movies(TMDB):
         'top_rated': '/top_rated',
         'account_states': '/{id}/account_states',
         'rating': '/{id}/rating',
+        'recommendations': '/{id}/recommendations'
     }
 
     def __init__(self, id=0):
@@ -130,21 +131,38 @@ class Movies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def recommendations(self, **kwargs):
+        """
+        Get a list of recommended movies for a movie.
+
+        Args:
+            language: (optional) ISO 639-1 code.
+            page: (optional) Minimum value of 1.  Expected value is an integer.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('recommendations')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
     def release_dates(self, **kwargs):
-         """
-         Get the release dates and certification for a specific movie id.
+        """
+        Get the release dates and certification for a specific movie id.
 
-         Args:
-             append_to_response: (optional) Comma separated, any movie method.
+        Args:
+            append_to_response: (optional) Comma separated, any movie method.
 
-         Returns:
-             A dict respresentation of the JSON returned from the API.
-         """
-         path = self._get_id_path('release_dates')
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('release_dates')
 
-         response = self._GET(path, kwargs)
-         self._set_attrs_to_values(response)
-         return response
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
 
     def releases(self, **kwargs):
         """
