@@ -25,9 +25,14 @@ GENRE_ID = 18
 
 
 class GenresTestCase(unittest.TestCase):
-    def test_genres_list(self):
+    def test_genres_movie_list(self):
         genre = tmdb.Genres()
-        response = genre.list()
+        response = genre.movie_list()
+        self.assertTrue(hasattr(genre, 'genres'))
+
+    def test_genres_tv_list(self):
+        genre = tmdb.Genres()
+        response = genre.tv_list()
         self.assertTrue(hasattr(genre, 'genres'))
 
     def test_genres_movies(self):
