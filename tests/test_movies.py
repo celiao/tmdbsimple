@@ -116,6 +116,12 @@ class MoviesTestCase(unittest.TestCase):
         response = movie.similar_movies()
         self.assertTrue(hasattr(movie, 'results'))
 
+    def test_movies_recommendations(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        response = movie.recommendations()
+        self.assertTrue(hasattr(movie, 'results'))
+
     def test_movies_reviews(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
