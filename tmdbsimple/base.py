@@ -64,9 +64,9 @@ class TMDB(object):
         api_dict = {'api_key': API_KEY}
         if params:
             params.update(api_dict)
-            for key, value in params.iteritems():
+            for key, value in params.items():
                 if isinstance(params[key], bool):
-                    params[key] = 'true' if value else 'false'
+                    params[key] = 'true' if value is True else 'false'
 
         else:
             params = api_dict
