@@ -102,6 +102,8 @@ class TMDB(object):
         """
         if isinstance(response, dict):
             for key in response.keys():
-                if not hasattr(self, key):
+                if not hasattr(self, key) or key in {'results', 'page', 
+                                                     'total_results', 
+                                                     'total_pages'}:
                     setattr(self, key, response[key])
 
