@@ -82,7 +82,7 @@ class TMDB(object):
         response.encoding = 'utf-8'
         return response.json()
 
-	@rate_limited(4)
+    @rate_limited(4)
     def _GET(self, path, params=None):
         return self._request('GET', path, params=params)
 
