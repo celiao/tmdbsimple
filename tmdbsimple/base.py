@@ -13,6 +13,7 @@ Created by Celia Oakley on 2013-10-31.
 
 import json
 import requests
+from ratelimit import *
 
 
 class APIKeyError(Exception):
@@ -81,6 +82,7 @@ class TMDB(object):
         response.encoding = 'utf-8'
         return response.json()
 
+	@rate_limited(4)
     def _GET(self, path, params=None):
         return self._request('GET', path, params=params)
 
