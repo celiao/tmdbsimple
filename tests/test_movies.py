@@ -67,6 +67,12 @@ class MoviesTestCase(unittest.TestCase):
         response = movie.credits()
         self.assertTrue(hasattr(movie, 'cast'))
 
+    def test_movies_external_ids(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        response = movie.external_ids()
+        self.assertTrue(hasattr(movie, 'imdb_id'))
+
     def test_movies_images(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
