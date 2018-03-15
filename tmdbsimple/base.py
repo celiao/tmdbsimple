@@ -19,6 +19,11 @@ class APIKeyError(Exception):
     pass
 
 
+def perform_request(method, url, params=None, data=None, headers=None):
+    return requests.request(
+        method, url, params=params, data=data, headers=headers)
+
+
 class TMDB(object):
     headers = {'Content-Type': 'application/json',
                'Accept': 'application/json',
@@ -28,6 +33,8 @@ class TMDB(object):
 
     def __init__(self):
         from . import API_VERSION
+        from . import perform_request
+        self.perform_request = perform_request
         self.base_uri = 'https://api.themoviedb.org'
         self.base_uri += '/{version}'.format(version=API_VERSION)
 
@@ -71,11 +78,10 @@ class TMDB(object):
     def _request(self, method, path, params=None, payload=None):
         url = self._get_complete_url(path)
         params = self._get_params(params)
+        data = json.dumps(payload) if payload else payload
 
-        response = requests.request(
-            method, url, params=params, 
-            data=json.dumps(payload) if payload else payload,
-            headers=self.headers)
+        response = self.perform_request(
+            method, url, params=params, data=data, headers=self.headers)
 
         response.raise_for_status()
         response.encoding = 'utf-8'

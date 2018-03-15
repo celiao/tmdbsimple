@@ -25,7 +25,7 @@ __license__ = 'GPLv3'
 import os
 
 from .account import Account, Authentication, GuestSessions, Lists
-from .base import APIKeyError
+from .base import APIKeyError, perform_request
 from .changes import Changes
 from .configuration import Configuration, Certifications, Timezones
 from .discover import Discover
