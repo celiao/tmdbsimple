@@ -102,7 +102,7 @@ class Movies(TMDB):
 
     def external_ids(self, **kwargs):
         """
-        Get the external ids for a specific person id.
+        Get the external ids for a specific movie id.
 
         Args:
             language: (optional) ISO 639-1 code.
