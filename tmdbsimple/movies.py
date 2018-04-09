@@ -25,6 +25,7 @@ class Movies(TMDB):
         'info': '/{id}',
         'alternative_titles': '/{id}/alternative_titles',
         'credits': '/{id}/credits',
+        'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
         'keywords': '/{id}/keywords',
         'release_dates': '/{id}/release_dates',
@@ -94,6 +95,23 @@ class Movies(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('credits')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def external_ids(self, **kwargs):
+        """
+        Get the external ids for a specific movie id.
+
+        Args:
+            language: (optional) ISO 639-1 code.
+            append_to_response: (optional) Comma separated, any movie method.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('external_ids')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
