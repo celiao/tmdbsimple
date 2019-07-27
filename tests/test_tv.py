@@ -112,6 +112,12 @@ class TVTestCase(unittest.TestCase):
         response = tv.videos()
         self.assertTrue(hasattr(tv, 'results'))
 
+    def test_tv_keywords(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.keywords()
+        self.assertTrue(hasattr(tv, 'keywords'))
+
     def test_tv_latest(self):
         tv = tmdb.TV()
         response = tv.latest()
