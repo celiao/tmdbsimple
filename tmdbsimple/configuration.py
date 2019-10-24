@@ -25,8 +25,16 @@ class Configuration(TMDB):
     BASE_PATH = 'configuration'
     URLS = {
         'info': '',
+        'languages': '/languages',
     }
-    
+
+    def languages(self, **kwargs):
+        path = self._get_path('languages')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
     def info(self, **kwargs):
         """
         Get the system wide configuration info.
