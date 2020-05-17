@@ -24,7 +24,7 @@ Constants
 PEOPLE_ID = 287
 PEOPLE_NAME = 'Brad Pitt'
 CREDITS_ID = '52542282760ee313280017f9'
-CREDITS_DEPARTMENT = 'Actors'
+CREDITS_DEPARTMENT = 'Acting'
 
 
 class PeopleTestCase(unittest.TestCase):
