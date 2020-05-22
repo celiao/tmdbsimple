@@ -33,6 +33,7 @@ class TV(TMDB):
         'recommendations': '/{id}/recommendations',
         'translations': '/{id}/translations',
         'videos': '/{id}/videos',
+        'keywords': '/{id}/keywords',
         'latest': '/latest',
         'on_the_air': '/on_the_air',
         'airing_today': '/airing_today',
@@ -240,10 +241,23 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def keywords(self, **kwargs):
+        """
+        Get the list of keywords related to a TV series.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('keywords')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
     def latest(self, **kwargs):
         """
         Get the most newly created TV show. This is a live response
-		and will continuously change.
+        and will continuously change.
 
         Args:
             language: (optional) ISO 639 code.
@@ -594,4 +608,3 @@ class Networks(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
-
