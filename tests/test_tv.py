@@ -29,6 +29,7 @@ TV_SEASON_ID = 3572
 TV_SEASON_NUMBER = 1
 TV_SEASON_NAME = 'Season 1'
 TV_SEASON_TVDB_ID = 2547
+TV_EPISODE_ID = 62085
 TV_EPISODE_NUMBER = 1
 TV_EPISODE_NAME = 'Pilot'
 TV_EPISODE_IMDB_ID = 'tt0959621'
@@ -236,6 +237,26 @@ class TVEpisodesTestCase(unittest.TestCase):
         tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
         response = tv_episodes.videos()
         self.assertTrue(hasattr(tv_episodes, 'results'))
+
+
+class TVChangesTestCase(unittest.TestCase):
+    def test_series_changes(self):
+        id = TV_ID
+        tv_changes = tmdb.TV_Changes(id)
+        response = tv_changes.series()
+        self.assertTrue(hasattr(tv_changes, 'changes'))
+
+    def test_season_changes(self):
+        id = TV_SEASON_ID
+        tv_changes = tmdb.TV_Changes(id)
+        response = tv_changes.season()
+        self.assertTrue(hasattr(tv_changes, 'changes'))
+
+    def test_episode_changes(self):
+        id = TV_EPISODE_ID
+        tv_changes = tmdb.TV_Changes(id)
+        response = tv_changes.episode()
+        self.assertTrue(hasattr(tv_changes, 'changes'))
 
 
 class NetworksTestCase(unittest.TestCase):

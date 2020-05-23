@@ -579,6 +579,92 @@ class TV_Episodes(TMDB):
         return response
 
 
+class TV_Changes(TMDB):
+    """
+    Changes functionality for TV Series, Season and Episode.
+
+    See: https://developers.themoviedb.org/3/tv/get-tv-changes
+         https://developers.themoviedb.org/3/tv-seasons/get-tv-season-changes
+         https://developers.themoviedb.org/3/tv-episodes/get-tv-episode-changes
+    """
+    BASE_PATH = 'tv'
+    URLS = {
+        'series': '/{id}/changes',
+        'season': '/season/{id}/changes',
+        'episode': '/episode/{id}/changes',
+    }
+
+    def __init__(self, id=0):
+        super(TV_Changes, self).__init__()
+        self.id = id
+
+    def series(self, **kwargs):
+        """
+        Get the changes for a specific series id.
+
+        Changes are grouped by key, and ordered by date in descending order.
+        By default, only the last 24 hours of changes are returned. The
+        maximum number of days that can be returned in a single request is 14.
+
+        Args:
+            start_date: (optional) Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Expected format is 'YYYY-MM-DD'.
+            page: (optional) Minimum 1, maximum 1000.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('series')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def season(self, **kwargs):
+        """
+        Get the changes for a specific season id.
+
+        Changes are grouped by key, and ordered by date in descending order.
+        By default, only the last 24 hours of changes are returned. The
+        maximum number of days that can be returned in a single request is 14.
+
+        Args:
+            start_date: (optional) Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Expected format is 'YYYY-MM-DD'.
+            page: (optional) Minimum 1, maximum 1000.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('season')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def episode(self, **kwargs):
+        """
+        Get the changes for a specific episode id.
+
+        Changes are grouped by key, and ordered by date in descending order.
+        By default, only the last 24 hours of changes are returned. The
+        maximum number of days that can be returned in a single request is 14.
+
+        Args:
+            start_date: (optional) Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Expected format is 'YYYY-MM-DD'.
+            page: (optional) Minimum 1, maximum 1000.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('episode')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+
 class Networks(TMDB):
     """
     Networks functionality.
