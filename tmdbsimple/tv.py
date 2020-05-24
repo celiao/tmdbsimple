@@ -589,9 +589,9 @@ class TV_Changes(TMDB):
     """
     BASE_PATH = 'tv'
     URLS = {
-        'series': '/{id}/changes',
-        'season': '/season/{id}/changes',
-        'episode': '/episode/{id}/changes',
+        'series': '/{id}/changes',             # id => tv_id
+        'season': '/season/{id}/changes',      # id => season_id
+        'episode': '/episode/{id}/changes',    # id => episode_id
     }
 
     def __init__(self, id=0):
