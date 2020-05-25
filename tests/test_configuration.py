@@ -33,6 +33,7 @@ CHANGE_KEYS = ['adult', 'air_date', 'also_known_as', 'alternative_titles', \
     'season_regular', 'spoken_languages', 'status', 'tagline', 'title', \
     'translations', 'tvdb_id', 'tvrage_id', 'type', 'video', 'videos']
 
+
 class ConfigurationTestCase(unittest.TestCase):
     def test_configuration_info(self):
         change_keys = CHANGE_KEYS
@@ -47,6 +48,10 @@ class ConfigurationTestCase(unittest.TestCase):
         config = tmdb.Configuration()
         self.assertRaises(tmdb.APIKeyError, config.info)
         tmdb.API_KEY = api_key_save
+    def test_configuration_languages(self):
+        config = tmdb.Configuration()
+        response = config.languages()
+        self.assertEqual(response[0]['iso_639_1'], 'xx')  # No Language
 
 
 class CertificationsTestCase(unittest.TestCase):
