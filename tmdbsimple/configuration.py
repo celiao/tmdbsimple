@@ -28,13 +28,6 @@ class Configuration(TMDB):
         'languages': '/languages',
     }
 
-    def languages(self, **kwargs):
-        path = self._get_path('languages')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
     def info(self, **kwargs):
         """
         Get the system wide configuration info.
@@ -43,6 +36,19 @@ class Configuration(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_path('info')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def languages(self, **kwargs):
+        """
+        Get the list of languages (ISO 639-1 tags) used throughout TMDb.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_path('languages')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
