@@ -8,7 +8,7 @@ This test suite checks the methods of the Test class of tmdbsimple.
 
 Created by Celia Oakley on 2013-11-05
 
-:copyright: (c) 2013-2017 by Celia Oakley.
+:copyright: (c) 2013-2020 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
@@ -29,6 +29,7 @@ TV_SEASON_ID = 3572
 TV_SEASON_NUMBER = 1
 TV_SEASON_NAME = 'Season 1'
 TV_SEASON_TVDB_ID = 2547
+TV_EPISODE_ID = 62085
 TV_EPISODE_NUMBER = 1
 TV_EPISODE_NAME = 'Pilot'
 TV_EPISODE_IMDB_ID = 'tt0959621'
@@ -54,6 +55,12 @@ class TVTestCase(unittest.TestCase):
         id = TV_ID
         tv = tmdb.TV(id)
         response = tv.alternative_titles()
+        self.assertTrue(hasattr(tv, 'results'))
+
+    def test_tv_content_ratings(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.content_ratings()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_credits(self):
@@ -106,6 +113,12 @@ class TVTestCase(unittest.TestCase):
         response = tv.videos()
         self.assertTrue(hasattr(tv, 'results'))
 
+    def test_tv_keywords(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.keywords()
+        self.assertTrue(hasattr(tv, 'keywords'))
+
     def test_tv_latest(self):
         tv = tmdb.TV()
         response = tv.latest()
@@ -134,39 +147,39 @@ class TVTestCase(unittest.TestCase):
 
 class TVSeasonsTestCase(unittest.TestCase):
     def test_tv_seasons_info(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
         name = TV_SEASON_NAME
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.info()
         self.assertEqual(tv_seasons.name, name)
 
     def test_tv_seasons_credits(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.credits()
         self.assertTrue(hasattr(tv_seasons, 'crew'))
 
     def test_tv_seasons_external_ids(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
         tvdb_id = TV_SEASON_TVDB_ID
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.external_ids()
         self.assertEqual(tv_seasons.tvdb_id, tvdb_id)
 
     def test_tv_seasons_images(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.images()
         self.assertTrue(hasattr(tv_seasons, 'posters'))
 
     def test_tv_seasons_videos(self):
-        id = TV_SEASON_ID
+        series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
-        tv_seasons = tmdb.TV_Seasons(id, season_number)
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         response = tv_seasons.videos()
         self.assertTrue(hasattr(tv_seasons, 'results'))
 
@@ -224,6 +237,26 @@ class TVEpisodesTestCase(unittest.TestCase):
         tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
         response = tv_episodes.videos()
         self.assertTrue(hasattr(tv_episodes, 'results'))
+
+
+class TVChangesTestCase(unittest.TestCase):
+    def test_series_changes(self):
+        id = TV_ID
+        tv_changes = tmdb.TV_Changes(id)
+        response = tv_changes.series()
+        self.assertTrue(hasattr(tv_changes, 'changes'))
+
+    def test_season_changes(self):
+        id = TV_SEASON_ID
+        tv_changes = tmdb.TV_Changes(id)
+        response = tv_changes.season()
+        self.assertTrue(hasattr(tv_changes, 'changes'))
+
+    def test_episode_changes(self):
+        id = TV_EPISODE_ID
+        tv_changes = tmdb.TV_Changes(id)
+        response = tv_changes.episode()
+        self.assertTrue(hasattr(tv_changes, 'changes'))
 
 
 class NetworksTestCase(unittest.TestCase):

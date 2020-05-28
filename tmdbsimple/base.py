@@ -7,7 +7,7 @@ This module implements the base class of tmdbsimple.
 
 Created by Celia Oakley on 2013-10-31.
 
-:copyright: (c) 2013-2017 by Celia Oakley
+:copyright: (c) 2013-2020 by Celia Oakley
 :license: GPLv3, see LICENSE for more details
 """
 
@@ -44,8 +44,8 @@ class TMDB(object):
     def _get_credit_id_path(self, key):
         return self._get_path(key).format(credit_id=self.credit_id)
 
-    def _get_id_season_number_path(self, key):
-        return self._get_path(key).format(id=self.id,
+    def _get_series_id_season_number_path(self, key):
+        return self._get_path(key).format(series_id=self.series_id,
             season_number=self.season_number)
 
     def _get_series_id_season_number_episode_number_path(self, key):
@@ -64,6 +64,10 @@ class TMDB(object):
         api_dict = {'api_key': API_KEY}
         if params:
             params.update(api_dict)
+            for key, value in params.items():
+                if isinstance(params[key], bool):
+                    params[key] = 'true' if value is True else 'false'
+
         else:
             params = api_dict
         return params
@@ -102,5 +106,6 @@ class TMDB(object):
         """
         if isinstance(response, dict):
             for key in response.keys():
-                setattr(self, key, response[key])
+                if not hasattr(self, key) or not callable(getattr(self, key)):
+                    setattr(self, key, response[key])
 

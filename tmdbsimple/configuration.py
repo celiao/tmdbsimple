@@ -9,7 +9,7 @@ functionality of tmdbsimple.
 
 Created by Celia Oakley on 2013-10-31.
 
-:copyright: (c) 2013-2017 by Celia Oakley
+:copyright: (c) 2013-2020 by Celia Oakley
 :license: GPLv3, see LICENSE for more details
 """
 
@@ -25,8 +25,9 @@ class Configuration(TMDB):
     BASE_PATH = 'configuration'
     URLS = {
         'info': '',
+        'languages': '/languages',
     }
-    
+
     def info(self, **kwargs):
         """
         Get the system wide configuration info.
@@ -40,12 +41,25 @@ class Configuration(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def languages(self, **kwargs):
+        """
+        Get the list of languages (ISO 639-1 tags) used throughout TMDb.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_path('languages')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
 
 class Certifications(TMDB):
     """
     Certifications functionality.
 
-    See: http://docs.themoviedb.apiary.io/#certifications
+    See: https://developers.themoviedb.org/3/certifications
     """
     BASE_PATH = 'certification'
     URLS = {
@@ -70,7 +84,7 @@ class Timezones(TMDB):
     """
     Timezones functionality.
 
-    See: http://docs.themoviedb.apiary.io/#timezones
+    See: https://developers.themoviedb.org/3/timezones
     """
     BASE_PATH = 'timezones'
     URLS = {

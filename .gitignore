@@ -13,6 +13,7 @@ Makefile
 # editors
 ## Vim files
 .*.swp
+.idea
 
 # other
 notes

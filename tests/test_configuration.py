@@ -8,7 +8,7 @@ This test suite checks the methods of the Configuration class of tmdbsimple.
 
 Created by Celia Oakley on 2013-11-05
 
-:copyright: (c) 2013-2017 by Celia Oakley.
+:copyright: (c) 2013-2020 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
@@ -32,6 +32,9 @@ CHANGE_KEYS = ['adult', 'air_date', 'also_known_as', 'alternative_titles', \
     'releases', 'revenue', 'runtime', 'season', 'season_number', \
     'season_regular', 'spoken_languages', 'status', 'tagline', 'title', \
     'translations', 'tvdb_id', 'tvrage_id', 'type', 'video', 'videos']
+ISO_639_1 = 'iso_639_1'
+NO_LANGUAGE = 'xx'
+
 
 class ConfigurationTestCase(unittest.TestCase):
     def test_configuration_info(self):
@@ -47,6 +50,11 @@ class ConfigurationTestCase(unittest.TestCase):
         config = tmdb.Configuration()
         self.assertRaises(tmdb.APIKeyError, config.info)
         tmdb.API_KEY = api_key_save
+    def test_configuration_languages(self):
+        config = tmdb.Configuration()
+        response = config.languages()
+        # First language is No Language
+        self.assertEqual(response[0][ISO_639_1], NO_LANGUAGE)
 
 
 class CertificationsTestCase(unittest.TestCase):

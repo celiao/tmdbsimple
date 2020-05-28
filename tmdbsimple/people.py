@@ -8,7 +8,7 @@ of tmdbsimple.
 
 Created by Celia Oakley on 2013-10-31.
 
-:copyright: (c) 2013-2017 by Celia Oakley
+:copyright: (c) 2013-2020 by Celia Oakley
 :license: GPLv3, see LICENSE for more details
 """
 
@@ -190,7 +190,7 @@ class Credits(TMDB):
     """
     Credits functionality.
 
-    See: http://docs.themoviedb.apiary.io/#credits
+    See: https://developers.themoviedb.org/3/credits
     """
     BASE_PATH = 'credit'
     URLS = {
@@ -230,7 +230,7 @@ class Jobs(TMDB):
     """
     Jobs functionality.
 
-    See: http://docs.themoviedb.apiary.io/#jobs
+    See: https://developers.themoviedb.org/3/jobs
     """
     BASE_PATH = 'job'
     URLS = {

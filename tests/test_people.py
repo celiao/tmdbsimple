@@ -8,7 +8,7 @@ This test suite checks the methods of the People class of tmdbsimple.
 
 Created by Celia Oakley on 2013-11-05
 
-:copyright: (c) 2013-2017 by Celia Oakley.
+:copyright: (c) 2013-2020 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
@@ -24,7 +24,7 @@ Constants
 PEOPLE_ID = 287
 PEOPLE_NAME = 'Brad Pitt'
 CREDITS_ID = '52542282760ee313280017f9'
-CREDITS_DEPARTMENT = 'Actors'
+CREDITS_DEPARTMENT = 'Acting'
 
 
 class PeopleTestCase(unittest.TestCase):
@@ -79,7 +79,7 @@ class PeopleTestCase(unittest.TestCase):
     def test_people_latest(self):
         person = tmdb.People()
         response = person.latest()
-        self.assertTrue(hasattr(person, 'birthday'))
+        self.assertTrue(hasattr(person, 'name'))
 
 
 class CreditsTestCase(unittest.TestCase):

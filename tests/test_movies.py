@@ -7,7 +7,7 @@ This test suite checks the methods of the Movies class of tmdbsimple.
 
 Created by Celia Oakley on 2013-11-05
 
-:copyright: (c) 2013-2017 by Celia Oakley.
+:copyright: (c) 2013-2020 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
@@ -28,7 +28,7 @@ RATING = 7.5
 COLLECTION_ID = 10
 COLLECTION_NAME = 'Star Wars Collection'
 COMPANY_ID = 1
-COMPANY_NAME = 'Lucasfilm'
+COMPANY_NAME = 'Lucasfilm Ltd.'
 KEYWORD_ID = 1721
 KEYWORD_NAME = 'fight'
 REVIEW_ID = '5013bc76760ee372cb00253e'
@@ -67,6 +67,12 @@ class MoviesTestCase(unittest.TestCase):
         response = movie.credits()
         self.assertTrue(hasattr(movie, 'cast'))
 
+    def test_movies_external_ids(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        response = movie.external_ids()
+        self.assertTrue(hasattr(movie, 'imdb_id'))
+
     def test_movies_images(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
@@ -78,6 +84,12 @@ class MoviesTestCase(unittest.TestCase):
         movie = tmdb.Movies(id)
         response = movie.keywords()
         self.assertTrue(hasattr(movie, 'keywords'))
+
+    def test_movies_release_dates(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        response = movie.release_dates()
+        self.assertTrue(hasattr(movie, 'results'))
 
     def test_movies_releases(self):
         id = MOVIE_ID
@@ -101,6 +113,12 @@ class MoviesTestCase(unittest.TestCase):
         id = MOVIE_ID_ALTERNATIVE
         movie = tmdb.Movies(id)
         response = movie.similar_movies()
+        self.assertTrue(hasattr(movie, 'results'))
+
+    def test_movies_recommendations(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        response = movie.recommendations()
         self.assertTrue(hasattr(movie, 'results'))
 
     def test_movies_reviews(self):

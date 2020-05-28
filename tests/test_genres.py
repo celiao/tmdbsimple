@@ -8,7 +8,7 @@ This test suite checks the methods of the Genres class of tmdbsimple.
 
 Created by Celia Oakley on 2013-11-05
 
-:copyright: (c) 2013-2017 by Celia Oakley.
+:copyright: (c) 2013-2020 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
@@ -25,9 +25,14 @@ GENRE_ID = 18
 
 
 class GenresTestCase(unittest.TestCase):
-    def test_genres_list(self):
+    def test_genres_movie_list(self):
         genre = tmdb.Genres()
-        response = genre.list()
+        response = genre.movie_list()
+        self.assertTrue(hasattr(genre, 'genres'))
+
+    def test_genres_tv_list(self):
+        genre = tmdb.Genres()
+        response = genre.tv_list()
         self.assertTrue(hasattr(genre, 'genres'))
 
     def test_genres_movies(self):
