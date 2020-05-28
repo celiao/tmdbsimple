@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "tmdbsimple"
+version = "2.2.7"
+description = "A Python wrapper for The Movie Database API v3."
+authors = ["Celia Oakley <celia.oakley@alumni.stanford.edu>"]
+license = "GPL-3.0-or-later"
+readme = "README.rst"
+homepage = "https://github.com/celiao/tmdbsimple"
+repository = "https://github.com/celiao/tmdbsimple"
+keywords = ["movie", "the movie database", "movie database", "tmdb", "wrapper"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.3",
+    "Programming Language :: Python :: 3.4",
+    "Topic :: Utilities",
+]
+
+[tool.poetry.dependencies]
+python = "^2.7"
+requests = "^2.23.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
