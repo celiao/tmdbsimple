@@ -192,6 +192,12 @@ class CollectionsTestCase(unittest.TestCase):
         response = collection.images()
         self.assertTrue(hasattr(collection, 'backdrops'))
 
+    def test_collections_translations(self):
+        id = COLLECTION_ID
+        collection = tmdb.Collections(id)
+        response = collection.translations()
+        self.assertTrue(hasattr(collection, 'translations'))
+
 
 class CompaniesTestCase(unittest.TestCase):
     def test_companies_info(self):
