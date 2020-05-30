@@ -32,8 +32,11 @@ CHANGE_KEYS = ['adult', 'air_date', 'also_known_as', 'alternative_titles', \
     'releases', 'revenue', 'runtime', 'season', 'season_number', \
     'season_regular', 'spoken_languages', 'status', 'tagline', 'title', \
     'translations', 'tvdb_id', 'tvrage_id', 'type', 'video', 'videos']
+ISO_3166_1 = 'iso_3166_1'
+ANDORRA = 'AD'
 ISO_639_1 = 'iso_639_1'
 NO_LANGUAGE = 'xx'
+ARABIC = 'ar-AE'
 
 
 class ConfigurationTestCase(unittest.TestCase):
@@ -50,11 +53,35 @@ class ConfigurationTestCase(unittest.TestCase):
         config = tmdb.Configuration()
         self.assertRaises(tmdb.APIKeyError, config.info)
         tmdb.API_KEY = api_key_save
+
+    def test_configuration_countries(self):
+        config = tmdb.Configuration()
+        response = config.countries()
+        # First country is Andorra
+        self.assertEqual(response[0][ISO_3166_1], ANDORRA)
+
+    def test_configuration_jobs(self):
+        config = tmdb.Configuration()
+        response = config.jobs()
+        self.assertTrue(hasattr(config, 'jobs'))
+
     def test_configuration_languages(self):
         config = tmdb.Configuration()
         response = config.languages()
         # First language is No Language
         self.assertEqual(response[0][ISO_639_1], NO_LANGUAGE)
+
+    def test_configuration_primary_translations(self):
+        config = tmdb.Configuration()
+        response = config.primary_translations()
+        # First primary translation is Arabic
+        self.assertEqual(response[0], ARABIC)
+
+    def test_configuration_timezones(self):
+        config = tmdb.Configuration()
+        response = config.timezones()
+        # First country is Andorra
+        self.assertEqual(response[0][ISO_3166_1], ANDORRA)
 
 
 class CertificationsTestCase(unittest.TestCase):
