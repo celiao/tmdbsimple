@@ -44,83 +44,90 @@ class AccountTestCase(unittest.TestCase):
     # run this test with a valid session_id and authenticated account
     def test_account_info(self):
         username = USERNAME
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info()
-        self.assertEqual(acct.username, username)
+        account = tmdb.Account(SESSION_ID)
+        response = account.info()
+        self.assertEqual(account.username, username)
 
     def test_account_lists(self):
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info() # to set acct.id
-        response = acct.lists()
-        self.assertTrue(hasattr(acct, 'results'))
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
+        response = account.lists()
+        self.assertTrue(hasattr(account, 'results'))
 
     def test_account_favorite_movies(self):
         movietitle = MOVIETITLE
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info() # to set acct.id
-        response = acct.favorite_movies()
-        self.assertEqual(acct.results[0]['title'], movietitle)
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
+        response = account.favorite_movies()
+        self.assertEqual(account.results[0]['title'], movietitle)
 
     def test_account_favorite_tv(self):
         tvtitle = TVTITLE
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info() # to set acct.id
-        response = acct.favorite_tv()
-        self.assertEqual(acct.results[0]['name'], tvtitle)
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
+        response = account.favorite_tv()
+        self.assertEqual(account.results[0]['name'], tvtitle)
 
     def test_account_favorite(self):
         status_code = SUCCESSFUL_UPDATE
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info() # to set acct.id
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
         kwargs = {
             'media_type': 'movie', 
             'movie_id': FAVORITE_MOVIE_ID, 
             'favorite': True,
         }
-        response = acct.favorite(**kwargs)
-        self.assertEqual(acct.status_code, status_code)
+        response = account.favorite(**kwargs)
+        self.assertEqual(account.status_code, status_code)
 
     def test_account_rated_movies(self):
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info() # to set acct.id
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
         kwargs = {'page': 1, 'sort_by': 'created_at.asc'}
-        response = acct.rated_movies(**kwargs)
-        self.assertTrue(hasattr(acct, 'results'))
+        response = account.rated_movies(**kwargs)
+        self.assertTrue(hasattr(account, 'results'))
 
     def test_account_rated_tv(self):
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info() # to set acct.id
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
         kwargs = {'page': 1, 'sort_by': 'created_at.asc'}
-        response = acct.rated_tv(**kwargs)
-        self.assertTrue(hasattr(acct, 'results'))
+        response = account.rated_tv(**kwargs)
+        self.assertTrue(hasattr(account, 'results'))
+
+    def test_account_rated_tv_episodes(self):
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
+        kwargs = {'page': 1, 'sort_by': 'created_at.asc'}
+        response = account.rated_tv_episodes(**kwargs)
+        self.assertTrue(hasattr(account, 'results'))
 
     def test_account_watchlist_movies(self):
         movietitle = MOVIETITLE
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info() # to set acct.id
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
         kwargs = {'page': 1, 'sort_by': 'created_at.asc'}
-        response = acct.watchlist_movies(**kwargs)
-        self.assertEqual(acct.results[0]['title'], movietitle)
+        response = account.watchlist_movies(**kwargs)
+        self.assertEqual(account.results[0]['title'], movietitle)
 
     def test_account_watchlist_tv(self):
         tvtitle = TVTITLE
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info() # to set acct.id
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
         kwargs = {'page': 1, 'sort_by': 'created_at.asc'}
-        response = acct.watchlist_tv(**kwargs)
-        self.assertEqual(acct.results[0]['name'], tvtitle)
+        response = account.watchlist_tv(**kwargs)
+        self.assertEqual(account.results[0]['name'], tvtitle)
 
     def test_account_watchlist(self):
         status_code = SUCCESSFUL_UPDATE
-        acct = tmdb.Account(SESSION_ID)
-        response = acct.info() # to set acct.id
+        account = tmdb.Account(SESSION_ID)
+        response = account.info() # to set account.id
         kwargs = {
             'media_type': 'movie', 
             'media_id': WATCHLIST_MEDIA_ID, 
             'watchlist': 'true',
         }
-        response = acct.watchlist(**kwargs)
-        self.assertEqual(acct.status_code, status_code)
+        response = account.watchlist(**kwargs)
+        self.assertEqual(account.status_code, status_code)
 
 
 class AuthenticationTestCase(unittest.TestCase):
