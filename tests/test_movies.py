@@ -207,6 +207,18 @@ class CompaniesTestCase(unittest.TestCase):
         response = company.info()
         self.assertEqual(company.name, name)
 
+    def test_companies_alternative_names(self):
+        id = COMPANY_ID
+        company = tmdb.Companies(id)
+        response = company.alternative_names()
+        self.assertTrue(hasattr(company, 'results'))
+
+    def test_companies_images(self):
+        id = COMPANY_ID
+        company = tmdb.Companies(id)
+        response = company.images()
+        self.assertTrue(hasattr(company, 'logos'))
+
     def test_companies_movies(self):
         id = COMPANY_ID
         company = tmdb.Companies(id)
