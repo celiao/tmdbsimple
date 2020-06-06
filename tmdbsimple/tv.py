@@ -674,6 +674,8 @@ class Networks(TMDB):
     BASE_PATH = 'network'
     URLS = {
         'info': '/{id}',
+        'alternative_names': '/{id}/alternative_names',
+        'images': '/{id}/images',
     }
 
     def __init__(self, id):
@@ -690,6 +692,36 @@ class Networks(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('info')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def alternative_names(self, **kwargs):
+        """
+        Get the alternative names of a network.
+
+        Args:
+
+        Returns:
+            A dict representation of the JSON returned from the API.
+        """
+        path = self._get_id_path('alternative_names')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def images(self, **kwargs):
+        """
+        Get a TV network logos by id.
+
+        Args:
+
+        Returns:
+            A dict representation of the JSON returned from the API.
+        """
+        path = self._get_id_path('images')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)

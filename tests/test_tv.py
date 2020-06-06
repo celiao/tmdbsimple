@@ -267,3 +267,15 @@ class NetworksTestCase(unittest.TestCase):
         response = network.info()
         self.assertEqual(network.name, name)
 
+    def test_networks_alternative_names(self):
+        id = NETWORK_ID
+        network = tmdb.Networks(id)
+        response = network.alternative_names()
+        self.assertTrue(hasattr(network, 'results'))
+
+    def test_networks_images(self):
+        id = NETWORK_ID
+        network = tmdb.Networks(id)
+        response = network.images()
+        self.assertTrue(hasattr(network, 'logos'))
+
