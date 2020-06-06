@@ -28,6 +28,8 @@ class People(TMDB):
         'combined_credits': '/{id}/combined_credits',
         'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
+        'tagged_images': '/{id}/tagged_images',
+        'translations': '/{id}/translations',
         'changes': '/{id}/changes',
         'popular': '/popular',
         'latest': '/latest',
@@ -129,6 +131,32 @@ class People(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('images')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def tagged_images(self, **kwargs):
+        """
+        Get the images that this person has been tagged in.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('tagged_images')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def translations(self, **kwargs):
+        """
+        Get a list of translations that have been created for a person.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('translations')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
