@@ -355,6 +355,7 @@ class TV_Seasons(TMDB):
     BASE_PATH = 'tv/{tv_id}/season/{season_number}'
     URLS = {
         'info': '',
+        'account_states': '/account_states',
         'credits': '/credits',
         'external_ids': '/external_ids',
         'images': '/images',
@@ -379,6 +380,24 @@ class TV_Seasons(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_path('info')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def account_states(self, **kwargs):
+        """
+        Returns all of the user ratings for the season's episodes.
+
+        Args:
+            language: (optional) ISO 639 code.
+            append_to_response: (optional) Comma separated, any TV series
+                                method.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_tv_id_season_number_path('account_states')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -460,6 +479,7 @@ class TV_Episodes(TMDB):
     BASE_PATH = 'tv/{tv_id}/season/{season_number}/episode/{episode_number}'
     URLS = {
         'info': '',
+        'account_states': '/account_states',
         'credits': '/credits',
         'external_ids': '/external_ids',
         'images': '/images',
@@ -487,6 +507,24 @@ class TV_Episodes(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path('info')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def account_states(self, **kwargs):
+        """
+        Get your rating for a episode.
+
+        Args:
+            language: (optional) ISO 639 code.
+            append_to_response: (optional) Comma separated, any TV series
+                                method.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_tv_id_season_number_episode_number_path('account_states')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)

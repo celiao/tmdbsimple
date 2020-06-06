@@ -154,6 +154,14 @@ class TVSeasonsTestCase(unittest.TestCase):
         response = tv_seasons.info()
         self.assertEqual(tv_seasons.name, name)
 
+    def test_tv_seasons_account_states(self):
+        series_id = TV_SEASON_ID
+        season_number = TV_SEASON_NUMBER
+        name = TV_SEASON_NAME
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
+        response = tv_seasons.account_states()
+        self.assertTrue(hasattr(tv_seasons, 'results'))
+
     def test_tv_seasons_credits(self):
         series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
@@ -192,8 +200,16 @@ class TVEpisodesTestCase(unittest.TestCase):
         name = TV_EPISODE_NAME
         tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
         response = tv_episodes.info()
-        response = tv_episodes.info()
         self.assertEqual(tv_episodes.name, name)
+
+    def test_tv_episodes_account_states(self):
+        series_id = TV_ID
+        season_number = TV_SEASON_NUMBER
+        episode_number = TV_EPISODE_NUMBER
+        name = TV_EPISODE_NAME
+        tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
+        response = tv_episodes.account_states()
+        self.assertTrue(hasattr(tv_episodes, 'rated'))
 
     def test_tv_episodes_credits(self):
         series_id = TV_ID
