@@ -51,6 +51,12 @@ class TVTestCase(unittest.TestCase):
         response = tv.info()
         self.assertEqual(tv.name, name)
 
+    def test_tv_account_states(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.account_states()
+        self.assertTrue(hasattr(tv, 'rated'))
+
     def test_tv_alternative_titles(self):
         id = TV_ID
         tv = tmdb.TV(id)
@@ -68,6 +74,13 @@ class TVTestCase(unittest.TestCase):
         tv = tmdb.TV(id)
         response = tv.credits()
         self.assertTrue(hasattr(tv, 'cast'))
+
+    def test_tv_episode_groups(self):
+        id = TV_ID
+        imdb_id = TV_IMDB_ID
+        tv = tmdb.TV(id)
+        response = tv.episode_groups()
+        self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_external_ids(self):
         id = TV_ID
@@ -95,10 +108,22 @@ class TVTestCase(unittest.TestCase):
         response = tv.similar()
         self.assertTrue(hasattr(tv, 'results'))
 
+    def test_tv_reviews(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.reviews()
+        self.assertTrue(hasattr(tv, 'results'))
+
     def test_tv_recommendations(self):
         id = TV_ID
         tv = tmdb.TV(id)
         response = tv.recommendations()
+        self.assertTrue(hasattr(tv, 'results'))
+
+    def test_tv_screened_theatrically(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.screened_theatrically()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_translations(self):

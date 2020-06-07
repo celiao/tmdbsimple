@@ -23,14 +23,18 @@ class TV(TMDB):
     BASE_PATH = 'tv'
     URLS = {
         'info': '/{id}',
+        'account_states': '/{id}/account_states',
         'alternative_titles': '/{id}/alternative_titles',
         'content_ratings': '/{id}/content_ratings',
         'credits': '/{id}/credits',
+        'episode_groups': '/{id}/episode_groups',
         'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
         'rating': '/{id}/rating',
         'similar': '/{id}/similar',
+        'reviews': '/{id}/reviews',
         'recommendations': '/{id}/recommendations',
+        'screened_theatrically': '/{id}/screened_theatrically',
         'translations': '/{id}/translations',
         'videos': '/{id}/videos',
         'keywords': '/{id}/keywords',
@@ -63,6 +67,24 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def account_states(self, **kwargs):
+        """
+        Grab the following account states for a session:
+            - TV show rating
+            - If it belongs to your watchlist
+            - If it belongs to your favourite list
+
+        Args:
+            language: (optional) ISO 3166-1 code.
+            append_to_response: (optional) Comma separated, any tv method.
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('account_states')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
 
     def alternative_titles(self, **kwargs):
         """
@@ -79,7 +101,6 @@ class TV(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
-
 
     def content_ratings(self, **kwargs):
         """
@@ -113,6 +134,22 @@ class TV(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('credits')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def episode_groups(self, **kwargs):
+        """
+        Get all of the episode groups that have been created for a TV show.
+
+        Args:
+            language: (optional) ISO 639 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('episode_groups')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -193,6 +230,23 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def reviews(self, **kwargs):
+        """
+        Get the reviews for a TV show.
+
+        Args:
+            page: (optional) Minimum value of 1.  Expected value is an integer.
+            language: (optional) ISO 639-1 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('reviews')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
     def recommendations(self, **kwargs):
         """
         Get the recommendations for TV series for a specific TV series id.
@@ -205,6 +259,23 @@ class TV(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('recommendations')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def screened_theatrically(self, **kwargs):
+        """
+        Get a list of seasons or episodes that have been screened in a film festival or theatre.
+
+        Args:
+            page: (optional) Minimum value of 1.  Expected value is an integer.
+            language: (optional) ISO 639-1 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('screened_theatrically')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
