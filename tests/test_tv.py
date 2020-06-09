@@ -223,61 +223,69 @@ class TVEpisodesTestCase(unittest.TestCase):
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
         name = TV_EPISODE_NAME
-        tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episodes.info()
-        self.assertEqual(tv_episodes.name, name)
+        tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
+        response = tv_episode.info()
+        self.assertEqual(tv_episode.name, name)
 
     def test_tv_episodes_account_states(self):
         series_id = TV_ID
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
         name = TV_EPISODE_NAME
-        tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episodes.account_states()
-        self.assertTrue(hasattr(tv_episodes, 'rated'))
+        tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
+        response = tv_episode.account_states()
+        self.assertTrue(hasattr(tv_episode, 'rated'))
 
     def test_tv_episodes_credits(self):
         series_id = TV_ID
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
-        tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episodes.credits()
-        self.assertTrue(hasattr(tv_episodes, 'guest_stars'))
+        tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
+        response = tv_episode.credits()
+        self.assertTrue(hasattr(tv_episode, 'guest_stars'))
 
     def test_tv_episodes_external_ids(self):
         series_id = TV_ID
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
         imdb_id = TV_EPISODE_IMDB_ID
-        tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episodes.external_ids()
-        self.assertEqual(tv_episodes.imdb_id, imdb_id)
+        tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
+        response = tv_episode.external_ids()
+        self.assertEqual(tv_episode.imdb_id, imdb_id)
 
     def test_tv_episodes_images(self):
         series_id = TV_ID
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
-        tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episodes.images()
-        self.assertTrue(hasattr(tv_episodes, 'stills'))
+        tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
+        response = tv_episode.images()
+        self.assertTrue(hasattr(tv_episode, 'stills'))
+
+    def test_tv_episodes_translations(self):
+        series_id = TV_ID
+        season_number = TV_SEASON_NUMBER
+        episode_number = TV_EPISODE_NUMBER
+        tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
+        response = tv_episode.translations()
+        self.assertTrue(hasattr(tv_episode, 'translations'))
 
     def test_tv_episodes_rating(self):
         series_id = TV_ID
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
         status_code = SUCCESSFUL_UPDATE
-        tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episodes.rating(session_id=SESSION_ID, value=RATING)
-        self.assertEqual(tv_episodes.status_code, status_code)
+        tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
+        response = tv_episode.rating(session_id=SESSION_ID, value=RATING)
+        self.assertEqual(tv_episode.status_code, status_code)
 
     def test_tv_episodes_videos(self):
         series_id = TV_ID
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
         status_code = SUCCESSFUL_UPDATE
-        tv_episodes = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episodes.videos()
-        self.assertTrue(hasattr(tv_episodes, 'results'))
+        tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
+        response = tv_episode.videos()
+        self.assertTrue(hasattr(tv_episode, 'results'))
 
 
 class TVChangesTestCase(unittest.TestCase):

@@ -554,6 +554,7 @@ class TV_Episodes(TMDB):
         'credits': '/credits',
         'external_ids': '/external_ids',
         'images': '/images',
+        'translations': '/translations',
         'rating': '/rating',
         'videos': '/videos',
     }
@@ -642,6 +643,19 @@ class TV_Episodes(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path('images')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def translations(self, **kwargs):
+        """
+        Get the translation data for an episode.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_tv_id_season_number_episode_number_path('translations')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
