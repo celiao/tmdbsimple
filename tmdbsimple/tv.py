@@ -702,6 +702,45 @@ class TV_Episodes(TMDB):
         return response
 
 
+class TV_Episode_Groups(TMDB):
+    """
+    TV Episode Groups functionality.
+
+    See: https://developers.themoviedb.org/3/tv-episode-groups
+    """
+    BASE_PATH = 'tv/episode_group'
+    URLS = {
+        'info': '/{id}',
+    }
+
+    def __init__(self, id):
+        super(TV_Episode_Groups, self).__init__()
+        self.id = id
+
+    def info(self, **kwargs):
+        """
+        Get the details of a TV episode group. Groups support 7 different types which are enumerated as the following:
+            1. Original air date
+            2. Absolute
+            3. DVD
+            4. Digital
+            5. Story arc
+            6. Production
+            7. TV        
+
+        Args:
+            language: (optional) ISO 639 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('info')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+
 class TV_Changes(TMDB):
     """
     Changes functionality for TV Series, Season and Episode.

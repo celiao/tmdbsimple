@@ -33,6 +33,7 @@ TV_EPISODE_ID = 62085
 TV_EPISODE_NUMBER = 1
 TV_EPISODE_NAME = 'Pilot'
 TV_EPISODE_IMDB_ID = 'tt0959621'
+TV_EPISODE_GROUP_ID = '5acf93e60e0a26346d0000ce'
 NETWORK_ID = 49
 NETWORK_NAME = 'HBO'
 
@@ -286,6 +287,14 @@ class TVEpisodesTestCase(unittest.TestCase):
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
         response = tv_episode.videos()
         self.assertTrue(hasattr(tv_episode, 'results'))
+
+
+class TVEpisodeGroupsTestCase(unittest.TestCase):
+    def test_tv_episode_groups_info(self):
+        tv_episode_group_id = TV_EPISODE_GROUP_ID
+        tv_episode_group = tmdb.TV_Episode_Groups(tv_episode_group_id)
+        response = tv_episode_group.info()
+        self.assertTrue(hasattr(tv_episode_group, 'groups'))
 
 
 class TVChangesTestCase(unittest.TestCase):
