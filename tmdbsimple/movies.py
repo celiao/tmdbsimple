@@ -31,7 +31,6 @@ class Movies(TMDB):
         'images': '/{id}/images',
         'keywords': '/{id}/keywords',
         'release_dates': '/{id}/release_dates',
-        'releases': '/{id}/releases',
         'videos': '/{id}/videos',
         'translations': '/{id}/translations',
         'recommendations': '/{id}/recommendations',
@@ -43,7 +42,8 @@ class Movies(TMDB):
         'popular': '/popular',
         'top_rated': '/top_rated',
         'upcoming': '/upcoming',
-        'rating': '/{id}/rating',
+        'rating': '/{id}/rating',     # backward compatability
+        'releases': '/{id}/releases', # backward compatability
     }
 
     def __init__(self, id=0):
@@ -200,24 +200,6 @@ class Movies(TMDB):
             A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('release_dates')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-    # here for backward compatability, when /releases existed
-    def releases(self, **kwargs):
-        """
-        Get the release date and certification information by country for a
-        specific movie id.
-
-        Args:
-            append_to_response: (optional) Comma separated, any movie method.
-
-        Returns:
-            A dict representation of the JSON returned from the API.
-        """
-        path = self._get_id_path('releases')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -413,7 +395,7 @@ class Movies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    # here for backward compatability, when /rating existed
+    # backward compatability
     def rating(self, **kwargs):
         """
         This method lets users rate a movie. A valid session id or guest
@@ -434,6 +416,24 @@ class Movies(TMDB):
         }
 
         response = self._POST(path, kwargs, payload)
+        self._set_attrs_to_values(response)
+        return response
+
+    # backward compatability
+    def releases(self, **kwargs):
+        """
+        Get the release date and certification information by country for a
+        specific movie id.
+
+        Args:
+            append_to_response: (optional) Comma separated, any movie method.
+
+        Returns:
+            A dict representation of the JSON returned from the API.
+        """
+        path = self._get_id_path('releases')
+
+        response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
@@ -524,7 +524,7 @@ class Companies(TMDB):
         'info': '/{id}',
         'alternative_names': '/{id}/alternative_names',
         'images': '/{id}/images',
-        'movies': '/{id}/movies',
+        'movies': '/{id}/movies', # backward compatability
     }
 
     def __init__(self, id=0):
@@ -578,7 +578,7 @@ class Companies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    # here for backward compatability, when /movies existed
+    # backward compatability
     def movies(self, **kwargs):
         """
         Get the list of movies associated with a particular company.

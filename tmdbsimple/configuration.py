@@ -123,20 +123,6 @@ class Certifications(TMDB):
         'tv_list': '/tv/list',
     }
 
-    # here for backward compatability, when only /movie/list existed
-    def list(self, **kwargs):
-        """
-        Get the list of supported certifications for movies.
-
-        Returns:
-            A dict respresentation of the JSON returned from the API.
-        """
-        path = self._get_path('movie_list')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
     def movie_list(self, **kwargs):
         """
         Get an up to date list of the officially supported movie certifications on TMDb.
@@ -158,6 +144,20 @@ class Certifications(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_path('tv_list')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    # backward compatability, when only /movie/list existed
+    def list(self, **kwargs):
+        """
+        Get the list of supported certifications for movies.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_path('movie_list')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)

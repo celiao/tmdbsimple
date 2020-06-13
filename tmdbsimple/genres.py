@@ -24,7 +24,7 @@ class Genres(TMDB):
     URLS = {
         'movie_list': '/movie/list',
         'tv_list': '/tv/list',
-        'movies': '/{id}/movies',
+        'movies': '/{id}/movies', # backward compatability
     }
 
     def __init__(self, id=0):
@@ -63,7 +63,7 @@ class Genres(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    # here for backward compatability, when /movies existed
+    # backward compatability
     def movies(self, **kwargs):
         """
         Get the list of movies for a particular genre by id. By default, only

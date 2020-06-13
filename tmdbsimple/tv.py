@@ -30,19 +30,19 @@ class TV(TMDB):
         'episode_groups': '/{id}/episode_groups',
         'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
-        'rating': '/{id}/rating',
-        'similar': '/{id}/similar',
-        'reviews': '/{id}/reviews',
+        'keywords': '/{id}/keywords',
         'recommendations': '/{id}/recommendations',
+        'reviews': '/{id}/reviews',
         'screened_theatrically': '/{id}/screened_theatrically',
+        'similar': '/{id}/similar',
         'translations': '/{id}/translations',
         'videos': '/{id}/videos',
-        'keywords': '/{id}/keywords',
+        'rating': '/{id}/rating',
         'latest': '/latest',
-        'on_the_air': '/on_the_air',
         'airing_today': '/airing_today',
-        'top_rated': '/top_rated',
+        'on_the_air': '/on_the_air',
         'popular': '/popular',
+        'top_rated': '/top_rated',
     }
 
     def __init__(self, id=0):
@@ -189,59 +189,14 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def rating(self, **kwargs):
+    def keywords(self, **kwargs):
         """
-        This method lets users rate a TV show. A valid session id or guest
-        session id is required.
-
-        Args:
-            session_id: see Authentication.
-            guest_session_id: see Authentication.
-            value: Rating value.
+        Get the list of keywords related to a TV series.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_id_path('rating')
-
-        payload = {
-            'value': kwargs.pop('value', None),
-        }
-
-        response = self._POST(path, kwargs, payload)
-        self._set_attrs_to_values(response)
-        return response
-
-    def similar(self, **kwargs):
-        """
-        Get the similar TV series for a specific TV series id.
-
-        Args:
-            page: (optional) Minimum value of 1.  Expected value is an integer.
-            language: (optional) ISO 639-1 code.
-            append_to_response: (optional) Comma separated, any TV method.
-
-        Returns:
-            A dict respresentation of the JSON returned from the API.
-        """
-        path = self._get_id_path('similar')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-    def reviews(self, **kwargs):
-        """
-        Get the reviews for a TV show.
-
-        Args:
-            page: (optional) Minimum value of 1.  Expected value is an integer.
-            language: (optional) ISO 639-1 code.
-
-        Returns:
-            A dict respresentation of the JSON returned from the API.
-        """
-        path = self._get_id_path('reviews')
+        path = self._get_id_path('keywords')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -264,6 +219,23 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def reviews(self, **kwargs):
+        """
+        Get the reviews for a TV show.
+
+        Args:
+            page: (optional) Minimum value of 1.  Expected value is an integer.
+            language: (optional) ISO 639-1 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('reviews')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
     def screened_theatrically(self, **kwargs):
         """
         Get a list of seasons or episodes that have been screened in a film festival or theatre.
@@ -276,6 +248,24 @@ class TV(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('screened_theatrically')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def similar(self, **kwargs):
+        """
+        Get the similar TV series for a specific TV series id.
+
+        Args:
+            page: (optional) Minimum value of 1.  Expected value is an integer.
+            language: (optional) ISO 639-1 code.
+            append_to_response: (optional) Comma separated, any TV method.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('similar')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -312,16 +302,26 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def keywords(self, **kwargs):
+    def rating(self, **kwargs):
         """
-        Get the list of keywords related to a TV series.
+        This method lets users rate a TV show. A valid session id or guest
+        session id is required.
+
+        Args:
+            session_id: see Authentication.
+            guest_session_id: see Authentication.
+            value: Rating value.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_id_path('keywords')
+        path = self._get_id_path('rating')
 
-        response = self._GET(path, kwargs)
+        payload = {
+            'value': kwargs.pop('value', None),
+        }
+
+        response = self._POST(path, kwargs, payload)
         self._set_attrs_to_values(response)
         return response
 
@@ -337,25 +337,6 @@ class TV(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('latest')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-    def on_the_air(self, **kwargs):
-        """
-        Get the list of TV shows that are currently on the air. This query
-        looks for any TV show that has an episode with an air date in the
-        next 7 days.
-
-        Args:
-            page: (optional) Minimum 1, maximum 1000.
-            language: (optional) ISO 639 code.
-
-        Returns:
-            A dict respresentation of the JSON returned from the API.
-        """
-        path = self._get_path('on_the_air')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -380,11 +361,11 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def top_rated(self, **kwargs):
+    def on_the_air(self, **kwargs):
         """
-        Get the list of top rated TV shows. By default, this list will only
-        include TV shows that have 2 or more votes. This list refreshes every
-        day.
+        Get the list of TV shows that are currently on the air. This query
+        looks for any TV show that has an episode with an air date in the
+        next 7 days.
 
         Args:
             page: (optional) Minimum 1, maximum 1000.
@@ -393,7 +374,7 @@ class TV(TMDB):
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_path('top_rated')
+        path = self._get_path('on_the_air')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -411,6 +392,25 @@ class TV(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_path('popular')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def top_rated(self, **kwargs):
+        """
+        Get the list of top rated TV shows. By default, this list will only
+        include TV shows that have 2 or more votes. This list refreshes every
+        day.
+
+        Args:
+            page: (optional) Minimum 1, maximum 1000.
+            language: (optional) ISO 639 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_path('top_rated')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)

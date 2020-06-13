@@ -268,11 +268,24 @@ class Authentication(TMDB):
     """
     BASE_PATH = 'authentication'
     URLS = {
-        'token_new': '/token/new',
-        'token_validate_with_login': '/token/validate_with_login',
-        'session_new': '/session/new', 
         'guest_session_new': '/guest_session/new', 
+        'token_new': '/token/new',
+        'session_new': '/session/new', 
+        'token_validate_with_login': '/token/validate_with_login',
     }
+
+    def guest_session_new(self, **kwargs):
+        """
+        Generate a guest session id.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_path('guest_session_new')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
 
     def token_new(self, **kwargs):
         """
@@ -291,25 +304,6 @@ class Authentication(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_path('token_new')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-    def token_validate_with_login(self, **kwargs):
-        """
-        Authenticate a user with a TMDb username and password.  The user
-        must have a verified email address and be registered on TMDb.
-
-        Args:
-            request_token: The token you generated for the user to approve.
-            username: The user's username on TMDb.
-            password: The user's password on TMDb.
-
-        Returns:
-            A dict respresentation of the JSON returned from the API.
-        """
-        path = self._get_path('token_validate_with_login')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -335,18 +329,25 @@ class Authentication(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def guest_session_new(self, **kwargs):
+    def token_validate_with_login(self, **kwargs):
         """
-        Generate a guest session id.
+        Authenticate a user with a TMDb username and password.  The user
+        must have a verified email address and be registered on TMDb.
+
+        Args:
+            request_token: The token you generated for the user to approve.
+            username: The user's username on TMDb.
+            password: The user's password on TMDb.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_path('guest_session_new')
+        path = self._get_path('token_validate_with_login')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
+
 
 class GuestSessions(TMDB):
     """
