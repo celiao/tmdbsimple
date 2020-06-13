@@ -34,7 +34,7 @@ class Movies(TMDB):
         'releases': '/{id}/releases',
         'videos': '/{id}/videos',
         'translations': '/{id}/translations',
-        'recommendations': '/{id}/recommendations'
+        'recommendations': '/{id}/recommendations',
         'similar_movies': '/{id}/similar_movies',
         'reviews': '/{id}/reviews',
         'lists': '/{id}/lists',
