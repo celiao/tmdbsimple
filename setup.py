@@ -11,14 +11,14 @@ def read(fname):
 # requests[security]: http://stackoverflow.com/questions/29134512/insecureplatformwarning-a-true-sslcontext-object-is-not-available-this-prevent/29202163#29202163
 setup(
     name = 'tmdbsimple',
-    version = '2.2.18',
+    version = '2.2.19',
     author = 'Celia Oakley',
     author_email = 'celia.oakley@alumni.stanford.edu',
     description = 'A Python wrapper for The Movie Database API v3',
     keywords = ['movie', 'the movie database', 'movie database', 'tmdb', 
                 'wrapper', 'database', 'themoviedb', 'moviedb', 'api'],
     url = 'https://github.com/celiao/tmdbsimple',
-    download_url = 'https://github.com/celiao/tmdbsimple/tarball/2.2.18',
+    download_url = 'https://github.com/celiao/tmdbsimple/tarball/2.2.19',
     packages = ['tmdbsimple'],
     long_description=read('README.rst'),
     install_requires = ['requests'],
