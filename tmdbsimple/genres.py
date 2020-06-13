@@ -63,6 +63,7 @@ class Genres(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    # here for backward compatability, when /movies existed
     def movies(self, **kwargs):
         """
         Get the list of movies for a particular genre by id. By default, only

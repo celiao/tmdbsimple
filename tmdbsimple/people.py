@@ -23,6 +23,7 @@ class People(TMDB):
     BASE_PATH = 'person'
     URLS = {
         'info': '/{id}',
+        'changes': '/{id}/changes',
         'movie_credits': '/{id}/movie_credits',
         'tv_credits': '/{id}/tv_credits',
         'combined_credits': '/{id}/combined_credits',
@@ -30,9 +31,8 @@ class People(TMDB):
         'images': '/{id}/images',
         'tagged_images': '/{id}/tagged_images',
         'translations': '/{id}/translations',
-        'changes': '/{id}/changes',
-        'popular': '/popular',
         'latest': '/latest',
+        'popular': '/popular',
     }
 
     def __init__(self, id=0):
@@ -50,6 +50,28 @@ class People(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_id_path('info')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def changes(self, **kwargs):
+        """
+        Get the changes for a specific person id.
+
+        Changes are grouped by key, and ordered by date in descending order. 
+        By default, only the last 24 hours of changes are returned. The maximum 
+        number of days that can be returned in a single request is 14. The 
+        language is present on fields that are translatable.
+
+        Args:
+            start_date: (optional) Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Expected format is 'YYYY-MM-DD'.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('changes')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -162,23 +184,14 @@ class People(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def changes(self, **kwargs):
+    def latest(self, **kwargs):
         """
-        Get the changes for a specific person id.
-
-        Changes are grouped by key, and ordered by date in descending order. 
-        By default, only the last 24 hours of changes are returned. The maximum 
-        number of days that can be returned in a single request is 14. The 
-        language is present on fields that are translatable.
-
-        Args:
-            start_date: (optional) Expected format is 'YYYY-MM-DD'.
-            end_date: (optional) Expected format is 'YYYY-MM-DD'.
+        Get the latest person id.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_id_path('changes')
+        path = self._get_path('latest')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -196,19 +209,6 @@ class People(TMDB):
             A dict respresentation of the JSON returned from the API.
         """
         path = self._get_path('popular')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-    def latest(self, **kwargs):
-        """
-        Get the latest person id.
-
-        Returns:
-            A dict respresentation of the JSON returned from the API.
-        """
-        path = self._get_path('latest')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)

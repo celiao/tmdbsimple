@@ -23,7 +23,9 @@ class Movies(TMDB):
     BASE_PATH = 'movie'
     URLS = {
         'info': '/{id}',
+        'account_states': '/{id}/account_states',
         'alternative_titles': '/{id}/alternative_titles',
+        'changes': '/{id}/changes',
         'credits': '/{id}/credits',
         'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
@@ -32,18 +34,16 @@ class Movies(TMDB):
         'releases': '/{id}/releases',
         'videos': '/{id}/videos',
         'translations': '/{id}/translations',
+        'recommendations': '/{id}/recommendations'
         'similar_movies': '/{id}/similar_movies',
         'reviews': '/{id}/reviews',
         'lists': '/{id}/lists',
-        'changes': '/{id}/changes',
         'latest': '/latest',
-        'upcoming': '/upcoming',
         'now_playing': '/now_playing',
         'popular': '/popular',
         'top_rated': '/top_rated',
-        'account_states': '/{id}/account_states',
+        'upcoming': '/upcoming',
         'rating': '/{id}/rating',
-        'recommendations': '/{id}/recommendations'
     }
 
     def __init__(self, id=0):
@@ -67,6 +67,24 @@ class Movies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def account_states(self, **kwargs):
+        """
+        This method lets users get the status of whether or not the movie has
+        been rated or added to their favourite or watch lists. A valid session
+        id is required.
+
+        Args:
+            session_id: see Authentication.
+
+        Returns:
+            A dict representation of the JSON returned from the API.
+        """
+        path = self._get_id_path('account_states')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
     def alternative_titles(self, **kwargs):
         """
         Get the alternative titles for a specific movie id.
@@ -79,6 +97,28 @@ class Movies(TMDB):
             A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('alternative_titles')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def changes(self, **kwargs):
+        """
+        Get the changes for a specific movie id.
+
+        Changes are grouped by key, and ordered by date in descending order.
+        By default, only the last 24 hours of changes are returned. The
+        maximum number of days that can be returned in a single request is 14.
+        The language is present on fields that are translatable.
+
+        Args:
+            start_date: (optional) Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Expected format is 'YYYY-MM-DD'.
+
+        Returns:
+            A dict representation of the JSON returned from the API.
+        """
+        path = self._get_id_path('changes')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -149,23 +189,6 @@ class Movies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def recommendations(self, **kwargs):
-        """
-        Get a list of recommended movies for a movie.
-
-        Args:
-            language: (optional) ISO 639-1 code.
-            page: (optional) Minimum value of 1.  Expected value is an integer.
-
-        Returns:
-            A dict representation of the JSON returned from the API.
-        """
-        path = self._get_id_path('recommendations')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
     def release_dates(self, **kwargs):
         """
         Get the release dates and certification for a specific movie id.
@@ -182,6 +205,7 @@ class Movies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    # here for backward compatability, when /releases existed
     def releases(self, **kwargs):
         """
         Get the release date and certification information by country for a
@@ -227,6 +251,23 @@ class Movies(TMDB):
             A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('translations')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def recommendations(self, **kwargs):
+        """
+        Get a list of recommended movies for a movie.
+
+        Args:
+            language: (optional) ISO 639-1 code.
+            page: (optional) Minimum value of 1.  Expected value is an integer.
+
+        Returns:
+            A dict representation of the JSON returned from the API.
+        """
+        path = self._get_id_path('recommendations')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -286,28 +327,6 @@ class Movies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def changes(self, **kwargs):
-        """
-        Get the changes for a specific movie id.
-
-        Changes are grouped by key, and ordered by date in descending order.
-        By default, only the last 24 hours of changes are returned. The
-        maximum number of days that can be returned in a single request is 14.
-        The language is present on fields that are translatable.
-
-        Args:
-            start_date: (optional) Expected format is 'YYYY-MM-DD'.
-            end_date: (optional) Expected format is 'YYYY-MM-DD'.
-
-        Returns:
-            A dict representation of the JSON returned from the API.
-        """
-        path = self._get_id_path('changes')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
     def latest(self, **kwargs):
         """
         Get the latest movie id.
@@ -316,24 +335,6 @@ class Movies(TMDB):
             A dict representation of the JSON returned from the API.
         """
         path = self._get_path('latest')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-    def upcoming(self, **kwargs):
-        """
-        Get the list of upcoming movies. This list refreshes every day.
-        The maximum number of items this list will include is 100.
-
-        Args:
-            page: (optional) Minimum value of 1.  Expected value is an integer.
-            language: (optional) ISO 639-1 code.
-
-        Returns:
-            A dict representation of the JSON returned from the API.
-        """
-        path = self._get_path('upcoming')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -394,24 +395,25 @@ class Movies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def account_states(self, **kwargs):
+    def upcoming(self, **kwargs):
         """
-        This method lets users get the status of whether or not the movie has
-        been rated or added to their favourite or watch lists. A valid session
-        id is required.
+        Get the list of upcoming movies. This list refreshes every day.
+        The maximum number of items this list will include is 100.
 
         Args:
-            session_id: see Authentication.
+            page: (optional) Minimum value of 1.  Expected value is an integer.
+            language: (optional) ISO 639-1 code.
 
         Returns:
             A dict representation of the JSON returned from the API.
         """
-        path = self._get_id_path('account_states')
+        path = self._get_path('upcoming')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
+    # here for backward compatability, when /rating existed
     def rating(self, **kwargs):
         """
         This method lets users rate a movie. A valid session id or guest
