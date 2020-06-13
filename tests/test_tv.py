@@ -96,17 +96,16 @@ class TVTestCase(unittest.TestCase):
         response = tv.images()
         self.assertTrue(hasattr(tv, 'backdrops'))
 
-    def test_tv_rating(self):
+    def test_tv_keywords(self):
         id = TV_ID
-        status_code = SUCCESSFUL_UPDATE
         tv = tmdb.TV(id)
-        response = tv.rating(session_id=SESSION_ID, value=RATING)
-        self.assertEqual(tv.status_code, status_code)
+        response = tv.keywords()
+        self.assertTrue(hasattr(tv, 'keywords'))
 
-    def test_tv_similar(self):
+    def test_tv_recommendations(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.similar()
+        response = tv.recommendations()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_reviews(self):
@@ -115,16 +114,16 @@ class TVTestCase(unittest.TestCase):
         response = tv.reviews()
         self.assertTrue(hasattr(tv, 'results'))
 
-    def test_tv_recommendations(self):
-        id = TV_ID
-        tv = tmdb.TV(id)
-        response = tv.recommendations()
-        self.assertTrue(hasattr(tv, 'results'))
-
     def test_tv_screened_theatrically(self):
         id = TV_ID
         tv = tmdb.TV(id)
         response = tv.screened_theatrically()
+        self.assertTrue(hasattr(tv, 'results'))
+
+    def test_tv_similar(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.similar()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_translations(self):
@@ -139,35 +138,36 @@ class TVTestCase(unittest.TestCase):
         response = tv.videos()
         self.assertTrue(hasattr(tv, 'results'))
 
-    def test_tv_keywords(self):
+    def test_tv_rating(self):
         id = TV_ID
+        status_code = SUCCESSFUL_UPDATE
         tv = tmdb.TV(id)
-        response = tv.keywords()
-        self.assertTrue(hasattr(tv, 'keywords'))
+        response = tv.rating(session_id=SESSION_ID, value=RATING)
+        self.assertEqual(tv.status_code, status_code)
 
     def test_tv_latest(self):
         tv = tmdb.TV()
         response = tv.latest()
         self.assertTrue(hasattr(tv, 'first_air_date'))
 
-    def test_tv_on_the_air(self):
-        tv = tmdb.TV()
-        response = tv.on_the_air()
-        self.assertTrue(hasattr(tv, 'results'))
-
     def test_tv_airing_today(self):
         tv = tmdb.TV()
         response = tv.airing_today()
         self.assertTrue(hasattr(tv, 'results'))
 
-    def test_tv_top_rated(self):
+    def test_tv_on_the_air(self):
         tv = tmdb.TV()
-        response = tv.top_rated()
+        response = tv.on_the_air()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_popular(self):
         tv = tmdb.TV()
         response = tv.popular()
+        self.assertTrue(hasattr(tv, 'results'))
+
+    def test_tv_top_rated(self):
+        tv = tmdb.TV()
+        response = tv.top_rated()
         self.assertTrue(hasattr(tv, 'results'))
 
 

@@ -131,11 +131,25 @@ class AccountTestCase(unittest.TestCase):
 
 
 class AuthenticationTestCase(unittest.TestCase):
+    def test_authentication_guest_session_new(self):
+        success = True
+        auth = tmdb.Authentication()
+        response = auth.guest_session_new()
+        self.assertEqual(auth.success, success)
+
     def test_authentication_token_new(self):
         success = True
         auth = tmdb.Authentication()
         response = auth.token_new()
         #print(auth.request_token)
+        self.assertEqual(auth.success, success)
+
+        # test_authentication_session_new(self):
+        kwargs = {'request_token': auth.request_token}
+        success = True
+        auth = tmdb.Authentication()
+        response = auth.session_new(**kwargs)
+        #print(auth.session_id)
         self.assertEqual(auth.success, success)
 
         # test_authentication_token_validate_with_login(self):
@@ -147,20 +161,6 @@ class AuthenticationTestCase(unittest.TestCase):
         success = True
         auth = tmdb.Authentication()
         response = auth.token_validate_with_login(**kwargs)
-        self.assertEqual(auth.success, success)
-
-        # test_authentication_session_new(self):
-        kwargs = {'request_token': auth.request_token}
-        success = True
-        auth = tmdb.Authentication()
-        response = auth.session_new(**kwargs)
-        #print(auth.session_id)
-        self.assertEqual(auth.success, success)
-
-    def test_authentication_guest_session_new(self):
-        success = True
-        auth = tmdb.Authentication()
-        response = auth.guest_session_new()
         self.assertEqual(auth.success, success)
 
 

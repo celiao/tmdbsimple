@@ -85,12 +85,6 @@ class ConfigurationTestCase(unittest.TestCase):
 
 
 class CertificationsTestCase(unittest.TestCase):
-    # here for backward compatability, when only movie_list existed
-    def test_certifications_list(self):
-        certifications = tmdb.Certifications()
-        response = certifications.list()
-        self.assertTrue(hasattr(certifications, 'certifications'))
-
     def test_certifications_movie_list(self):
         certifications = tmdb.Certifications()
         response = certifications.movie_list()
@@ -99,6 +93,11 @@ class CertificationsTestCase(unittest.TestCase):
     def test_certifications_tv_list(self):
         certifications = tmdb.Certifications()
         response = certifications.tv_list()
+        self.assertTrue(hasattr(certifications, 'certifications'))
+
+    def test_certifications_list(self):
+        certifications = tmdb.Certifications()
+        response = certifications.list()
         self.assertTrue(hasattr(certifications, 'certifications'))
 
 

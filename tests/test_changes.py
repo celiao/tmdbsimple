@@ -25,12 +25,12 @@ class ChangesTestCase(unittest.TestCase):
         response = changes.movie()
         self.assertTrue(hasattr(changes, 'results'))
 
-    def test_changes_person(self):
-        change = tmdb.Changes()
-        response = change.person()
-        self.assertTrue(hasattr(change, 'results'))
-
     def test_changes_tv(self):
         change = tmdb.Changes()
         response = change.tv()
+        self.assertTrue(hasattr(change, 'results'))
+
+    def test_changes_person(self):
+        change = tmdb.Changes()
+        response = change.person()
         self.assertTrue(hasattr(change, 'results'))

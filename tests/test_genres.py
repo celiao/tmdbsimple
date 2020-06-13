@@ -40,4 +40,3 @@ class GenresTestCase(unittest.TestCase):
         genre = tmdb.Genres(id)
         response = genre.movies()
         self.assertTrue(hasattr(genre, 'results'))
-

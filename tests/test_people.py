@@ -35,6 +35,12 @@ class PeopleTestCase(unittest.TestCase):
         response = person.info()
         self.assertEqual(person.name, name)
 
+    def test_people_changes(self):
+        id = PEOPLE_ID
+        person = tmdb.People(id)
+        response = person.changes()
+        self.assertTrue(hasattr(person, 'changes'))
+
     def test_people_movie_credits(self):
         id = PEOPLE_ID
         person = tmdb.People(id)
@@ -77,21 +83,15 @@ class PeopleTestCase(unittest.TestCase):
         response = person.translations()
         self.assertTrue(hasattr(person, 'translations'))
 
-    def test_people_changes(self):
-        id = PEOPLE_ID
-        person = tmdb.People(id)
-        response = person.changes()
-        self.assertTrue(hasattr(person, 'changes'))
+    def test_people_latest(self):
+        person = tmdb.People()
+        response = person.latest()
+        self.assertTrue(hasattr(person, 'name'))
 
     def test_people_popular(self):
         person = tmdb.People()
         response = person.popular()
         self.assertTrue(hasattr(person, 'results'))
-
-    def test_people_latest(self):
-        person = tmdb.People()
-        response = person.latest()
-        self.assertTrue(hasattr(person, 'name'))
 
 
 class CreditsTestCase(unittest.TestCase):

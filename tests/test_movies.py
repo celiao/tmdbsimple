@@ -55,11 +55,23 @@ class MoviesTestCase(unittest.TestCase):
         response = movie.info(language='fr')
         self.assertEqual(movie.title, title)
 
+    def test_movies_account_states(self):
+        id = MOVIE_ID_ALTERNATIVE
+        movie = tmdb.Movies(id)
+        response = movie.account_states(session_id=SESSION_ID)
+        self.assertTrue(hasattr(movie, 'favorite'))
+
     def test_movies_alternative_titles(self):
         id = MOVIE_ID_ALTERNATIVE
         movie = tmdb.Movies(id)
         response = movie.alternative_titles()
         self.assertTrue(hasattr(movie, 'titles'))
+
+    def test_movies_changes(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        response = movie.changes()
+        self.assertTrue(hasattr(movie, 'changes'))
 
     def test_movies_credits(self):
         id = MOVIE_ID
@@ -91,12 +103,6 @@ class MoviesTestCase(unittest.TestCase):
         response = movie.release_dates()
         self.assertTrue(hasattr(movie, 'results'))
 
-    def test_movies_releases(self):
-        id = MOVIE_ID
-        movie = tmdb.Movies(id)
-        response = movie.releases()
-        self.assertTrue(hasattr(movie, 'countries'))
-
     def test_movies_videos(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
@@ -109,16 +115,16 @@ class MoviesTestCase(unittest.TestCase):
         response = movie.translations()
         self.assertTrue(hasattr(movie, 'translations'))
 
-    def test_movies_similar_movies(self):
-        id = MOVIE_ID_ALTERNATIVE
-        movie = tmdb.Movies(id)
-        response = movie.similar_movies()
-        self.assertTrue(hasattr(movie, 'results'))
-
     def test_movies_recommendations(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
         response = movie.recommendations()
+        self.assertTrue(hasattr(movie, 'results'))
+
+    def test_movies_similar_movies(self):
+        id = MOVIE_ID_ALTERNATIVE
+        movie = tmdb.Movies(id)
+        response = movie.similar_movies()
         self.assertTrue(hasattr(movie, 'results'))
 
     def test_movies_reviews(self):
@@ -133,21 +139,10 @@ class MoviesTestCase(unittest.TestCase):
         response = movie.lists()
         self.assertTrue(hasattr(movie, 'results'))
 
-    def test_movies_changes(self):
-        id = MOVIE_ID
-        movie = tmdb.Movies(id)
-        response = movie.changes()
-        self.assertTrue(hasattr(movie, 'changes'))
-
     def test_movies_latest(self):
         movie = tmdb.Movies()
         response = movie.latest()
         self.assertTrue(hasattr(movie, 'popularity'))
-
-    def test_movies_upcoming(self):
-        movie = tmdb.Movies()
-        response = movie.upcoming()
-        self.assertTrue(hasattr(movie, 'results'))
 
     def test_movies_now_playing(self):
         movie = tmdb.Movies()
@@ -164,11 +159,10 @@ class MoviesTestCase(unittest.TestCase):
         response = movie.top_rated()
         self.assertTrue(hasattr(movie, 'results'))
 
-    def test_movies_account_states(self):
-        id = MOVIE_ID_ALTERNATIVE
-        movie = tmdb.Movies(id)
-        response = movie.account_states(session_id=SESSION_ID)
-        self.assertTrue(hasattr(movie, 'favorite'))
+    def test_movies_upcoming(self):
+        movie = tmdb.Movies()
+        response = movie.upcoming()
+        self.assertTrue(hasattr(movie, 'results'))
 
     def test_movies_rating(self):
         id = MOVIE_ID
@@ -176,6 +170,12 @@ class MoviesTestCase(unittest.TestCase):
         movie = tmdb.Movies(id)
         response = movie.rating(session_id=SESSION_ID, value=RATING)
         self.assertEqual(movie.status_code, status_code)
+
+    def test_movies_releases(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        response = movie.releases()
+        self.assertTrue(hasattr(movie, 'countries'))
 
 
 class CollectionsTestCase(unittest.TestCase):
