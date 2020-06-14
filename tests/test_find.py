@@ -24,6 +24,8 @@ Constants
 FIND_MOVIE_ID = 'tt0266543'
 FIND_SOURCE = 'imdb_id'
 FIND_TITLE = 'Finding Nemo'
+TRENDING_MEDIA_TYPE = 'movie'
+TRENDING_TIME_WINDOW = 'week'
 
 
 class FindTestCase(unittest.TestCase):
@@ -34,3 +36,12 @@ class FindTestCase(unittest.TestCase):
         find = tmdb.Find(id)
         response = find.info(external_source=external_source)
         self.assertEqual(find.movie_results[0]['title'], title)
+
+
+class TrendingTestCase(unittest.TestCase):
+    def test_trending_info(self):
+        media_type = TRENDING_MEDIA_TYPE
+        time_window = TRENDING_TIME_WINDOW
+        trend = tmdb.Trending(media_type=media_type, time_window=time_window)
+        response = trend.info()
+        self.assertEqual(trend.results[0]['media_type'], TRENDING_MEDIA_TYPE)

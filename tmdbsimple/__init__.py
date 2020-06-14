@@ -29,7 +29,7 @@ from .base import APIKeyError
 from .changes import Changes
 from .configuration import Configuration, Certifications, Timezones
 from .discover import Discover
-from .find import Find
+from .find import Find, Trending
 from .genres import Genres
 from .movies import Movies, Collections, Companies, Keywords, Reviews
 from .people import People, Credits, Jobs
