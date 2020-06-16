@@ -28,7 +28,12 @@ class Changes(TMDB):
 
     def movie(self, **kwargs):
         """
-        Get a list of movie ids that have been edited.
+        Get a list of all of the movie ids that have been changed
+        in the past 24 hours.
+
+        You can query it for up to 14 days worth of changed IDs at
+        a time with the start_date and end_date query parameters.
+        100 items are returned per page.
 
         Args:
             page: (optional) Minimum 1, maximum 1000.
@@ -46,7 +51,12 @@ class Changes(TMDB):
 
     def tv(self, **kwargs):
         """
-        Get a list of TV show ids that have been edited.
+        Get a list of all of the TV show ids that have been changed
+        in the past 24 hours.
+
+        You can query it for up to 14 days worth of changed IDs at
+        a time with the start_date and end_date query parameters.
+        100 items are returned per page.
 
         Args:
             page: (optional) Minimum 1, maximum 1000.
@@ -64,7 +74,12 @@ class Changes(TMDB):
 
     def person(self, **kwargs):
         """
-        Get a list of people ids that have been edited.
+        Get a list of all of the person ids that have been changed
+        in the past 24 hours.
+
+        You can query it for up to 14 days worth of changed IDs at
+        a time with the start_date and end_date query parameters.
+        100 items are returned per page.
 
         Args:
             page: (optional) Minimum 1, maximum 1000.
