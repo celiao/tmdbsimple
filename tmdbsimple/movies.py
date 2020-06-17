@@ -457,12 +457,7 @@ class Collections(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the basic collection information for a specific collection id.
-        You can get the ID needed for this method by making a /movie/{id}
-        request and paying attention to the belongs_to_collection hash.
-
-        Movie parts are not sorted in any particular order. If you would like
-        to sort them yourself you can use the provided release_date.
+        Get collection details by id.
 
         Args:
             language: (optional) ISO 639-1 code.
@@ -533,8 +528,7 @@ class Companies(TMDB):
 
     def info(self, **kwargs):
         """
-        This method is used to retrieve all of the basic information about a
-        company.
+        Get a companies details by id.
 
         Args:
             append_to_response: (optional) Comma separated, any movie method.
@@ -565,7 +559,17 @@ class Companies(TMDB):
 
     def images(self, **kwargs):
         """
-        Get a companies logos by id.
+        Get a company's logos by id.
+
+        There are two image formats that are supported for companies, PNG's and
+        SVG's. You can see which type the original file is by looking at the
+        file_type field. We prefer SVG's as they are resolution independent and
+        as such, the width and height are only there to reflect the original
+        asset that was uploaded.  An SVG can be scaled properly beyond those
+        dimensions if you call them as a PNG.
+
+        For more information about how SVG's and PNG's can be used, take a read
+        through https://developers.themoviedb.org/3/getting-started/images.
 
         Args:
 

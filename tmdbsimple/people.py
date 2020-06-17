@@ -231,16 +231,7 @@ class Credits(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the detailed information about a particular credit record. This is 
-        currently only supported with the new credit model found in TV. These 
-        ids can be found from any TV credit response as well as the tv_credits 
-        and combined_credits methods for people.
-
-        The episodes object returns a list of episodes and are generally going 
-        to be guest stars. The season array will return a list of season 
-        numbers.  Season credits are credits that were marked with the 
-        "add to every season" option in the editing interface and are 
-        assumed to be "season regulars".
+        Get a movie or TV credit details by id.
 
         Args:
             language: (optional) ISO 639-1 code.
