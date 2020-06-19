@@ -33,7 +33,7 @@ class Genres(TMDB):
 
     def movie_list(self, **kwargs):
         """
-        Get the list of Movie genres.
+        Get the list of official genres for movies.
 
         Args:
             language: (optional) ISO 639-1 code.
@@ -49,7 +49,7 @@ class Genres(TMDB):
 
     def tv_list(self, **kwargs):
         """
-        Get the list of TV genres.
+        Get the list of official genres for TV shows.
 
         Args:
             language: (optional) ISO 639-1 code.
