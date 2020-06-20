@@ -139,6 +139,13 @@ class MoviesTestCase(unittest.TestCase):
         response = movie.lists()
         self.assertTrue(hasattr(movie, 'results'))
 
+    def test_movies_rating(self):
+        id = MOVIE_ID
+        status_code = SUCCESSFUL_UPDATE
+        movie = tmdb.Movies(id)
+        response = movie.rating(session_id=SESSION_ID, value=RATING)
+        self.assertEqual(movie.status_code, status_code)
+
     def test_movies_latest(self):
         movie = tmdb.Movies()
         response = movie.latest()
@@ -163,13 +170,6 @@ class MoviesTestCase(unittest.TestCase):
         movie = tmdb.Movies()
         response = movie.upcoming()
         self.assertTrue(hasattr(movie, 'results'))
-
-    def test_movies_rating(self):
-        id = MOVIE_ID
-        status_code = SUCCESSFUL_UPDATE
-        movie = tmdb.Movies(id)
-        response = movie.rating(session_id=SESSION_ID, value=RATING)
-        self.assertEqual(movie.status_code, status_code)
 
     def test_movies_releases(self):
         id = MOVIE_ID

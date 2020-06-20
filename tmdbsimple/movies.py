@@ -309,6 +309,32 @@ class Movies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def rating(self, **kwargs):
+        """
+        Rate a movie.
+
+        A valid session or guest session ID is required. You can read more
+        about how this works at
+        https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id.
+
+        Args:
+            session_id: see Authentication.
+            guest_session_id: see Authentication.
+            value: Rating value.
+
+        Returns:
+            A dict representation of the JSON returned from the API.
+        """
+        path = self._get_id_path('rating')
+
+        payload = {
+            'value': kwargs.pop('value', None),
+        }
+
+        response = self._POST(path, kwargs, payload)
+        self._set_attrs_to_values(response)
+        return response
+
     def latest(self, **kwargs):
         """
         Get the latest movie id.
@@ -392,30 +418,6 @@ class Movies(TMDB):
         path = self._get_path('upcoming')
 
         response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-    # backward compatability
-    def rating(self, **kwargs):
-        """
-        This method lets users rate a movie. A valid session id or guest
-        session id is required.
-
-        Args:
-            session_id: see Authentication.
-            guest_session_id: see Authentication.
-            value: Rating value.
-
-        Returns:
-            A dict representation of the JSON returned from the API.
-        """
-        path = self._get_id_path('rating')
-
-        payload = {
-            'value': kwargs.pop('value', None),
-        }
-
-        response = self._POST(path, kwargs, payload)
         self._set_attrs_to_values(response)
         return response
 

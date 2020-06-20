@@ -176,6 +176,28 @@ class GuestSessionsTestCase(unittest.TestCase):
         response = guest_session.rated_movies()
         self.assertTrue(hasattr(guest_session, 'results'))
 
+    def test_guest_sessions_rated_tv(self):
+        # get a guest session id
+        auth = tmdb.Authentication()
+        response = auth.guest_session_new()
+        guest_session_id = auth.guest_session_id
+
+        # get a list of rated tv shows for the guest session id 
+        guest_session = tmdb.GuestSessions(guest_session_id)
+        response = guest_session.rated_tv()
+        self.assertTrue(hasattr(guest_session, 'results'))
+
+    def test_guest_sessions_rated_tv_episodes(self):
+        # get a guest session id
+        auth = tmdb.Authentication()
+        response = auth.guest_session_new()
+        guest_session_id = auth.guest_session_id
+
+        # get a list of rated tv episodes for the guest session id 
+        guest_session = tmdb.GuestSessions(guest_session_id)
+        response = guest_session.rated_tv_episodes()
+        self.assertTrue(hasattr(guest_session, 'results'))
+
 
 class ListsTestCase(unittest.TestCase):
     def test_lists_info(self):

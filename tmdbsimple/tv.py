@@ -304,8 +304,11 @@ class TV(TMDB):
 
     def rating(self, **kwargs):
         """
-        This method lets users rate a TV show. A valid session id or guest
-        session id is required.
+        Rate a TV show.
+
+        A valid session or guest session ID is required. You can read more
+        about how this works at
+        https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id.
 
         Args:
             session_id: see Authentication.
@@ -663,8 +666,11 @@ class TV_Episodes(TMDB):
 
     def rating(self, **kwargs):
         """
-        This method lets users rate a TV episode. A valid session id or guest
-        session id is required.
+        Rate a TV episode.
+
+        A valid session or guest session ID is required. You can read more
+        about how this works at
+        https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id.
 
         Args:
             session_id: see Authentication.

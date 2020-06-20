@@ -276,7 +276,6 @@ class Authentication(TMDB):
 
     def guest_session_new(self, **kwargs):
         """
-        Generate a guest session id.
         This method will let you create a new guest session. Guest sessions
         are a type of session that will let a user rate movies and TV shows
         but not require them to have a TMDb user account. More
@@ -375,7 +374,9 @@ class GuestSessions(TMDB):
     """
     BASE_PATH = 'guest_session'
     URLS = {
-        'rated_movies': '/{guest_session_id}/rated_movies',
+        'rated_movies': '/{guest_session_id}/rated/movies',
+        'rated_tv': '/{guest_session_id}/rated/tv',
+        'rated_tv_episodes': '/{guest_session_id}/rated/tv/episodes',
     }
 
     def __init__(self, guest_session_id=0):
@@ -399,7 +400,43 @@ class GuestSessions(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
-    
+ 
+    def rated_tv(self, **kwargs):
+        """
+        Get the rated TV shows for a guest session.
+
+        Args:
+            page: (optional) Minimum 1, maximum 1000.
+            sort_by: (optional) 'created_at.asc' | 'created_at.desc'
+            language: (optional) ISO 639-1 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_guest_session_id_path('rated_tv')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+ 
+    def rated_tv_episodes(self, **kwargs):
+        """
+        Get the rated TV episodes for a guest session.
+
+        Args:
+            page: (optional) Minimum 1, maximum 1000.
+            sort_by: (optional) 'created_at.asc' | 'created_at.desc'
+            language: (optional) ISO 639-1 code.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_guest_session_id_path('rated_tv_episodes')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+ 
 
 class Lists(TMDB):
     """
