@@ -384,7 +384,7 @@ class GuestSessions(TMDB):
 
     def rated_movies(self, **kwargs):
         """
-        Get a list of rated moview for a specific guest session id.
+        Get the rated movies for a guest session.
 
         Args:
             page: (optional) Minimum 1, maximum 1000.
@@ -424,7 +424,7 @@ class Lists(TMDB):
 
     def info(self, **kwargs):
         """
-        Get a list by id.
+        Get the details of a list.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -437,7 +437,8 @@ class Lists(TMDB):
 
     def item_status(self, **kwargs):
         """
-        Check to see if a movie id is already added to a list.
+        You can use this method to check if a movie has already been added to
+        the list.
 
         Args:
             movie_id: The id of the movie.
@@ -453,7 +454,7 @@ class Lists(TMDB):
 
     def create_list(self, **kwargs):
         """
-        Create a new list.
+        Create a list.
 
         A valid session id is required.
 
@@ -481,9 +482,7 @@ class Lists(TMDB):
 
     def add_item(self, **kwargs):
         """
-        Add new movies to a list that the user created.
-
-        A valid session id is required.
+        Add a movie to a list.
 
         Args:
             media_id: A movie id.
@@ -504,9 +503,7 @@ class Lists(TMDB):
         
     def remove_item(self, **kwargs):
         """
-        Delete movies from a list that the user created.
-
-        A valid session id is required.
+        Remove a movie from a list.
 
         Args:
             media_id: A movie id.
@@ -527,10 +524,7 @@ class Lists(TMDB):
 
     def clear_list(self, **kwargs):
         """
-        Clears all of the items within a list. This is an irreversible action
-        and should be treated with caution.
-
-        A valid session id is required.
+        Clear all of the items from a list.
 
         Args:
             confirm: True (do it) | False (don't do it)

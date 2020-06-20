@@ -620,7 +620,7 @@ class Keywords(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the basic information for a specific keyword id.
+        Get the details of a keyword.
 
         Returns:
             A dict representation of the JSON returned from the API.
@@ -633,7 +633,10 @@ class Keywords(TMDB):
 
     def movies(self, **kwargs):
         """
-        Get the list of movies for a particular keyword by id.
+        Get the movies that belong to a keyword.
+
+        We highly recommend using movie discover instead of this method as it
+        is much more flexible.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
