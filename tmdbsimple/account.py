@@ -493,8 +493,6 @@ class Lists(TMDB):
         """
         Create a list.
 
-        A valid session id is required.
-
         Args:
             name: Name of the list.
             description: Description of the list.

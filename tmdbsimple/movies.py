@@ -52,7 +52,10 @@ class Movies(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the basic movie information for a specific movie id.
+        Get the primary information about a movie.
+
+        Supports append_to_response. Read more about this at
+        https://developers.themoviedb.org/3/getting-started/append-to-response.
 
         Args:
             language: (optional) ISO 639-1 code.
@@ -69,9 +72,10 @@ class Movies(TMDB):
 
     def account_states(self, **kwargs):
         """
-        This method lets users get the status of whether or not the movie has
-        been rated or added to their favourite or watch lists. A valid session
-        id is required.
+        Grab the following account states for a session:
+            - Movie rating
+            - If it belongs to your watchlist
+            - If it belongs to your favourite list
 
         Args:
             session_id: see Authentication.
@@ -87,7 +91,7 @@ class Movies(TMDB):
 
     def alternative_titles(self, **kwargs):
         """
-        Get the alternative titles for a specific movie id.
+        Get all of the alternative titles for a movie.
 
         Args:
             country: (optional) ISO 3166-1 code.
@@ -104,12 +108,10 @@ class Movies(TMDB):
 
     def changes(self, **kwargs):
         """
-        Get the changes for a specific movie id.
+        Get the changes for a movie. By default only the last 24 hours are returned.
 
-        Changes are grouped by key, and ordered by date in descending order.
-        By default, only the last 24 hours of changes are returned. The
-        maximum number of days that can be returned in a single request is 14.
-        The language is present on fields that are translatable.
+        You can query up to 14 days in a single query by using the start_date
+        and end_date query parameters.
 
         Args:
             start_date: (optional) Expected format is 'YYYY-MM-DD'.
@@ -126,7 +128,7 @@ class Movies(TMDB):
 
     def credits(self, **kwargs):
         """
-        Get the cast and crew information for a specific movie id.
+        Get the cast and crew for a movie.
 
         Args:
             append_to_response: (optional) Comma separated, any movie method.
@@ -142,7 +144,11 @@ class Movies(TMDB):
 
     def external_ids(self, **kwargs):
         """
-        Get the external ids for a specific movie id.
+        Get the external ids for a movie. We currently support the following
+        external sources.
+
+        Media Databases - IMDb
+        Social IDs - Facebok, Instagram, Twitter
 
         Args:
             language: (optional) ISO 639-1 code.
@@ -159,7 +165,13 @@ class Movies(TMDB):
 
     def images(self, **kwargs):
         """
-        Get the images (posters and backdrops) for a specific movie id.
+        Get the images that belong to a movie.
+
+        Querying images with a language parameter will filter the results. If
+        you want to include a fallback language (especially useful for
+        backdrops) you can use the include_image_language parameter. This
+        should be a comma seperated value like so:
+        include_image_language=en,null.
 
         Args:
             language: (optional) ISO 639-1 code.
@@ -178,7 +190,7 @@ class Movies(TMDB):
 
     def keywords(self):
         """
-        Get the plot keywords for a specific movie id.
+        Get the keywords that have been added to a movie.
 
         Returns:
             A dict representation of the JSON returned from the API.
@@ -191,7 +203,16 @@ class Movies(TMDB):
 
     def release_dates(self, **kwargs):
         """
-        Get the release dates and certification for a specific movie id.
+        Get the release date along with the certification for a movie.
+
+        Release dates support different types:
+
+            1. Premiere
+            2. Theatrical (limited)
+            3. Theatrical
+            4. Digital
+            5. Physical
+            6. TV
 
         Args:
             append_to_response: (optional) Comma separated, any movie method.
@@ -207,8 +228,7 @@ class Movies(TMDB):
 
     def videos(self, **kwargs):
         """
-        Get the videos (trailers, teasers, clips, etc...) for a
-        specific movie id.
+        Get the videos that have been added to a movie.
 
         Args:
             append_to_response: (optional) Comma separated, any movie method.
@@ -224,7 +244,7 @@ class Movies(TMDB):
 
     def translations(self, **kwargs):
         """
-        Get the translations for a specific movie id.
+        Get a list of translations that have been created for a movie.
 
         Args:
             append_to_response: (optional) Comma separated, any movie method.
@@ -257,7 +277,10 @@ class Movies(TMDB):
 
     def similar_movies(self, **kwargs):
         """
-        Get the similar movies for a specific movie id.
+        Get a list of similar movies. This is not the same as the
+        "Recommendation" system you see on the website.
+
+        These items are assembled by looking at keywords and genres.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
@@ -275,7 +298,7 @@ class Movies(TMDB):
 
     def reviews(self, **kwargs):
         """
-        Get the reviews for a particular movie id.
+        Get the user reviews for a movie.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
@@ -293,7 +316,7 @@ class Movies(TMDB):
 
     def lists(self, **kwargs):
         """
-        Get the lists that the movie belongs to.
+        Get a list of lists that this movie belongs to.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
@@ -337,7 +360,8 @@ class Movies(TMDB):
 
     def latest(self, **kwargs):
         """
-        Get the latest movie id.
+        Get the most newly created movie. This is a live response and will
+        continuously change.
 
         Returns:
             A dict representation of the JSON returned from the API.
@@ -350,8 +374,13 @@ class Movies(TMDB):
 
     def now_playing(self, **kwargs):
         """
-        Get the list of movies playing in theatres. This list refreshes
-        every day. The maximum number of items this list will include is 100.
+        Get a list of movies in theatres. This is a release type query that
+        looks for all movies that have a release type of 2 or 3 within the
+        specified date range.
+
+        You can optionally specify a region prameter which will narrow the
+        search to only look for theatrical release dates within the specified
+        country.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
@@ -368,8 +397,8 @@ class Movies(TMDB):
 
     def popular(self, **kwargs):
         """
-        Get the list of popular movies on The Movie Database. This list
-        refreshes every day.
+        Get a list of the current popular movies on TMDb. This list updates
+        daily.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
@@ -386,9 +415,7 @@ class Movies(TMDB):
 
     def top_rated(self, **kwargs):
         """
-        Get the list of top rated movies. By default, this list will only
-        include movies that have 10 or more votes. This list refreshes every
-        day.
+        Get the top rated movies on TMDb.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
@@ -405,8 +432,13 @@ class Movies(TMDB):
 
     def upcoming(self, **kwargs):
         """
-        Get the list of upcoming movies. This list refreshes every day.
-        The maximum number of items this list will include is 100.
+        Get a list of upcoming movies in theatres. This is a release type query
+        that looks for all movies that have a release type of 2 or 3 within the
+        specified date range.
+
+        You can optionally specify a region prameter which will narrow the
+        search to only look for theatrical release dates within the specified
+        country.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
