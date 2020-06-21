@@ -852,9 +852,7 @@ class Networks(TMDB):
 
     def info(self, **kwargs):
         """
-        This method is used to retrieve the basic information about a TV
-        network. You can use this ID to search for TV shows with the discover.
-        At this time we don't have much but this will be fleshed out over time.
+        Get the details of a network.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -883,6 +881,16 @@ class Networks(TMDB):
     def images(self, **kwargs):
         """
         Get a TV network logos by id.
+
+        There are two image formats that are supported for networks, PNG's and
+        SVG's. You can see which type the original file is by looking at the
+        file_type field. We prefer SVG's as they are resolution independent and
+        as such, the width and height are only there to reflect the original
+        asset that was uploaded. An SVG can be scaled properly beyond those
+        dimensions if you call them as a PNG.
+
+        For more information about how SVG's and PNG's can be used, take a read
+        through https://developers.themoviedb.org/3/getting-started/images.
 
         Args:
 
