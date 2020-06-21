@@ -9,14 +9,14 @@ A wrapper for The Movie Database API v3
 Features
 --------
 
-- COMPLETELY UPDATED AND FULLY TESTED.  Updated with the latest Account, Authentication, Certification, GuestSession, List, Movie, People, Timezones, TV, TV Season, and TV Episode methods. 
-- Supports and tested under Python 2.7.6, 3.3.5, and 3.4.0
-- One-to-one mapping between *tmdbsimple* functions and TMDb methods.
+- COMPLETELY UPDATED AND FULLY TESTED.
+- Supports [Python versions with TLS 1.2](http://pyfound.blogspot.com/2017/01/time-to-upgrade-your-python-tls-v12.html)
+- Tested with Python 3.6.1, 3.7.7, and 3.8.3
+- One-to-one mapping between *tmdbsimple* methods and TMDb endpoints.
 - Implements all TMDb methods, including Accounts and Authentication.
-- Implements new TV features.
 - Easy to access data using Python class attributes.
 - Easy to experiment with *tmdbsimple* functions inside the Python interpreter.
-- Code tested with unittests, which illustrate the function call syntax.
+- Code tested with unittests.  Refer to the unittest code for method call syntax.
 
 Installation
 ------------
