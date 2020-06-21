@@ -10,8 +10,8 @@ Features
 --------
 
 - COMPLETELY UPDATED AND FULLY TESTED.
-- Supports only Python versions with TLS 1.2
-- Tested with Python 3.6.1, 3.7.7, and 3.8.3
+- Supports only Python versions with TLS 1.2.
+- Tested with Python 3.6.1, 3.7.7, and 3.8.3.
 - One-to-one mapping between *tmdbsimple* methods and TMDb endpoints.
 - Implements all TMDb methods, including Accounts and Authentication.
 - Easy to access data using Python class attributes.
