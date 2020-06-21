@@ -102,7 +102,7 @@ class Discover(TMDB):
         """
         # Periods are not allowed in keyword arguments but several API 
         # arguments contain periods. See both usages in tests/test_discover.py.
-        for param in kwargs:
+        for param in dict(kwargs):
             if '_lte' in param:
                 kwargs[param.replace('_lte', '.lte')] = kwargs.pop(param)
             if '_gte' in param:
@@ -167,7 +167,7 @@ class Discover(TMDB):
         """
         # Periods are not allowed in keyword arguments but several API 
         # arguments contain periods. See both usages in tests/test_discover.py.
-        for param in kwargs:
+        for param in dict(kwargs):
             if '_lte' in param:
                 kwargs[param.replace('_lte', '.lte')] = kwargs.pop(param)
             if '_gte' in param:
