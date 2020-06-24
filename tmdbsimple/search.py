@@ -32,7 +32,7 @@ class Search(TMDB):
 
     def company(self, **kwargs):
         """
-        Search for companies by name.
+        Search for companies.
 
         Args:
             query: CGI escpaed string.
@@ -49,7 +49,7 @@ class Search(TMDB):
 
     def collection(self, **kwargs):
         """
-        Search for collections by name.
+        Search for collections.
 
         Args:
             query: CGI escpaed string.
@@ -67,7 +67,7 @@ class Search(TMDB):
 
     def keyword(self, **kwargs):
         """
-        Search for keywords by name.
+        Search for keywords.
 
         Args:
             query: CGI escpaed string.
@@ -84,7 +84,7 @@ class Search(TMDB):
 
     def movie(self, **kwargs):
         """
-        Search for movies by title.
+        Search for movies.
 
         Args:
             query: CGI escpaed string.
@@ -114,7 +114,8 @@ class Search(TMDB):
 
     def multi(self, **kwargs):
         """
-        Search the movie, tv show and person collections with a single query.
+        Search multiple models in a single request. Multi search currently
+        supports searching for movies, tv shows and people in a single request.
 
         Args:
             query: CGI escpaed string.
@@ -134,7 +135,7 @@ class Search(TMDB):
 
     def person(self, **kwargs):
         """
-        Search for people by name.
+        Search for people.
 
         Args:
             query: CGI escpaed string.
@@ -159,7 +160,7 @@ class Search(TMDB):
 
     def tv(self, **kwargs):
         """
-        Search for TV shows by title.
+        Search for a TV show.
 
         Args:
             query: CGI escpaed string.

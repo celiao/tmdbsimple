@@ -702,7 +702,7 @@ class Reviews(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the full details of a review by ID.
+        Get the review details by id.
 
         Returns:
             A dict representation of the JSON returned from the API.
