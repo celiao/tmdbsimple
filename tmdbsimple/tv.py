@@ -51,7 +51,10 @@ class TV(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the primary information about a TV series by id.
+        Get the primary TV show details by id.
+
+        Supports append_to_response. Read more about this at
+        https://developers.themoviedb.org/3/getting-started/append-to-response.
 
         Args:
             language: (optional) ISO 639 code.
@@ -88,7 +91,7 @@ class TV(TMDB):
 
     def alternative_titles(self, **kwargs):
         """
-        Get the alternative titles for a specific tv id.
+        Returns all of the alternative titles for a TV show.
 
         Args:
             language: (optional) ISO 3166-1 code.
@@ -104,7 +107,8 @@ class TV(TMDB):
 
     def content_ratings(self, **kwargs):
         """
-        Get the content ratings for a TV Series.
+        Get the list of content ratings (certifications) that have been added
+        to a TV show.
 
         Args:
             language: (optional) ISO 639 code.
@@ -122,8 +126,7 @@ class TV(TMDB):
 
     def credits(self, **kwargs):
         """
-        Get the cast & crew information about a TV series. Just like the
-        website, we pull this information from the last season of the series.
+        Get the credits (cast and crew) that have been added to a TV show.
 
         Args:
             language: (optional) ISO 639 code.
@@ -142,6 +145,7 @@ class TV(TMDB):
     def episode_groups(self, **kwargs):
         """
         Get all of the episode groups that have been created for a TV show.
+        With a group ID you can call the get TV episode group details  method.
 
         Args:
             language: (optional) ISO 639 code.
@@ -157,7 +161,13 @@ class TV(TMDB):
 
     def external_ids(self, **kwargs):
         """
-        Get the external ids that we have stored for a TV series.
+        Get the external ids for a TV show. We currently support the following
+        external sources.
+
+        Media Databases: IMDb ID, TVDB ID, Freebase MID*, Freebase ID*, TVRage ID*
+        Social IDs: Facebook, Instagram, Twitter
+
+        *Defunct or no longer available as a service.
 
         Args:
             language: (optional) ISO 639 code.
@@ -173,7 +183,13 @@ class TV(TMDB):
 
     def images(self, **kwargs):
         """
-        Get the images (posters and backdrops) for a TV series.
+        Get the images that belong to a TV show.
+
+        Querying images with a language parameter will filter the results. If
+        you want to include a fallback language (especially useful for
+        backdrops) you can use the include_image_language parameter. This
+        should be a comma seperated value like so:
+        include_image_language=en,null.
 
         Args:
             language: (optional) ISO 639 code.
@@ -191,7 +207,7 @@ class TV(TMDB):
 
     def keywords(self, **kwargs):
         """
-        Get the list of keywords related to a TV series.
+        Get the keywords that have been added to a TV show.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -204,7 +220,7 @@ class TV(TMDB):
 
     def recommendations(self, **kwargs):
         """
-        Get the recommendations for TV series for a specific TV series id.
+        Get the list of TV show recommendations for this item.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
@@ -238,7 +254,8 @@ class TV(TMDB):
 
     def screened_theatrically(self, **kwargs):
         """
-        Get a list of seasons or episodes that have been screened in a film festival or theatre.
+        Get a list of seasons or episodes that have been screened in a film
+        festival or theatre.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
@@ -255,7 +272,8 @@ class TV(TMDB):
 
     def similar(self, **kwargs):
         """
-        Get the similar TV series for a specific TV series id.
+        Get a list of similar TV shows. These items are assembled by looking at
+        keywords and genres.
 
         Args:
             page: (optional) Minimum value of 1.  Expected value is an integer.
@@ -273,8 +291,7 @@ class TV(TMDB):
 
     def translations(self, **kwargs):
         """
-        Get the list of translations that exist for a TV series. These
-        translations cascade down to the episode level.
+        Get a list of the translations that exist for a TV show.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -287,8 +304,7 @@ class TV(TMDB):
 
     def videos(self, **kwargs):
         """
-        Get the videos that have been added to a TV series (trailers, opening
-        credits, etc...).
+        Get the videos that have been added to a TV show.
 
         Args:
             language: (optional) ISO 639 code.
@@ -330,8 +346,8 @@ class TV(TMDB):
 
     def latest(self, **kwargs):
         """
-        Get the most newly created TV show. This is a live response
-        and will continuously change.
+        Get the most newly created TV show. This is a live response and will
+        continuously change.
 
         Args:
             language: (optional) ISO 639 code.
@@ -347,8 +363,12 @@ class TV(TMDB):
 
     def airing_today(self, **kwargs):
         """
-        Get the list of TV shows that air today. Without a specified timezone,
-        this query defaults to EST (Eastern Time UTC-05:00).
+        Get a list of TV shows that are airing today. This query is purely day
+        based as we do not currently support airing times.
+
+        You can specify a timezone to offset the day calculation. Without a
+        specified timezone, this query defaults to EST (Eastern Time
+        UTC-05:00).
 
         Args:
             page: (optional) Minimum 1, maximum 1000.
@@ -366,9 +386,10 @@ class TV(TMDB):
 
     def on_the_air(self, **kwargs):
         """
-        Get the list of TV shows that are currently on the air. This query
-        looks for any TV show that has an episode with an air date in the
-        next 7 days.
+        Get a list of shows that are currently on the air.
+
+        This query looks for any TV show that has an episode with an air date
+        in the next 7 days.
 
         Args:
             page: (optional) Minimum 1, maximum 1000.
@@ -385,7 +406,8 @@ class TV(TMDB):
 
     def popular(self, **kwargs):
         """
-        Get the list of popular TV shows. This list refreshes every day.
+        Get a list of the current popular TV shows on TMDb. This list updates
+        daily.
 
         Args:
             page: (optional) Minimum 1, maximum 1000.
@@ -402,9 +424,7 @@ class TV(TMDB):
 
     def top_rated(self, **kwargs):
         """
-        Get the list of top rated TV shows. By default, this list will only
-        include TV shows that have 2 or more votes. This list refreshes every
-        day.
+        Get a list of the top rated TV shows on TMDb.
 
         Args:
             page: (optional) Minimum 1, maximum 1000.
