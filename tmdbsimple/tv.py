@@ -164,7 +164,8 @@ class TV(TMDB):
         Get the external ids for a TV show. We currently support the following
         external sources.
 
-        Media Databases: IMDb ID, TVDB ID, Freebase MID*, Freebase ID*, TVRage ID*
+        Media Databases: IMDb ID, TVDB ID, Freebase MID*, Freebase ID*, TVRage
+        ID*
         Social IDs: Facebook, Instagram, Twitter
 
         *Defunct or no longer available as a service.
@@ -463,7 +464,10 @@ class TV_Seasons(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the primary information about a TV season by its season number.
+        Get the TV season details by id.
+
+        Supports append_to_response. Read more about this at
+        https://developers.themoviedb.org/3/getting-started/append-to-response.
 
         Args:
             language: (optional) ISO 639 code.
@@ -499,7 +503,7 @@ class TV_Seasons(TMDB):
 
     def credits(self, **kwargs):
         """
-        Get the cast & crew credits for a TV season by season number.
+        Get the credits for TV season.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -512,8 +516,12 @@ class TV_Seasons(TMDB):
 
     def external_ids(self, **kwargs):
         """
-        Get the external ids that we have stored for a TV season by season
-        number.
+        Get the external ids for a TV season. We currently support the
+        following external sources.
+
+        Media Databases: TVDB ID, Freebase MID*, Freebase ID*, TVRage ID*
+
+        *Defunct or no longer available as a service.
 
         Args:
             language: (optional) ISO 639 code.
@@ -529,8 +537,13 @@ class TV_Seasons(TMDB):
 
     def images(self, **kwargs):
         """
-        Get the images (posters) that we have stored for a TV season by season
-        number.
+        Get the images that belong to a TV season.
+
+        Querying images with a language parameter will filter the results. If
+        you want to include a fallback language (especially useful for
+        backdrops) you can use the include_image_language parameter. This
+        should be a comma seperated value like so:
+        include_image_language=en,null.
 
         Args:
             language: (optional) ISO 639 code.
@@ -548,8 +561,7 @@ class TV_Seasons(TMDB):
 
     def videos(self, **kwargs):
         """
-        Get the videos that have been added to a TV season (trailers, teasers,
-        etc...).
+        Get the videos that have been added to a TV season.
 
         Args:
             language: (optional) ISO 639 code.
@@ -590,8 +602,10 @@ class TV_Episodes(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the primary information about a TV episode by combination of a
-        season and episode number.
+        Get the TV episode details by id.
+
+        Supports append_to_response. Read more about this at
+        https://developers.themoviedb.org/3/getting-started/append-to-response.
 
         Args:
             language: (optional) ISO 639 code.
@@ -609,7 +623,7 @@ class TV_Episodes(TMDB):
 
     def account_states(self, **kwargs):
         """
-        Get your rating for a episode.
+        Get your rating for an episode.
 
         Args:
             language: (optional) ISO 639 code.
@@ -627,7 +641,7 @@ class TV_Episodes(TMDB):
 
     def credits(self, **kwargs):
         """
-        Get the TV episode credits by combination of season and episode number.
+        Get the credits (cast, crew and guest stars) for a TV episode.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -640,8 +654,13 @@ class TV_Episodes(TMDB):
 
     def external_ids(self, **kwargs):
         """
-        Get the external ids for a TV episode by combination of a season and
-        episode number.
+        Get the external ids for a TV episode. We currently support the
+        following external sources.
+
+        External Sources: IMDb ID, TVDB ID, Freebase MID*, Freebase ID*, TVRage
+        ID*
+        
+        *Defunct or no longer available as a service.
 
         Args:
             language: (optional) ISO 639 code.
@@ -658,9 +677,13 @@ class TV_Episodes(TMDB):
 
     def images(self, **kwargs):
         """
-        Get the images (episode stills) for a TV episode by combination of a
-        season and episode number. Since episode stills don't have a language,
-        this call will always return all images.
+        Get the images that belong to a TV episode.
+
+        Querying images with a language parameter will filter the results. If
+        you want to include a fallback language (especially useful for
+        backdrops) you can use the include_image_language parameter. This
+        should be a comma seperated value like so:
+        include_image_language=en,null.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -712,8 +735,7 @@ class TV_Episodes(TMDB):
 
     def videos(self, **kwargs):
         """
-        Get the videos that have been added to a TV episode (teasers, clips,
-        etc...).
+        Get the videos that have been added to a TV episode.
 
         Args:
             language: (optional) ISO 639 code.
@@ -745,7 +767,8 @@ class TV_Episode_Groups(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the details of a TV episode group. Groups support 7 different types which are enumerated as the following:
+        Get the details of a TV episode group. Groups support 7 different types
+        which are enumerated as the following:
             1. Original air date
             2. Absolute
             3. DVD
@@ -788,11 +811,16 @@ class TV_Changes(TMDB):
 
     def series(self, **kwargs):
         """
-        Get the changes for a specific series id.
+        Get the changes for a TV show. By default only the last 24 hours are returned.
 
-        Changes are grouped by key, and ordered by date in descending order.
-        By default, only the last 24 hours of changes are returned. The
-        maximum number of days that can be returned in a single request is 14.
+        You can query up to 14 days in a single query by using the start_date
+        and end_date query parameters.
+
+        TV show changes are different than movie changes in that there are some
+        edits on seasons and episodes that will create a change entry at the
+        show level. These can be found under the season and episode keys. These
+        keys will contain a series_id and episode_id. You can use the season
+        changes and episode changes methods to look these up individually.
 
         Args:
             start_date: (optional) Expected format is 'YYYY-MM-DD'.
@@ -810,11 +838,10 @@ class TV_Changes(TMDB):
 
     def season(self, **kwargs):
         """
-        Get the changes for a specific season id.
+        Get the changes for a TV season. By default only the last 24 hours are returned.
 
-        Changes are grouped by key, and ordered by date in descending order.
-        By default, only the last 24 hours of changes are returned. The
-        maximum number of days that can be returned in a single request is 14.
+        You can query up to 14 days in a single query by using the start_date
+        and end_date query parameters.
 
         Args:
             start_date: (optional) Expected format is 'YYYY-MM-DD'.
@@ -832,11 +859,10 @@ class TV_Changes(TMDB):
 
     def episode(self, **kwargs):
         """
-        Get the changes for a specific episode id.
+        Get the changes for a TV episode. By default only the last 24 hours are returned.
 
-        Changes are grouped by key, and ordered by date in descending order.
-        By default, only the last 24 hours of changes are returned. The
-        maximum number of days that can be returned in a single request is 14.
+        You can query up to 14 days in a single query by using the start_date
+        and end_date query parameters.
 
         Args:
             start_date: (optional) Expected format is 'YYYY-MM-DD'.
