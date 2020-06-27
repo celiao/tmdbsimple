@@ -20,7 +20,7 @@ setup(
     url = 'https://github.com/celiao/tmdbsimple',
     download_url = 'https://github.com/celiao/tmdbsimple/tarball/2.3.2',
     packages = ['tmdbsimple'],
-    long_description=read('README.rst'),
+    long_description=read('README.md'),
     install_requires = ['requests'],
     classifiers = [
         "Development Status :: 5 - Production/Stable",
