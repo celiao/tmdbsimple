@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
 # See http://pythonhosted.org/an_example_pypi_project/setuptools.html
+# See https://packaging.python.org/tutorials/packaging-projects/#uploading-your-project-to-pypi
 
 import os
 from setuptools import setup
 
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
-# requests[security]: http://stackoverflow.com/questions/29134512/insecureplatformwarning-a-true-sslcontext-object-is-not-available-this-prevent/29202163#29202163
 setup(
     name = 'tmdbsimple',
     version = '2.3.3',
@@ -20,7 +20,8 @@ setup(
     url = 'https://github.com/celiao/tmdbsimple',
     download_url = 'https://github.com/celiao/tmdbsimple/tarball/2.3.3',
     packages = ['tmdbsimple'],
-    long_description=read('README.md'),
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     install_requires = ['requests'],
     classifiers = [
         "Development Status :: 5 - Production/Stable",
