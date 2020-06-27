@@ -141,16 +141,17 @@ class AuthenticationTestCase(unittest.TestCase):
         success = True
         auth = tmdb.Authentication()
         response = auth.token_new()
-        #print(auth.request_token)
         self.assertEqual(auth.success, success)
 
+        # Example usage only.
+        # User needs to approve request token, so would error here.
+        # See https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id.
         # test_authentication_session_new(self):
-        kwargs = {'request_token': auth.request_token}
-        success = True
-        auth = tmdb.Authentication()
-        response = auth.session_new(**kwargs)
-        #print(auth.session_id)
-        self.assertEqual(auth.success, success)
+        #kwargs = {'request_token': auth.request_token}
+        #success = True
+        #auth = tmdb.Authentication()
+        #response = auth.session_new(**kwargs)
+        #self.assertEqual(auth.success, success)
 
         # test_authentication_token_validate_with_login(self):
         kwargs = {

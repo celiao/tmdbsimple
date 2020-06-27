@@ -55,7 +55,7 @@ class TVTestCase(unittest.TestCase):
     def test_tv_account_states(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.account_states()
+        response = tv.account_states(session_id=SESSION_ID)
         self.assertTrue(hasattr(tv, 'rated'))
 
     def test_tv_alternative_titles(self):
@@ -185,7 +185,7 @@ class TVSeasonsTestCase(unittest.TestCase):
         season_number = TV_SEASON_NUMBER
         name = TV_SEASON_NAME
         tv_seasons = tmdb.TV_Seasons(series_id, season_number)
-        response = tv_seasons.account_states()
+        response = tv_seasons.account_states(session_id=SESSION_ID)
         self.assertTrue(hasattr(tv_seasons, 'results'))
 
     def test_tv_seasons_credits(self):
@@ -234,7 +234,7 @@ class TVEpisodesTestCase(unittest.TestCase):
         episode_number = TV_EPISODE_NUMBER
         name = TV_EPISODE_NAME
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episode.account_states()
+        response = tv_episode.account_states(session_id=SESSION_ID)
         self.assertTrue(hasattr(tv_episode, 'rated'))
 
     def test_tv_episodes_credits(self):
