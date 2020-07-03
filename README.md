@@ -1,6 +1,8 @@
 tmdbsimple
 ==========
 
+![Python package](https://github.com/celiao/tmdbsimple/workflows/Python%20package/badge.svg)
+
 A wrapper for The Movie Database API v3
 ---------------------------------------
 *tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb) API
