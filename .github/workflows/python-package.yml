@@ -37,5 +37,10 @@ jobs:
 #        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
 #        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
+      env:
+        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        TMDB_USERNAME: ${{ secrets.TMDB_USERNAME }}
+        TMDB_PASSWORD: ${{ secrets.TMDB_PASSWORD }}
+        TMDB_SESSION_ID: ${{ secrets.TMDB_SESSION_ID }}
       run: |
         pytest
