@@ -1,7 +1,7 @@
 tmdbsimple
 ==========
 
-![Python package](https://github.com/celiao/tmdbsimple/workflows/Python%20package/badge.svg)
+![Python package](https://github.com/celiao/tmdbsimple/workflows/build/badge.svg)
 
 A wrapper for The Movie Database API v3
 ---------------------------------------
