@@ -3,7 +3,6 @@
 *.py.swo
 *.egg-info
 __pycache__
-keys.py
 build
 dist
 
