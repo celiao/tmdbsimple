@@ -49,125 +49,124 @@ class TVTestCase(unittest.TestCase):
         id = TV_ID
         name = TV_NAME
         tv = tmdb.TV(id)
-        response = tv.info()
+        tv.info()
         self.assertEqual(tv.name, name)
 
     def test_tv_account_states(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.account_states(session_id=SESSION_ID)
+        tv.account_states(session_id=SESSION_ID)
         self.assertTrue(hasattr(tv, 'rated'))
 
     def test_tv_alternative_titles(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.alternative_titles()
+        tv.alternative_titles()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_content_ratings(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.content_ratings()
+        tv.content_ratings()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_credits(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.credits()
+        tv.credits()
         self.assertTrue(hasattr(tv, 'cast'))
 
     def test_tv_episode_groups(self):
         id = TV_ID
-        imdb_id = TV_IMDB_ID
         tv = tmdb.TV(id)
-        response = tv.episode_groups()
+        tv.episode_groups()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_external_ids(self):
         id = TV_ID
         imdb_id = TV_IMDB_ID
         tv = tmdb.TV(id)
-        response = tv.external_ids()
+        tv.external_ids()
         self.assertEqual(tv.imdb_id, imdb_id)
 
     def test_tv_images(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.images()
+        tv.images()
         self.assertTrue(hasattr(tv, 'backdrops'))
 
     def test_tv_keywords(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.keywords()
+        tv.keywords()
         self.assertTrue(hasattr(tv, 'keywords'))
 
     def test_tv_recommendations(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.recommendations()
+        tv.recommendations()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_reviews(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.reviews()
+        tv.reviews()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_screened_theatrically(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.screened_theatrically()
+        tv.screened_theatrically()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_similar(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.similar()
+        tv.similar()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_translations(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.translations()
+        tv.translations()
         self.assertTrue(hasattr(tv, 'translations'))
 
     def test_tv_videos(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        response = tv.videos()
+        tv.videos()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_rating(self):
         id = TV_ID
         status_code = SUCCESSFUL_UPDATE
         tv = tmdb.TV(id)
-        response = tv.rating(session_id=SESSION_ID, value=RATING)
+        tv.rating(session_id=SESSION_ID, value=RATING)
         self.assertEqual(tv.status_code, status_code)
 
     def test_tv_latest(self):
         tv = tmdb.TV()
-        response = tv.latest()
+        tv.latest()
         self.assertTrue(hasattr(tv, 'first_air_date'))
 
     def test_tv_airing_today(self):
         tv = tmdb.TV()
-        response = tv.airing_today()
+        tv.airing_today()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_on_the_air(self):
         tv = tmdb.TV()
-        response = tv.on_the_air()
+        tv.on_the_air()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_popular(self):
         tv = tmdb.TV()
-        response = tv.popular()
+        tv.popular()
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_top_rated(self):
         tv = tmdb.TV()
-        response = tv.top_rated()
+        tv.top_rated()
         self.assertTrue(hasattr(tv, 'results'))
 
 
@@ -177,22 +176,21 @@ class TVSeasonsTestCase(unittest.TestCase):
         season_number = TV_SEASON_NUMBER
         name = TV_SEASON_NAME
         tv_seasons = tmdb.TV_Seasons(series_id, season_number)
-        response = tv_seasons.info()
+        tv_seasons.info()
         self.assertEqual(tv_seasons.name, name)
 
     def test_tv_seasons_account_states(self):
         series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
-        name = TV_SEASON_NAME
         tv_seasons = tmdb.TV_Seasons(series_id, season_number)
-        response = tv_seasons.account_states(session_id=SESSION_ID)
+        tv_seasons.account_states(session_id=SESSION_ID)
         self.assertTrue(hasattr(tv_seasons, 'results'))
 
     def test_tv_seasons_credits(self):
         series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
         tv_seasons = tmdb.TV_Seasons(series_id, season_number)
-        response = tv_seasons.credits()
+        tv_seasons.credits()
         self.assertTrue(hasattr(tv_seasons, 'crew'))
 
     def test_tv_seasons_external_ids(self):
@@ -200,21 +198,21 @@ class TVSeasonsTestCase(unittest.TestCase):
         season_number = TV_SEASON_NUMBER
         tvdb_id = TV_SEASON_TVDB_ID
         tv_seasons = tmdb.TV_Seasons(series_id, season_number)
-        response = tv_seasons.external_ids()
+        tv_seasons.external_ids()
         self.assertEqual(tv_seasons.tvdb_id, tvdb_id)
 
     def test_tv_seasons_images(self):
         series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
         tv_seasons = tmdb.TV_Seasons(series_id, season_number)
-        response = tv_seasons.images()
+        tv_seasons.images()
         self.assertTrue(hasattr(tv_seasons, 'posters'))
 
     def test_tv_seasons_videos(self):
         series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
         tv_seasons = tmdb.TV_Seasons(series_id, season_number)
-        response = tv_seasons.videos()
+        tv_seasons.videos()
         self.assertTrue(hasattr(tv_seasons, 'results'))
 
 
@@ -225,16 +223,15 @@ class TVEpisodesTestCase(unittest.TestCase):
         episode_number = TV_EPISODE_NUMBER
         name = TV_EPISODE_NAME
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episode.info()
+        tv_episode.info()
         self.assertEqual(tv_episode.name, name)
 
     def test_tv_episodes_account_states(self):
         series_id = TV_ID
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
-        name = TV_EPISODE_NAME
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episode.account_states(session_id=SESSION_ID)
+        tv_episode.account_states(session_id=SESSION_ID)
         self.assertTrue(hasattr(tv_episode, 'rated'))
 
     def test_tv_episodes_credits(self):
@@ -242,7 +239,7 @@ class TVEpisodesTestCase(unittest.TestCase):
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episode.credits()
+        tv_episode.credits()
         self.assertTrue(hasattr(tv_episode, 'guest_stars'))
 
     def test_tv_episodes_external_ids(self):
@@ -251,7 +248,7 @@ class TVEpisodesTestCase(unittest.TestCase):
         episode_number = TV_EPISODE_NUMBER
         imdb_id = TV_EPISODE_IMDB_ID
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episode.external_ids()
+        tv_episode.external_ids()
         self.assertEqual(tv_episode.imdb_id, imdb_id)
 
     def test_tv_episodes_images(self):
@@ -259,7 +256,7 @@ class TVEpisodesTestCase(unittest.TestCase):
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episode.images()
+        tv_episode.images()
         self.assertTrue(hasattr(tv_episode, 'stills'))
 
     def test_tv_episodes_translations(self):
@@ -267,7 +264,7 @@ class TVEpisodesTestCase(unittest.TestCase):
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episode.translations()
+        tv_episode.translations()
         self.assertTrue(hasattr(tv_episode, 'translations'))
 
     def test_tv_episodes_rating(self):
@@ -276,16 +273,15 @@ class TVEpisodesTestCase(unittest.TestCase):
         episode_number = TV_EPISODE_NUMBER
         status_code = SUCCESSFUL_UPDATE
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episode.rating(session_id=SESSION_ID, value=RATING)
+        tv_episode.rating(session_id=SESSION_ID, value=RATING)
         self.assertEqual(tv_episode.status_code, status_code)
 
     def test_tv_episodes_videos(self):
         series_id = TV_ID
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
-        status_code = SUCCESSFUL_UPDATE
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
-        response = tv_episode.videos()
+        tv_episode.videos()
         self.assertTrue(hasattr(tv_episode, 'results'))
 
 
@@ -293,7 +289,7 @@ class TVEpisodeGroupsTestCase(unittest.TestCase):
     def test_tv_episode_groups_info(self):
         tv_episode_group_id = TV_EPISODE_GROUP_ID
         tv_episode_group = tmdb.TV_Episode_Groups(tv_episode_group_id)
-        response = tv_episode_group.info()
+        tv_episode_group.info()
         self.assertTrue(hasattr(tv_episode_group, 'groups'))
 
 
@@ -301,19 +297,19 @@ class TVChangesTestCase(unittest.TestCase):
     def test_series_changes(self):
         id = TV_ID
         tv_changes = tmdb.TV_Changes(id)
-        response = tv_changes.series()
+        tv_changes.series()
         self.assertTrue(hasattr(tv_changes, 'changes'))
 
     def test_season_changes(self):
         id = TV_SEASON_ID
         tv_changes = tmdb.TV_Changes(id)
-        response = tv_changes.season()
+        tv_changes.season()
         self.assertTrue(hasattr(tv_changes, 'changes'))
 
     def test_episode_changes(self):
         id = TV_EPISODE_ID
         tv_changes = tmdb.TV_Changes(id)
-        response = tv_changes.episode()
+        tv_changes.episode()
         self.assertTrue(hasattr(tv_changes, 'changes'))
 
 
@@ -322,18 +318,17 @@ class NetworksTestCase(unittest.TestCase):
         id = NETWORK_ID
         name = NETWORK_NAME
         network = tmdb.Networks(id)
-        response = network.info()
+        network.info()
         self.assertEqual(network.name, name)
 
     def test_networks_alternative_names(self):
         id = NETWORK_ID
         network = tmdb.Networks(id)
-        response = network.alternative_names()
+        network.alternative_names()
         self.assertTrue(hasattr(network, 'results'))
 
     def test_networks_images(self):
         id = NETWORK_ID
         network = tmdb.Networks(id)
-        response = network.images()
+        network.images()
         self.assertTrue(hasattr(network, 'logos'))
-

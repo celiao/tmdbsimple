@@ -22,6 +22,8 @@ API_KEY = ''
 or include it in a keys.py file.
 """
 try:
-    from .keys import *
+    from .keys import API_KEY, USERNAME, PASSWORD, SESSION_ID
 except ImportError:
     pass
+
+__all__ = ['API_KEY', 'USERNAME', 'PASSWORD', 'SESSION_ID']

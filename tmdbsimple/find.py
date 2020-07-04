@@ -13,6 +13,7 @@ Created by Celia Oakley on 2013-10-31.
 
 from .base import TMDB
 
+
 class Find(TMDB):
     """
     Find functionality.
@@ -23,6 +24,7 @@ class Find(TMDB):
     URLS = {
         'info': '/{id}',
     }
+
     def __init__(self, id=0):
         super(Find, self).__init__()
         self.id = id
@@ -63,6 +65,7 @@ class Trending(TMDB):
     URLS = {
         'info': '/{media_type}/{time_window}',
     }
+
     def __init__(self, media_type='all', time_window='day'):
         super(Trending, self).__init__()
         self.media_type = media_type

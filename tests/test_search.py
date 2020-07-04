@@ -29,45 +29,46 @@ QUERY_6 = 'Sony Pictures'
 QUERY_7 = 'fight'
 QUERY_8 = 'blackjack'
 
+
 class SearchTestCase(unittest.TestCase):
     def test_search_company(self):
         query = QUERY_6
         search = tmdb.Search()
-        response = search.company(query=query)
+        search.company(query=query)
         self.assertTrue(hasattr(search, 'results'))
 
     def test_search_collection(self):
         query = QUERY_2
         search = tmdb.Search()
-        response = search.collection(query=query)
+        search.collection(query=query)
         self.assertTrue(hasattr(search, 'results'))
 
     def test_search_keyword(self):
         query = QUERY_7
         search = tmdb.Search()
-        response = search.keyword(query=query)
+        search.keyword(query=query)
         self.assertTrue(hasattr(search, 'results'))
 
     def test_search_movie(self):
         query = QUERY_1
         search = tmdb.Search()
-        response = search.movie(query=query)
+        search.movie(query=query)
         self.assertTrue(hasattr(search, 'results'))
 
     def test_search_multi(self):
         query = QUERY_8
         search = tmdb.Search()
-        response = search.multi(query=query)
+        search.multi(query=query)
         self.assertTrue(hasattr(search, 'results'))
 
     def test_search_person(self):
         query = QUERY_4
         search = tmdb.Search()
-        response = search.person(query=query)
+        search.person(query=query)
         self.assertTrue(hasattr(search, 'results'))
 
     def test_search_tv(self):
         query = QUERY_3
         search = tmdb.Search()
-        response = search.tv(query=query)
+        search.tv(query=query)
         self.assertTrue(hasattr(search, 'results'))

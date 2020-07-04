@@ -15,7 +15,7 @@ Created by Celia Oakley on 2018-01-06
 import unittest
 import tmdbsimple as tmdb
 
-from tests import API_KEY, USERNAME, PASSWORD
+from tests import API_KEY
 tmdb.API_KEY = API_KEY
 
 """
@@ -25,6 +25,7 @@ MOVIE_ID = 103332
 MOVIEQUERY1 = 'Matrix'
 MOVIEQUERY2 = 'Star Wars'
 
+
 class TMDBTestCase(unittest.TestCase):
     # We want to be able to call methods multiple times.
     # If a method returns a dict with a key of the same name as the method,
@@ -33,11 +34,11 @@ class TMDBTestCase(unittest.TestCase):
     def test_tmdb_set_attrs_to_values_method_equals_attribute(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
-        response = movie.keywords()
+        movie.keywords()
         raised = False
         try:
             movie.keywords()
-        except:
+        except Exception:
             raised = True
         self.assertFalse(raised)
 
@@ -45,8 +46,8 @@ class TMDBTestCase(unittest.TestCase):
     # that the attributes are updated.
     def test_tmdb_set_attrs_to_values_attribute_multiple_calls(self):
         search = tmdb.Search()
-        response = search.movie(query=MOVIEQUERY1)
+        search.movie(query=MOVIEQUERY1)
         title1 = search.results[0]['original_title']
-        response = search.movie(query=MOVIEQUERY2)
+        search.movie(query=MOVIEQUERY2)
         title2 = search.results[0]['original_title']
         self.assertNotEqual(title1, title2)

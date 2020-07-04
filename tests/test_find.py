@@ -34,7 +34,7 @@ class FindTestCase(unittest.TestCase):
         external_source = FIND_SOURCE
         title = FIND_TITLE
         find = tmdb.Find(id)
-        response = find.info(external_source=external_source)
+        find.info(external_source=external_source)
         self.assertEqual(find.movie_results[0]['title'], title)
 
 
@@ -43,5 +43,5 @@ class TrendingTestCase(unittest.TestCase):
         media_type = TRENDING_MEDIA_TYPE
         time_window = TRENDING_TIME_WINDOW
         trend = tmdb.Trending(media_type=media_type, time_window=time_window)
-        response = trend.info()
+        trend.info()
         self.assertEqual(trend.results[0]['media_type'], TRENDING_MEDIA_TYPE)

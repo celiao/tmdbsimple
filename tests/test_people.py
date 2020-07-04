@@ -32,65 +32,65 @@ class PeopleTestCase(unittest.TestCase):
         id = PEOPLE_ID
         name = PEOPLE_NAME
         person = tmdb.People(id)
-        response = person.info()
+        person.info()
         self.assertEqual(person.name, name)
 
     def test_people_changes(self):
         id = PEOPLE_ID
         person = tmdb.People(id)
-        response = person.changes()
+        person.changes()
         self.assertTrue(hasattr(person, 'changes'))
 
     def test_people_movie_credits(self):
         id = PEOPLE_ID
         person = tmdb.People(id)
-        response = person.movie_credits()
+        person.movie_credits()
         self.assertTrue(hasattr(person, 'cast'))
 
     def test_people_tv_credits(self):
         id = PEOPLE_ID
         person = tmdb.People(id)
-        response = person.tv_credits()
+        person.tv_credits()
         self.assertTrue(hasattr(person, 'cast'))
 
     def test_people_combined_credits(self):
         id = PEOPLE_ID
         person = tmdb.People(id)
-        response = person.combined_credits()
+        person.combined_credits()
         self.assertTrue(hasattr(person, 'cast'))
 
     def test_people_external_ids(self):
         id = PEOPLE_ID
         person = tmdb.People(id)
-        response = person.external_ids()
+        person.external_ids()
         self.assertTrue(hasattr(person, 'tvrage_id'))
 
     def test_people_images(self):
         id = PEOPLE_ID
         person = tmdb.People(id)
-        response = person.images()
+        person.images()
         self.assertTrue(hasattr(person, 'profiles'))
 
     def test_people_tagged_images(self):
         id = PEOPLE_ID
         person = tmdb.People(id)
-        response = person.tagged_images()
+        person.tagged_images()
         self.assertTrue(hasattr(person, 'results'))
 
     def test_people_translations(self):
         id = PEOPLE_ID
         person = tmdb.People(id)
-        response = person.translations()
+        person.translations()
         self.assertTrue(hasattr(person, 'translations'))
 
     def test_people_latest(self):
         person = tmdb.People()
-        response = person.latest()
+        person.latest()
         self.assertTrue(hasattr(person, 'name'))
 
     def test_people_popular(self):
         person = tmdb.People()
-        response = person.popular()
+        person.popular()
         self.assertTrue(hasattr(person, 'results'))
 
 
@@ -99,13 +99,12 @@ class CreditsTestCase(unittest.TestCase):
         id = CREDITS_ID
         department = CREDITS_DEPARTMENT
         credit = tmdb.Credits(id)
-        response = credit.info()
+        credit.info()
         self.assertEqual(credit.department, department)
 
 
 class JobsTestCase(unittest.TestCase):
     def test_jobs_list(self):
         lst = tmdb.Jobs()
-        response = lst.list()
+        lst.list()
         self.assertTrue(hasattr(lst, 'jobs'))
-

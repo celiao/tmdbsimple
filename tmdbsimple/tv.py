@@ -14,6 +14,7 @@ Created by Celia Oakley on 2013-10-31.
 
 from .base import TMDB
 
+
 class TV(TMDB):
     """
     TV functionality.
@@ -659,7 +660,7 @@ class TV_Episodes(TMDB):
 
         External Sources: IMDb ID, TVDB ID, Freebase MID*, Freebase ID*, TVRage
         ID*
-        
+
         *Defunct or no longer available as a service.
 
         Args:
@@ -775,7 +776,7 @@ class TV_Episode_Groups(TMDB):
             4. Digital
             5. Story arc
             6. Production
-            7. TV        
+            7. TV
 
         Args:
             language: (optional) ISO 639 code.

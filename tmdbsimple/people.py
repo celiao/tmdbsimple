@@ -3,7 +3,7 @@
 """
 tmdbsimple.people
 ~~~~~~~~~~~~~~~~~
-This module implements the People, Credits, and Jobs functionality 
+This module implements the People, Credits, and Jobs functionality
 of tmdbsimple.
 
 Created by Celia Oakley on 2013-10-31.
@@ -13,6 +13,7 @@ Created by Celia Oakley on 2013-10-31.
 """
 
 from .base import TMDB
+
 
 class People(TMDB):
     """
@@ -223,6 +224,7 @@ class People(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+
 class Credits(TMDB):
     """
     Credits functionality.
@@ -254,6 +256,7 @@ class Credits(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+
 class Jobs(TMDB):
     """
     Jobs functionality.
@@ -277,4 +280,3 @@ class Jobs(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
-        

@@ -3,7 +3,7 @@
 """
 tmdbsimple.account
 ~~~~~~~~~~~~~~~~~~
-This module implements the Account, Authentication, and Lists functionality 
+This module implements the Account, Authentication, and Lists functionality
 of tmdbsimple.
 
 Created by Celia Oakley on 2013-10-31.
@@ -25,7 +25,7 @@ class Account(TMDB):
     BASE_PATH = 'account'
     URLS = {
         'info': '',
-        'lists': '/{id}/lists', 
+        'lists': '/{id}/lists',
         'favorite_movies': '/{id}/favorite/movies',
         'favorite_tv': '/{id}/favorite/tv',
         'favorite': '/{id}/favorite',
@@ -57,7 +57,7 @@ class Account(TMDB):
         self.id = response['id']
         self._set_attrs_to_values(response)
         return response
-        
+
     def lists(self, **kwargs):
         """
         Get all of the lists created by an account. Will include private lists if you are the owner.
@@ -130,8 +130,8 @@ class Account(TMDB):
         kwargs.update({'session_id': self.session_id})
 
         payload = {
-            'media_type': kwargs.pop('media_type', None), 
-            'media_id': kwargs.pop('media_id', None), 
+            'media_type': kwargs.pop('media_type', None),
+            'media_id': kwargs.pop('media_id', None),
             'favorite': kwargs.pop('favorite', None),
         }
 
@@ -250,14 +250,15 @@ class Account(TMDB):
         kwargs.update({'session_id': self.session_id})
 
         payload = {
-            'media_type': kwargs.pop('media_type', None), 
-            'media_id': kwargs.pop('media_id', None), 
+            'media_type': kwargs.pop('media_type', None),
+            'media_id': kwargs.pop('media_id', None),
             'watchlist': kwargs.pop('watchlist', None),
         }
 
         response = self._POST(path, kwargs, payload)
         self._set_attrs_to_values(response)
         return response
+
 
 class Authentication(TMDB):
     """
@@ -268,9 +269,9 @@ class Authentication(TMDB):
     """
     BASE_PATH = 'authentication'
     URLS = {
-        'guest_session_new': '/guest_session/new', 
+        'guest_session_new': '/guest_session/new',
         'token_new': '/token/new',
-        'session_new': '/session/new', 
+        'session_new': '/session/new',
         'token_validate_with_login': '/token/validate_with_login',
     }
 
@@ -400,7 +401,7 @@ class GuestSessions(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
- 
+
     def rated_tv(self, **kwargs):
         """
         Get the rated TV shows for a guest session.
@@ -418,7 +419,7 @@ class GuestSessions(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
- 
+
     def rated_tv_episodes(self, **kwargs):
         """
         Get the rated TV episodes for a guest session.
@@ -436,7 +437,7 @@ class GuestSessions(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
- 
+
 
 class Lists(TMDB):
     """
@@ -447,7 +448,7 @@ class Lists(TMDB):
     BASE_PATH = 'list'
     URLS = {
         'info': '/{id}',
-        'item_status': '/{id}/item_status', 
+        'item_status': '/{id}/item_status',
         'create_list': '',
         'add_item': '/{id}/add_item',
         'remove_item': '/{id}/remove_item',
@@ -505,7 +506,7 @@ class Lists(TMDB):
         kwargs.update({'session_id': self.session_id})
 
         payload = {
-            'name': kwargs.pop('name', None), 
+            'name': kwargs.pop('name', None),
             'description': kwargs.pop('description', None),
         }
         if 'language' in kwargs:
@@ -529,13 +530,13 @@ class Lists(TMDB):
         kwargs.update({'session_id': self.session_id})
 
         payload = {
-            'media_id': kwargs.pop('media_id', None), 
+            'media_id': kwargs.pop('media_id', None),
         }
 
         response = self._POST(path, kwargs, payload)
         self._set_attrs_to_values(response)
         return response
-        
+
     def remove_item(self, **kwargs):
         """
         Remove a movie from a list.
@@ -550,7 +551,7 @@ class Lists(TMDB):
         kwargs.update({'session_id': self.session_id})
 
         payload = {
-            'media_id': kwargs.pop('media_id', None), 
+            'media_id': kwargs.pop('media_id', None),
         }
 
         response = self._POST(path, kwargs, payload)

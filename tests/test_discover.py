@@ -28,20 +28,18 @@ DISCOVER_VOTE_AVERAGE_GTE = 5
 class DiscoverTestCase(unittest.TestCase):
     def test_discover_movie(self):
         discover = tmdb.Discover()
-        response = discover.movie(page=1, year=DISCOVER_YEAR)
+        discover.movie(page=1, year=DISCOVER_YEAR)
         self.assertTrue(hasattr(discover, 'results'))
 
     # Test dot usage
     def test_discover_tv_dot(self):
         discover = tmdb.Discover()
-        kwargs = {'page':2, 'vote_average.gte': DISCOVER_VOTE_AVERAGE_GTE}
-        response = discover.tv(**kwargs)
+        kwargs = {'page': 2, 'vote_average.gte': DISCOVER_VOTE_AVERAGE_GTE}
+        discover.tv(**kwargs)
         self.assertTrue(hasattr(discover, 'results'))
 
     # Test underscore usage
     def test_discover_tv_underscore(self):
         discover = tmdb.Discover()
-        response = discover.tv(page=2, 
-			vote_average_gte=DISCOVER_VOTE_AVERAGE_GTE)
+        discover.tv(page=2, vote_average_gte=DISCOVER_VOTE_AVERAGE_GTE)
         self.assertTrue(hasattr(discover, 'results'))
-

@@ -14,6 +14,7 @@ Created by Celia Oakley on 2013-10-31.
 
 from .base import TMDB
 
+
 class Movies(TMDB):
     """
     Movies functionality.
@@ -42,8 +43,8 @@ class Movies(TMDB):
         'popular': '/popular',
         'top_rated': '/top_rated',
         'upcoming': '/upcoming',
-        'rating': '/{id}/rating',     # backward compatability
-        'releases': '/{id}/releases', # backward compatability
+        'rating': '/{id}/rating',       # backward compatability
+        'releases': '/{id}/releases',   # backward compatability
     }
 
     def __init__(self, id=0):
@@ -542,6 +543,7 @@ class Collections(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+
 class Companies(TMDB):
     """
     Companies functionality.
@@ -553,7 +555,7 @@ class Companies(TMDB):
         'info': '/{id}',
         'alternative_names': '/{id}/alternative_names',
         'images': '/{id}/images',
-        'movies': '/{id}/movies', # backward compatability
+        'movies': '/{id}/movies',    # backward compatability
     }
 
     def __init__(self, id=0):
@@ -684,6 +686,7 @@ class Keywords(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
+
 
 class Reviews(TMDB):
     """

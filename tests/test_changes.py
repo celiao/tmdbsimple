@@ -22,15 +22,15 @@ tmdb.API_KEY = API_KEY
 class ChangesTestCase(unittest.TestCase):
     def test_changes_movie(self):
         changes = tmdb.Changes()
-        response = changes.movie()
+        changes.movie()
         self.assertTrue(hasattr(changes, 'results'))
 
     def test_changes_tv(self):
         change = tmdb.Changes()
-        response = change.tv()
+        change.tv()
         self.assertTrue(hasattr(change, 'results'))
 
     def test_changes_person(self):
         change = tmdb.Changes()
-        response = change.person()
+        change.person()
         self.assertTrue(hasattr(change, 'results'))
