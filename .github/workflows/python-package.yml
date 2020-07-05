@@ -45,6 +45,8 @@ jobs:
         TMDB_SESSION_ID: ${{ secrets.TMDB_SESSION_ID }}
       run: |
         pytest --cov=tmdbsimple --cov-report term-missing --cov-report=xml
-    - name: codecov.io
-      run: |
-        codecov
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage.xml
+        name: codecov-tmdbsimple
