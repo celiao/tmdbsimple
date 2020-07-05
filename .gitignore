@@ -9,11 +9,12 @@ dist
 # Make files
 Makefile
 
-# editors
+# Build files
+.coverage
+coverage.xml
+htmlcov
+
+# Editor files
 ## Vim files
 .*.swp
 .idea
-
-# other
-notes
-
