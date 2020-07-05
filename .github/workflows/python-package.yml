@@ -29,6 +29,7 @@ jobs:
         pip install flake8
         pip install pytest
         pip install pytest-cov
+        pip install codecov
         pip install requests
     - name: Lint with flake8
       run: |
@@ -44,3 +45,6 @@ jobs:
         TMDB_SESSION_ID: ${{ secrets.TMDB_SESSION_ID }}
       run: |
         pytest --cov=tmdbsimple --cov-report term-missing
+    - name: codecov.io
+      run: |
+        codecov
