@@ -44,7 +44,7 @@ jobs:
         TMDB_PASSWORD: ${{ secrets.TMDB_PASSWORD }}
         TMDB_SESSION_ID: ${{ secrets.TMDB_SESSION_ID }}
       run: |
-        pytest --cov=tmdbsimple --cov-report term-missing
+        pytest --cov=tmdbsimple --cov-report term-missing --cov-report=xml
     - name: codecov.io
       run: |
         codecov
