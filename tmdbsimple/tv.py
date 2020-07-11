@@ -346,6 +346,31 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def rating_delete(self, **kwargs):
+        """
+        Remove your rating for a TV show.
+
+        A valid session or guest session ID is required. You can read more
+        about how this works at
+        https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id.
+
+        Args:
+            session_id: see Authentication.
+            guest_session_id: see Authentication.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('rating')
+
+        payload = {
+            'value': kwargs.pop('value', None),
+        }
+
+        response = self._DELETE(path, kwargs, payload)
+        self._set_attrs_to_values(response)
+        return response
+
     def latest(self, **kwargs):
         """
         Get the most newly created TV show. This is a live response and will
@@ -731,6 +756,31 @@ class TV_Episodes(TMDB):
         }
 
         response = self._POST(path, kwargs, payload)
+        self._set_attrs_to_values(response)
+        return response
+
+    def rating_delete(self, **kwargs):
+        """
+        Remove your rating for a TV episode.
+
+        A valid session or guest session ID is required. You can read more
+        about how this works at
+        https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id.
+
+        Args:
+            session_id: see Authentication.
+            guest_session_id: see Authentication.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_tv_id_season_number_episode_number_path('rating')
+
+        payload = {
+            'value': kwargs.pop('value', None),
+        }
+
+        response = self._DELETE(path, kwargs, payload)
         self._set_attrs_to_values(response)
         return response
 

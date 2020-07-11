@@ -37,7 +37,9 @@ REVIEW_AUTHOR = 'Chris'
 """
 Status Codes
 """
+SUCCESSFUL_CREATE = 1
 SUCCESSFUL_UPDATE = 12
+SUCCESSFUL_DELETE = 13
 
 
 class MoviesTestCase(unittest.TestCase):
@@ -139,12 +141,17 @@ class MoviesTestCase(unittest.TestCase):
         movie.lists()
         self.assertTrue(hasattr(movie, 'results'))
 
-    def test_movies_rating(self):
+    def test_movies_rating_and_rating_delete(self):
+        status_code_create = SUCCESSFUL_CREATE
+        status_code_update = SUCCESSFUL_UPDATE
+        status_code_delete = SUCCESSFUL_DELETE
         id = MOVIE_ID
-        status_code = SUCCESSFUL_UPDATE
         movie = tmdb.Movies(id)
         movie.rating(session_id=SESSION_ID, value=RATING)
-        self.assertEqual(movie.status_code, status_code)
+        self.assertTrue(movie.status_code == status_code_create
+                        or movie.status_code == status_code_update)
+        movie.rating_delete(session_id=SESSION_ID)
+        self.assertEqual(movie.status_code, status_code_delete)
 
     def test_movies_latest(self):
         movie = tmdb.Movies()

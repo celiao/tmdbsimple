@@ -41,7 +41,9 @@ NETWORK_NAME = 'HBO'
 """
 Status codes and messages
 """
+SUCCESSFUL_CREATE = 1
 SUCCESSFUL_UPDATE = 12
+SUCCESSFUL_DELETE = 13
 
 
 class TVTestCase(unittest.TestCase):
@@ -137,12 +139,17 @@ class TVTestCase(unittest.TestCase):
         tv.videos()
         self.assertTrue(hasattr(tv, 'results'))
 
-    def test_tv_rating(self):
+    def test_tv_rating_and_rating_delete(self):
+        status_code_create = SUCCESSFUL_CREATE
+        status_code_update = SUCCESSFUL_UPDATE
+        status_code_delete = SUCCESSFUL_DELETE
         id = TV_ID
-        status_code = SUCCESSFUL_UPDATE
         tv = tmdb.TV(id)
         tv.rating(session_id=SESSION_ID, value=RATING)
-        self.assertEqual(tv.status_code, status_code)
+        self.assertTrue(tv.status_code, status_code_create
+                        or tv.status_code == status_code_update)
+        tv.rating_delete(session_id=SESSION_ID)
+        self.assertEqual(tv.status_code, status_code_delete)
 
     def test_tv_latest(self):
         tv = tmdb.TV()
@@ -268,13 +275,18 @@ class TVEpisodesTestCase(unittest.TestCase):
         self.assertTrue(hasattr(tv_episode, 'translations'))
 
     def test_tv_episodes_rating(self):
+        status_code_create = SUCCESSFUL_CREATE
+        status_code_update = SUCCESSFUL_UPDATE
+        status_code_delete = SUCCESSFUL_DELETE
         series_id = TV_ID
         season_number = TV_SEASON_NUMBER
         episode_number = TV_EPISODE_NUMBER
-        status_code = SUCCESSFUL_UPDATE
         tv_episode = tmdb.TV_Episodes(series_id, season_number, episode_number)
         tv_episode.rating(session_id=SESSION_ID, value=RATING)
-        self.assertEqual(tv_episode.status_code, status_code)
+        self.assertTrue(tv_episode.status_code == status_code_create
+                        or tv_episode.status_code == status_code_update)
+        tv_episode.rating_delete(session_id=SESSION_ID)
+        self.assertEqual(tv_episode.status_code, status_code_delete)
 
     def test_tv_episodes_videos(self):
         series_id = TV_ID
