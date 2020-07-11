@@ -449,10 +449,10 @@ class Lists(TMDB):
     URLS = {
         'info': '/{id}',
         'item_status': '/{id}/item_status',
-        'create_list': '',
+        'list_create': '',
         'add_item': '/{id}/add_item',
         'remove_item': '/{id}/remove_item',
-        'clear': '/{id}/clear',
+        'list_clear': '/{id}/clear',
     }
 
     def __init__(self, id=0, session_id=0):
@@ -490,7 +490,7 @@ class Lists(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def create_list(self, **kwargs):
+    def list_create(self, **kwargs):
         """
         Create a list.
 
@@ -502,7 +502,7 @@ class Lists(TMDB):
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_path('create_list')
+        path = self._get_path('list_create')
         kwargs.update({'session_id': self.session_id})
 
         payload = {
@@ -558,7 +558,7 @@ class Lists(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def clear_list(self, **kwargs):
+    def list_clear(self, **kwargs):
         """
         Clear all of the items from a list.
 
@@ -568,7 +568,7 @@ class Lists(TMDB):
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_id_path('clear')
+        path = self._get_id_path('list_clear')
         kwargs.update({'session_id': self.session_id})
 
         payload = {}

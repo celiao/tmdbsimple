@@ -222,7 +222,7 @@ class ListsTestCase(unittest.TestCase):
         }
         status_message = SUCCESS_PERIOD
         lst = tmdb.Lists(0, SESSION_ID)
-        lst.create_list(**kwargs)
+        lst.list_create(**kwargs)
         self.assertEqual(lst.status_message, status_message)
 
         list_id = lst.list_id
@@ -239,5 +239,5 @@ class ListsTestCase(unittest.TestCase):
 
         status_code = SUCCESSFUL_UPDATE
         lst = tmdb.Lists(list_id, SESSION_ID)
-        lst.clear_list(confirm='true')
+        lst.list_clear(confirm='true')
         self.assertEqual(lst.status_code, status_code)
