@@ -1,4 +1,5 @@
-# This workflows will upload tmdbsimple to PyPI using Twine when a tag (release) is pushed.
+# This workflows will upload tmdbsimple to PyPI using Twine when a tag
+# (release) is pushed.
 
 name: pypi
 
