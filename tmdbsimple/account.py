@@ -453,6 +453,7 @@ class Lists(TMDB):
         'add_item': '/{id}/add_item',
         'remove_item': '/{id}/remove_item',
         'list_clear': '/{id}/clear',
+        'list_delete': '/{id}',
     }
 
     def __init__(self, id=0, session_id=0):
@@ -514,6 +515,7 @@ class Lists(TMDB):
 
         response = self._POST(path, kwargs, payload)
         self._set_attrs_to_values(response)
+        self.id = self.list_id
         return response
 
     def add_item(self, **kwargs):
@@ -574,5 +576,21 @@ class Lists(TMDB):
         payload = {}
 
         response = self._POST(path, kwargs, payload)
+        self._set_attrs_to_values(response)
+        return response
+
+    def list_delete(self, **kwargs):
+        """
+        Delete a list.
+
+        Args:
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('list_delete')
+        kwargs.update({'session_id': self.session_id})
+
+        response = self._DELETE(path, kwargs)
         self._set_attrs_to_values(response)
         return response

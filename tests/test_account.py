@@ -35,9 +35,10 @@ LIST_ITEM_MEDIA_ID = 550
 """
 Status codes and messages
 """
-SUCCESSFUL_UPDATE = 12
-SUCCESSFUL_DELETE = 13
 SUCCESS_PERIOD = 'The item/record was created successfully.'
+SUCCESSFUL_UPDATE = 12
+SUCCESSFUL_REMOVE_ITEM = 13
+SUCCESSFUL_DELETE = 12
 
 
 class AccountTestCase(unittest.TestCase):
@@ -225,19 +226,21 @@ class ListsTestCase(unittest.TestCase):
         lst.list_create(**kwargs)
         self.assertEqual(lst.status_message, status_message)
 
-        list_id = lst.list_id
-
         status_code = SUCCESSFUL_UPDATE
-        lst = tmdb.Lists(list_id, SESSION_ID)
         lst.add_item(media_id=LIST_ITEM_MEDIA_ID)
         self.assertEqual(lst.status_code, status_code)
 
-        status_code = SUCCESSFUL_DELETE
-        lst = tmdb.Lists(list_id, SESSION_ID)
+        status_code = SUCCESSFUL_REMOVE_ITEM
         lst.remove_item(media_id=LIST_ITEM_MEDIA_ID)
         self.assertEqual(lst.status_code, status_code)
 
         status_code = SUCCESSFUL_UPDATE
-        lst = tmdb.Lists(list_id, SESSION_ID)
         lst.list_clear(confirm='true')
         self.assertEqual(lst.status_code, status_code)
+
+        # TODO: add list_delete check when list delete bug is fixed:
+        # https://www.themoviedb.org/talk/5e7bb85aeec4f30018aa327c#5f0b5ff91f98d100361f3037.
+        # Deletes list, but returns 500 error rather than 201.
+        #status_code = SUCCESSFUL_DELETE
+        #lst.list_delete()
+        #self.assertEqual(lst.status_code, status_code)

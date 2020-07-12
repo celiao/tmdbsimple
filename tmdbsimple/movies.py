@@ -38,12 +38,13 @@ class Movies(TMDB):
         'similar_movies': '/{id}/similar_movies',
         'reviews': '/{id}/reviews',
         'lists': '/{id}/lists',
+        'rating': '/{id}/rating',
+        'rating_delete': '/{id}/rating',
         'latest': '/latest',
         'now_playing': '/now_playing',
         'popular': '/popular',
         'top_rated': '/top_rated',
         'upcoming': '/upcoming',
-        'rating': '/{id}/rating',       # backward compatability
         'releases': '/{id}/releases',   # backward compatability
     }
 
@@ -374,7 +375,7 @@ class Movies(TMDB):
         Returns:
             A dict representation of the JSON returned from the API.
         """
-        path = self._get_id_path('rating')
+        path = self._get_id_path('rating_delete')
 
         payload = {
             'value': kwargs.pop('value', None),
