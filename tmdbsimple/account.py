@@ -382,7 +382,6 @@ class Authentication(TMDB):
         payload = {
             'session_id': kwargs.pop('session_id', None),
         }
-        print('payload =', payload)
 
         response = self._DELETE(path, kwargs, payload)
         self._set_attrs_to_values(response)
