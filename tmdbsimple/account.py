@@ -377,13 +377,14 @@ class Authentication(TMDB):
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_id_path('session_delete')
+        path = self._get_path('session_delete')
 
         payload = {
             'session_id': kwargs.pop('session_id', None),
         }
+        print('payload =', payload)
 
-        response = self._DELETE(path, kwargs)
+        response = self._DELETE(path, kwargs, payload)
         self._set_attrs_to_values(response)
         return response
 

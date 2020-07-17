@@ -165,6 +165,15 @@ class AuthenticationTestCase(unittest.TestCase):
         auth.token_validate_with_login(**kwargs)
         self.assertEqual(auth.success, success)
 
+        # Example usage only.
+        # Don't want to delete session every time test is run.
+        # test_session_delete(self):
+        # kwargs = {'session_id': SESSION_ID}
+        # success = True
+        # auth = tmdb.Authentication()
+        # response = auth.session_delete(**kwargs)
+        # self.assertEqual(auth.success, success)
+
 
 class GuestSessionsTestCase(unittest.TestCase):
     def test_guest_sessions_rated_movies(self):
