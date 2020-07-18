@@ -24,6 +24,7 @@ Constants
 MOVIE_ID = 103332
 MOVIEQUERY1 = 'Matrix'
 MOVIEQUERY2 = 'Star Wars'
+MOVIEQUERY3 = 'Kind'
 
 
 class TMDBTestCase(unittest.TestCase):
@@ -51,3 +52,12 @@ class TMDBTestCase(unittest.TestCase):
         search.movie(query=MOVIEQUERY2)
         title2 = search.results[0]['original_title']
         self.assertNotEqual(title1, title2)
+
+    # Confirm boolean parameters are handled properly in _get_params().
+    def test_tmdb_get_params_bool(self):
+        search = tmdb.Search()
+        search.movie(query=MOVIEQUERY3, include_adult=True)
+        total_results1 = search.total_results
+        search.movie(query=MOVIEQUERY3, include_adult='true')
+        total_results2 = search.total_results
+        self.assertEqual(total_results1, total_results2)
