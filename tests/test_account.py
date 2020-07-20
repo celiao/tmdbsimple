@@ -30,6 +30,7 @@ LIST_CREATED_BY = 'travisbell'
 LIST_MOVIE_ID = 76203    # Argo
 LIST_NAME = 'My newly created list'
 LIST_DESCRIPTION = 'No duplicates here'
+LIST_LANGUAGE = 'de'
 LIST_ITEM_MEDIA_ID = 550
 
 """
@@ -229,6 +230,7 @@ class ListsTestCase(unittest.TestCase):
         kwargs = {
             'name': LIST_NAME,
             'description': LIST_DESCRIPTION,
+            'language': LIST_LANGUAGE,
         }
         status_message = SUCCESS_PERIOD
         lst = tmdb.Lists(0, SESSION_ID)

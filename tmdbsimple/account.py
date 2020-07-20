@@ -530,9 +530,8 @@ class Lists(TMDB):
         payload = {
             'name': kwargs.pop('name', None),
             'description': kwargs.pop('description', None),
+            'language': kwargs.pop('language', None),
         }
-        if 'language' in kwargs:
-            payload['language'] = kwargs['language']
 
         response = self._POST(path, kwargs, payload)
         self._set_attrs_to_values(response)
