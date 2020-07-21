@@ -23,6 +23,7 @@ Constants
 """
 DISCOVER_YEAR = 2004
 DISCOVER_VOTE_AVERAGE_GTE = 5
+DISCOVER_VOTE_AVERAGE_LTE = 5
 
 
 class DiscoverTestCase(unittest.TestCase):
@@ -32,9 +33,27 @@ class DiscoverTestCase(unittest.TestCase):
         self.assertTrue(hasattr(discover, 'results'))
 
     # Test dot usage
-    def test_discover_tv_dot(self):
+    def test_discover_movie_dot_gte(self):
         discover = tmdb.Discover()
         kwargs = {'page': 2, 'vote_average.gte': DISCOVER_VOTE_AVERAGE_GTE}
+        discover.movie(**kwargs)
+        self.assertTrue(hasattr(discover, 'results'))
+
+    def test_discover_movie_dot_lte(self):
+        discover = tmdb.Discover()
+        kwargs = {'page': 2, 'vote_average.lte': DISCOVER_VOTE_AVERAGE_LTE}
+        discover.movie(**kwargs)
+        self.assertTrue(hasattr(discover, 'results'))
+
+    def test_discover_tv_dot_gte(self):
+        discover = tmdb.Discover()
+        kwargs = {'page': 2, 'vote_average.gte': DISCOVER_VOTE_AVERAGE_GTE}
+        discover.tv(**kwargs)
+        self.assertTrue(hasattr(discover, 'results'))
+
+    def test_discover_tv_dot_lte(self):
+        discover = tmdb.Discover()
+        kwargs = {'page': 2, 'vote_average.lte': DISCOVER_VOTE_AVERAGE_LTE}
         discover.tv(**kwargs)
         self.assertTrue(hasattr(discover, 'results'))
 
