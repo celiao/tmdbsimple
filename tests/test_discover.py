@@ -39,26 +39,23 @@ class DiscoverTestCase(unittest.TestCase):
         discover.movie(**kwargs)
         self.assertTrue(hasattr(discover, 'results'))
 
-    def test_discover_movie_dot_lte(self):
-        discover = tmdb.Discover()
-        kwargs = {'page': 2, 'vote_average.lte': DISCOVER_VOTE_AVERAGE_LTE}
-        discover.movie(**kwargs)
-        self.assertTrue(hasattr(discover, 'results'))
-
-    def test_discover_tv_dot_gte(self):
-        discover = tmdb.Discover()
-        kwargs = {'page': 2, 'vote_average.gte': DISCOVER_VOTE_AVERAGE_GTE}
-        discover.tv(**kwargs)
-        self.assertTrue(hasattr(discover, 'results'))
-
-    def test_discover_tv_dot_lte(self):
-        discover = tmdb.Discover()
-        kwargs = {'page': 2, 'vote_average.lte': DISCOVER_VOTE_AVERAGE_LTE}
-        discover.tv(**kwargs)
-        self.assertTrue(hasattr(discover, 'results'))
-
     # Test underscore usage
+    def test_discover_movie_underscore(self):
+        discover = tmdb.Discover()
+        discover.movie(page=2, vote_average_gte=DISCOVER_VOTE_AVERAGE_GTE)
+        self.assertTrue(hasattr(discover, 'results'))
+
+    def test_discover_movie_underscore(self):
+        discover = tmdb.Discover()
+        discover.movie(page=2, vote_average_lte=DISCOVER_VOTE_AVERAGE_LTE)
+        self.assertTrue(hasattr(discover, 'results'))
+
     def test_discover_tv_underscore(self):
         discover = tmdb.Discover()
         discover.tv(page=2, vote_average_gte=DISCOVER_VOTE_AVERAGE_GTE)
+        self.assertTrue(hasattr(discover, 'results'))
+
+    def test_discover_tv_underscore(self):
+        discover = tmdb.Discover()
+        discover.tv(page=2, vote_average_lte=DISCOVER_VOTE_AVERAGE_LTE)
         self.assertTrue(hasattr(discover, 'results'))
