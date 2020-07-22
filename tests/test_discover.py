@@ -40,22 +40,22 @@ class DiscoverTestCase(unittest.TestCase):
         self.assertTrue(hasattr(discover, 'results'))
 
     # Test underscore usage
-    def test_discover_movie_underscore(self):
+    def test_discover_movie_underscore_gte(self):
         discover = tmdb.Discover()
         discover.movie(page=2, vote_average_gte=DISCOVER_VOTE_AVERAGE_GTE)
         self.assertTrue(hasattr(discover, 'results'))
 
-    def test_discover_movie_underscore(self):
+    def test_discover_movie_underscore_lte(self):
         discover = tmdb.Discover()
         discover.movie(page=2, vote_average_lte=DISCOVER_VOTE_AVERAGE_LTE)
         self.assertTrue(hasattr(discover, 'results'))
 
-    def test_discover_tv_underscore(self):
+    def test_discover_tv_underscore_gte(self):
         discover = tmdb.Discover()
         discover.tv(page=2, vote_average_gte=DISCOVER_VOTE_AVERAGE_GTE)
         self.assertTrue(hasattr(discover, 'results'))
 
-    def test_discover_tv_underscore(self):
+    def test_discover_tv_underscore_lte(self):
         discover = tmdb.Discover()
         discover.tv(page=2, vote_average_lte=DISCOVER_VOTE_AVERAGE_LTE)
         self.assertTrue(hasattr(discover, 'results'))
