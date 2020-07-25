@@ -144,6 +144,8 @@ class Certifications(TMDB):
         """
         Get an up to date list of the officially supported movie certifications on TMDb.
 
+        Args:
+
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
@@ -156,6 +158,8 @@ class Certifications(TMDB):
     def tv_list(self, **kwargs):
         """
         Get an up to date list of the officially supported TV show certifications on TMDb.
+
+        Args:
 
         Returns:
             A dict respresentation of the JSON returned from the API.
