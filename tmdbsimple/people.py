@@ -244,7 +244,7 @@ class Credits(TMDB):
         Get a movie or TV credit details by id.
 
         Args:
-            language: (optional) ISO 639-1 code.
+            None
 
         Returns:
             A dict respresentation of the JSON returned from the API.
