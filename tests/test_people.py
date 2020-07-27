@@ -101,10 +101,3 @@ class CreditsTestCase(unittest.TestCase):
         credit = tmdb.Credits(id)
         credit.info()
         self.assertEqual(credit.department, department)
-
-
-class JobsTestCase(unittest.TestCase):
-    def test_jobs_list(self):
-        lst = tmdb.Jobs()
-        lst.list()
-        self.assertTrue(hasattr(lst, 'jobs'))

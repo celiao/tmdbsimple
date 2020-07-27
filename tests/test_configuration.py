@@ -100,11 +100,3 @@ class CertificationsTestCase(unittest.TestCase):
         certifications = tmdb.Certifications()
         certifications.list()
         self.assertTrue(hasattr(certifications, 'certifications'))
-
-
-class TimezonesTestCase(unittest.TestCase):
-    def test_timezones_list(self):
-        timezones = tmdb.Timezones()
-        response = timezones.list()
-        timezone_keys = list(response[0].keys())
-        self.assertEqual(timezone_keys[0], 'AD')
