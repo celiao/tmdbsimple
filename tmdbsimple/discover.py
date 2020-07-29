@@ -170,37 +170,71 @@ class Discover(TMDB):
         https://www.themoviedb.org/documentation/api/discover.
 
         Args:
-            page: (optional) Minimum 1, maximum 1000.
             language: (optional) ISO 639-1 code.
             sort_by: (optional) Available options are 'vote_average.desc',
                      'vote_average.asc', 'first_air_date.desc',
                      'first_air_date.asc', 'popularity.desc', 'popularity.asc'
-            first_air_year: (optional) Filter the results release dates to
-                            matches that include this value. Expected value
-                            is a year.
-            vote_count.gte or vote_count_gte: (optional) Only include TV shows
-                            that are equal to,
-                            or have vote count higher than this value. Expected
-                            value is an integer.
-            vote_average.gte or vote_average_gte: (optional) Only include TV
-                              shows that are equal
-                              to, or have a higher average rating than this
-                              value.  Expected value is a float.
-            with_genres: (optional) Only include TV shows with the specified
-                         genres. Expected value is an integer (the id of a
-                         genre).  Multiple valued can be specified. Comma
-                         separated indicates an 'AND' query, while a
-                         pipe (|) separated value indicates an 'OR'.
-            with_networks: (optional) Filter TV shows to include a specific
-                           network. Expected value is an integer (the id of a
-                           network).  They can be comma separated to indicate an
-                           'AND' query.
-            first_air_date.gte or first_air_date_gte: (optional) The minimum
-                                release to include.
-                                Expected format is 'YYYY-MM-DD'.
-            first_air_date.lte or first_air_date_lte: (optional) The maximum
-                                release to include.
-                                Expected format is 'YYYY-MM-DD'.
+            sort_by: (optional) Allowed values: vote_average.desc,
+                vote_average.asc, first_air_date.desc, first_air_date.asc,
+                popularity.desc, popularity.asc
+                Default: popularity.desc
+            air_date.gte: (optional) Filter and only include TV shows that have
+                a air date (by looking at all episodes) that is greater or
+                equal to the specified value.
+            air_date.lte: (optional) Filter and only include TV shows that have
+                a air date (by looking at all episodes) that is less than or
+                equal to the specified value.
+            first_air_date.gte: (optional) Filter and only include TV shows
+                that have a original air date that is greater or equal to the
+                specified value. Can be used in conjunction with the
+                "include_null_first_air_dates" filter if you want to include
+                items with no air date.
+            first_air_date.lte: (optional) Filter and only include TV shows
+                that have a original air date that is less than or equal to the
+                specified value. Can be used in conjunction with the
+                "include_null_first_air_dates" filter if you want to include
+                items with no air date.
+            first_air_date_year: (optional) Filter and only include TV shows
+                that have a original air date year that equal to the specified
+                value. Can be used in conjunction with the
+                "include_null_first_air_dates" filter if you want to include
+                items with no air date.
+            page: (optional) Specify the page of results to query. Default 1.
+            timezone: (optional) Used in conjunction with the air_date.gte/lte
+                filter to calculate the proper UTC offset. Default
+                America/New_York.
+            vote_average.gte: (optional) Filter and only include movies that
+                have a rating that is greater or equal to the specified value.
+                Minimum 0.
+            vote_count.gte: (optional) Filter and only include movies that have
+                a rating that is less than or equal to the specified value.
+                Minimum 0.
+            with_genres: (optional) Comma separated value of genre ids that you
+                want to include in the results.
+            with_networks: (optional) Comma separated value of network ids that
+                you want to include in the results.
+            without_genres: (optional) Comma separated value of genre ids that
+                you want to exclude from the results.
+            with_runtime.gte: (optional) Filter and only include TV shows with
+                an episode runtime that is greater than or equal to a value.
+            with_runtime.lte: (optional) Filter and only include TV shows with
+                an episode runtime that is less than or equal to a value.
+            include_null_first_air_dates: (optional) Use this filter to include
+                TV shows that don't have an air date while using any of the
+                "first_air_date" filters. 
+            with_original_language: (optional) Specify an ISO 639-1 string to
+                filter results by their original language value. 
+            without_keywords: (optional) Exclude items with certain keywords.
+                You can comma and pipe seperate these values to create an 'AND'
+                or 'OR' logic. 
+            screened_theatrically: (optional) Filter results to include items
+                that have been screened theatrically. 
+            with_companies: (optional) A comma separated list of production
+                company ID's. Only include movies that have one of the ID's
+                added as a production company. 
+            with_keywords: (optional) A comma separated list of keyword ID's.
+                Only includes TV shows that have one of the ID's added as a
+                keyword. 
 
         Returns:
             A dict respresentation of the JSON returned from the API.
