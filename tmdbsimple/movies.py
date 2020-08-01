@@ -677,6 +677,9 @@ class Keywords(TMDB):
         """
         Get the details of a keyword.
 
+        Args:
+           None
+
         Returns:
             A dict representation of the JSON returned from the API.
         """
@@ -694,8 +697,9 @@ class Keywords(TMDB):
         is much more flexible.
 
         Args:
-            page: (optional) Minimum value of 1.  Expected value is an integer.
             language: (optional) ISO 639-1 code.
+            include_adult: Choose whether to inlcude adult (pornography)
+                content in the results.
 
         Returns:
             A dict representation of the JSON returned from the API.
