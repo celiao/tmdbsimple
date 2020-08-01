@@ -10,14 +10,14 @@ with open("README.md", "r") as fh:
 
 setup(
     name='tmdbsimple',
-    version='2.6.1',
+    version='2.6.2',
     author='Celia Oakley',
     author_email='celia.oakley@alumni.stanford.edu',
     description='A Python wrapper for The Movie Database API v3',
     keywords=['movie', 'the movie database', 'movie database', 'tmdb',
                 'wrapper', 'database', 'themoviedb', 'moviedb', 'api'],
     url='https://github.com/celiao/tmdbsimple',
-    download_url='https://github.com/celiao/tmdbsimple/tarball/2.6.1',
+    download_url='https://github.com/celiao/tmdbsimple/tarball/2.6.2',
     packages=['tmdbsimple'],
     long_description=long_description,
     long_description_content_type="text/markdown",
