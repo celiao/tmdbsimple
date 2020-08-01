@@ -93,6 +93,7 @@ class Trending(TMDB):
             'week': View the trending list for the week.
 
         Args:
+            None
 
         Returns:
             A dict respresentation of the JSON returned from the API.
