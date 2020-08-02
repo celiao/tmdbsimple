@@ -744,6 +744,9 @@ class Reviews(TMDB):
         """
         Get the review details by id.
 
+        Args:
+            None
+
         Returns:
             A dict representation of the JSON returned from the API.
         """
