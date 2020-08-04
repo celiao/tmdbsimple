@@ -497,8 +497,8 @@ class TV_Seasons(TMDB):
 
         Args:
             language: (optional) ISO 639 code.
-            append_to_response: (optional) Comma separated, any TV series
-                                method.
+            append_to_response: (optional) Append requests within the same
+                namespace to the response.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -515,8 +515,8 @@ class TV_Seasons(TMDB):
 
         Args:
             language: (optional) ISO 639 code.
-            append_to_response: (optional) Comma separated, any TV series
-                                method.
+            session_id: (required) See Authentication.
+            guest_session_id: (optional) See Authentication.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -530,6 +530,9 @@ class TV_Seasons(TMDB):
     def credits(self, **kwargs):
         """
         Get the credits for TV season.
+
+        Args:
+            language: (optional) ISO 639 code.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -573,8 +576,6 @@ class TV_Seasons(TMDB):
 
         Args:
             language: (optional) ISO 639 code.
-            include_image_language: (optional) Comma separated, a valid
-                                    ISO 69-1.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
