@@ -884,9 +884,11 @@ class TV_Changes(TMDB):
         changes and episode changes methods to look these up individually.
 
         Args:
-            start_date: (optional) Expected format is 'YYYY-MM-DD'.
-            end_date: (optional) Expected format is 'YYYY-MM-DD'.
-            page: (optional) Minimum 1, maximum 1000.
+            start_date: (optional) Filter the results with a start date.
+                Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Filter the results with a end date.
+                Expected format is 'YYYY-MM-DD'.
+            page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -905,9 +907,11 @@ class TV_Changes(TMDB):
         and end_date query parameters.
 
         Args:
-            start_date: (optional) Expected format is 'YYYY-MM-DD'.
-            end_date: (optional) Expected format is 'YYYY-MM-DD'.
-            page: (optional) Minimum 1, maximum 1000.
+            start_date: (optional) Filter the results with a start date.
+                Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Filter the results with a end date.
+                Expected format is 'YYYY-MM-DD'.
+            page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -926,9 +930,11 @@ class TV_Changes(TMDB):
         and end_date query parameters.
 
         Args:
-            start_date: (optional) Expected format is 'YYYY-MM-DD'.
-            end_date: (optional) Expected format is 'YYYY-MM-DD'.
-            page: (optional) Minimum 1, maximum 1000.
+            start_date: (optional) Filter the results with a start date.
+                Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Filter the results with a end date.
+                Expected format is 'YYYY-MM-DD'.
+            page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
