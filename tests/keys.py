@@ -6,10 +6,10 @@ keys.py
 
 This file contains the private keys for tmdbsimple.
 
-See: http://docs.themoviedb.apiary.io
-     http://docs.themoviedb.apiary.io/#accounts
-     http://docs.themoviedb.apiary.io/#authentication
-     https://www.themoviedb.org/documentation/api/sessions
+See:
+    https://developers.themoviedb.org/3/getting-started/introduction
+    https://developers.themoviedb.org/3/getting-started/authentication
+    https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id
 """
 
 import os
