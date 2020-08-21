@@ -70,6 +70,17 @@ import tmdbsimple as tmdb
 tmdb.API_KEY = 'YOUR_API_KEY_HERE'
 ```
 
+**(Optional)** Similarly you can also set a timeout for requests.
+
+```python
+tmdb.REQUEST_TIMEOUT = 5  # seconds
+```
+**OR**
+```python
+tmdb.REQUEST_TIMEOUT = (2, 5)  # seconds 
+```
+More details can be found [here](https://requests.readthedocs.io/en/master/user/advanced/#timeouts).
+
 To communicate with The Movie Database API, create an instance of one of the
 object types, call one of the methods on the instance, and access the instance
 attributes.  Use keys to access the values of attributes that are dictionaries.

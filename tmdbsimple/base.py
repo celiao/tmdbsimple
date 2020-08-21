@@ -77,13 +77,14 @@ class TMDB(object):
         return params
 
     def _request(self, method, path, params=None, payload=None):
+        from . import REQUEST_TIMEOUT
         url = self._get_complete_url(path)
         params = self._get_params(params)
 
         response = requests.request(
             method, url, params=params,
             data=json.dumps(payload) if payload else payload,
-            headers=self.headers)
+            headers=self.headers, timeout=REQUEST_TIMEOUT)
 
         response.raise_for_status()
         response.encoding = 'utf-8'
