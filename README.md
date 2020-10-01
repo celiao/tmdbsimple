@@ -1,4 +1,4 @@
-tmdbsimple
+tmdbsimple - An Amazing Project
 ==========
 
 ![Python package](https://github.com/celiao/tmdbsimple/workflows/build/badge.svg)
