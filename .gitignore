@@ -3,17 +3,18 @@
 *.py.swo
 *.egg-info
 __pycache__
-keys.py
 build
 dist
 
 # Make files
 Makefile
 
-# editors
+# Build files
+.coverage
+coverage.xml
+htmlcov
+
+# Editor files
 ## Vim files
 .*.swp
-
-# other
-notes
-
+.idea

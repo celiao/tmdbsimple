@@ -9,7 +9,7 @@ This test suite checks the methods of tmdbsimple.
 Use the following command to run all the tests:
     python -W ignore:ResourceWarning -m unittest discover tests
 
-:copyright: (c) 2013-2014 by Celia Oakley.
+:copyright: (c) 2013-2020 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
@@ -22,6 +22,8 @@ API_KEY = ''
 or include it in a keys.py file.
 """
 try:
-    from .keys import *
+    from .keys import API_KEY, USERNAME, PASSWORD, SESSION_ID
 except ImportError:
     pass
+
+__all__ = ['API_KEY', 'USERNAME', 'PASSWORD', 'SESSION_ID']

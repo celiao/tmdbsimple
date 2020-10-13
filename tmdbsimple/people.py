@@ -3,34 +3,36 @@
 """
 tmdbsimple.people
 ~~~~~~~~~~~~~~~~~
-This module implements the People, Credits, and Jobs functionality 
-of tmdbsimple.
+This module implements the People and Credits functionality of tmdbsimple.
 
 Created by Celia Oakley on 2013-10-31.
 
-:copyright: (c) 2013-2014 by Celia Oakley
+:copyright: (c) 2013-2020 by Celia Oakley
 :license: GPLv3, see LICENSE for more details
 """
 
 from .base import TMDB
 
+
 class People(TMDB):
     """
     People functionality.
 
-    See: http://docs.themoviedb.apiary.io/#people
+    See: https://developers.themoviedb.org/3/people
     """
     BASE_PATH = 'person'
     URLS = {
         'info': '/{id}',
+        'changes': '/{id}/changes',
         'movie_credits': '/{id}/movie_credits',
         'tv_credits': '/{id}/tv_credits',
         'combined_credits': '/{id}/combined_credits',
         'external_ids': '/{id}/external_ids',
         'images': '/{id}/images',
-        'changes': '/{id}/changes',
-        'popular': '/popular',
+        'tagged_images': '/{id}/tagged_images',
+        'translations': '/{id}/translations',
         'latest': '/latest',
+        'popular': '/popular',
     }
 
     def __init__(self, id=0):
@@ -39,10 +41,15 @@ class People(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the general person information for a specific id.
+        Get the primary person details by id.
+
+        Supports append_to_response. Read more about this at
+        https://developers.themoviedb.org/3/getting-started/append-to-response.
 
         Args:
-            append_to_response: (optional) Comma separated, any person method.
+            language: (optional) ISO 639-1 code.
+            append_to_response: (optional) Append requests within the same
+                namespace to the response.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -53,13 +60,35 @@ class People(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def changes(self, **kwargs):
+        """
+        Get the changes for a person. By default only the last 24 hours are returned.
+
+        You can query up to 14 days in a single query by using the start_date
+        and end_date query parameters.
+
+        Args:
+            start_date: (optional) Filter the results with a start date.
+                Expected format is 'YYYY-MM-DD'.
+            end_date: (optional) Filter the results with a end date.
+                Expected format is 'YYYY-MM-DD'.
+            page: (optional) Minimum 1, maximum 1000, default 1.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('changes')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
     def movie_credits(self, **kwargs):
         """
-        Get the movie credits for a specific person id.
+        Get the movie credits for a person.
 
         Args:
             language: (optional) ISO 639-1 code.
-            append_to_response: (optional) Comma separated, any person method.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -72,11 +101,13 @@ class People(TMDB):
 
     def tv_credits(self, **kwargs):
         """
-        Get the TV credits for a specific person id.
+        Get the TV show credits for a person.
+
+        You can query for some extra details about the credit with the credit
+        method.
 
         Args:
             language: (optional) ISO 639-1 code.
-            append_to_response: (optional) Comma separated, any person method.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -89,15 +120,10 @@ class People(TMDB):
 
     def combined_credits(self, **kwargs):
         """
-        Get the combined (movie and TV) credits for a specific person id.
-
-        To get the expanded details for each TV record, call the /credit method 
-        with the provided credit_id. This will provide details about which 
-        episode and/or season the credit is for.
+        Get the movie and TV credits together in a single response.
 
         Args:
             language: (optional) ISO 639-1 code.
-            append_to_response: (optional) Comma separated, any person method.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -110,7 +136,19 @@ class People(TMDB):
 
     def external_ids(self, **kwargs):
         """
-        Get the external ids for a specific person id.
+        Get the external ids for a person. We currently support the following external sources.
+
+        External Sources
+            - IMDB ID
+            - Facebook
+            - Freebase MID
+            - Freebase ID
+            - Instagram
+            - TVRage ID
+            - Twitter
+
+        Args:
+            language: (optional) ISO 639-1 code.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -123,7 +161,10 @@ class People(TMDB):
 
     def images(self, **kwargs):
         """
-        Get the images for a specific person id.
+        Get the images for a person.
+
+        Args:
+            None
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -134,40 +175,34 @@ class People(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def changes(self, **kwargs):
+    def tagged_images(self, **kwargs):
         """
-        Get the changes for a specific person id.
-
-        Changes are grouped by key, and ordered by date in descending order. 
-        By default, only the last 24 hours of changes are returned. The maximum 
-        number of days that can be returned in a single request is 14. The 
-        language is present on fields that are translatable.
+        Get the images that this person has been tagged in.
 
         Args:
-            start_date: (optional) Expected format is 'YYYY-MM-DD'.
-            end_date: (optional) Expected format is 'YYYY-MM-DD'.
+            language: (optional) ISO 639-1 code.
+            page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_id_path('changes')
+        path = self._get_id_path('tagged_images')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def popular(self, **kwargs):
+    def translations(self, **kwargs):
         """
-        Get the list of popular people on The Movie Database. This list 
-        refreshes every day.
+        Get a list of translations that have been created for a person.
 
         Args:
-            page: (optional) Minimum 1, maximum 1000.
+            language: (optional) ISO 639-1 code.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_path('popular')
+        path = self._get_id_path('translations')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
@@ -175,7 +210,11 @@ class People(TMDB):
 
     def latest(self, **kwargs):
         """
-        Get the latest person id.
+        Get the most newly created person. This is a live response and will
+        continuously change.
+
+        Args:
+            language: (optional) ISO 639-1 code.
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -186,11 +225,29 @@ class People(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def popular(self, **kwargs):
+        """
+        Get the list of popular people on TMDb. This list updates daily.
+
+        Args:
+            language: (optional) ISO 639-1 code.
+            page: (optional) Minimum 1, maximum 1000, default 1.
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_path('popular')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+
 class Credits(TMDB):
     """
     Credits functionality.
 
-    See: http://docs.themoviedb.apiary.io/#credits
+    See: https://developers.themoviedb.org/3/credits
     """
     BASE_PATH = 'credit'
     URLS = {
@@ -203,19 +260,10 @@ class Credits(TMDB):
 
     def info(self, **kwargs):
         """
-        Get the detailed information about a particular credit record. This is 
-        currently only supported with the new credit model found in TV. These 
-        ids can be found from any TV credit response as well as the tv_credits 
-        and combined_credits methods for people.
-
-        The episodes object returns a list of episodes and are generally going 
-        to be guest stars. The season array will return a list of season 
-        numbers.  Season credits are credits that were marked with the 
-        "add to every season" option in the editing interface and are 
-        assumed to be "season regulars".
+        Get a movie or TV credit details by id.
 
         Args:
-            language: (optional) ISO 639-1 code.
+            None
 
         Returns:
             A dict respresentation of the JSON returned from the API.
@@ -225,28 +273,3 @@ class Credits(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
-
-class Jobs(TMDB):
-    """
-    Jobs functionality.
-
-    See: http://docs.themoviedb.apiary.io/#jobs
-    """
-    BASE_PATH = 'job'
-    URLS = {
-        'list': '/list',
-    }
-
-    def list(self, **kwargs):
-        """
-        Get a list of valid jobs.
-
-        Returns:
-            A dict respresentation of the JSON returned from the API.
-        """
-        path = self._get_path('list')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-        

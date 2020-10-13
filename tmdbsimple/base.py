@@ -7,7 +7,7 @@ This module implements the base class of tmdbsimple.
 
 Created by Celia Oakley on 2013-10-31.
 
-:copyright: (c) 2013-2014 by Celia Oakley
+:copyright: (c) 2013-2020 by Celia Oakley
 :license: GPLv3, see LICENSE for more details
 """
 
@@ -27,11 +27,10 @@ class TMDB(object):
     URLS = {}
 
     def __init__(self):
-        from . import API_VERSION, REQUESTS_SESSION, __version__
+        from . import API_VERSION, REQUESTS_SESSION
         self.base_uri = 'https://api.themoviedb.org'
         self.base_uri += '/{version}'.format(version=API_VERSION)
         self.session = REQUESTS_SESSION or requests.Session()
-        self.session.headers.setdefault('user-agent', 'tmdb_api/{}.{}.{}'.format(*__version__))
 
     def _get_path(self, key):
         return self.BASE_PATH + self.URLS[key]
@@ -46,13 +45,17 @@ class TMDB(object):
     def _get_credit_id_path(self, key):
         return self._get_path(key).format(credit_id=self.credit_id)
 
-    def _get_id_season_number_path(self, key):
-        return self._get_path(key).format(id=self.id,
-            season_number=self.season_number)
+    def _get_media_type_time_window_path(self, key):
+        return self._get_path(key).format(
+            media_type=self.media_type, time_window=self.time_window)
 
-    def _get_series_id_season_number_episode_number_path(self, key):
-        return self._get_path(key).format(series_id=self.series_id,
-            season_number=self.season_number,
+    def _get_tv_id_season_number_path(self, key):
+        return self._get_path(key).format(
+            tv_id=self.tv_id, season_number=self.season_number)
+
+    def _get_tv_id_season_number_episode_number_path(self, key):
+        return self._get_path(key).format(
+            tv_id=self.tv_id, season_number=self.season_number,
             episode_number=self.episode_number)
 
     def _get_complete_url(self, path):
@@ -66,6 +69,10 @@ class TMDB(object):
         api_dict = {'api_key': API_KEY}
         if params:
             params.update(api_dict)
+            for key, value in params.items():
+                if isinstance(params[key], bool):
+                    params[key] = 'true' if value is True else 'false'
+
         else:
             params = api_dict
         return params
@@ -104,5 +111,5 @@ class TMDB(object):
         """
         if isinstance(response, dict):
             for key in response.keys():
+                if not hasattr(self, key) or not callable(getattr(self, key)):
                 setattr(self, key, response[key])
-
