@@ -12,7 +12,6 @@ Created by Celia Oakley on 2013-10-31.
 """
 
 import json
-import requests
 
 
 class APIKeyError(Exception):
@@ -30,7 +29,7 @@ class TMDB(object):
         from . import API_VERSION, REQUESTS_SESSION
         self.base_uri = 'https://api.themoviedb.org'
         self.base_uri += '/{version}'.format(version=API_VERSION)
-        self.session = REQUESTS_SESSION or requests.Session()
+        self.session = REQUESTS_SESSION
 
     def _get_path(self, key):
         return self.BASE_PATH + self.URLS[key]
@@ -112,4 +111,4 @@ class TMDB(object):
         if isinstance(response, dict):
             for key in response.keys():
                 if not hasattr(self, key) or not callable(getattr(self, key)):
-                setattr(self, key, response[key])
+                    setattr(self, key, response[key])

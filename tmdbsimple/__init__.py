@@ -23,6 +23,7 @@ __copyright__ = 'Copyright (c) 2013-2020 Celia Oakley'
 __license__ = 'GPLv3'
 
 import os
+import requests
 
 from .account import Account, Authentication, GuestSessions, Lists
 from .base import APIKeyError
@@ -51,4 +52,4 @@ __all__ = ['Account', 'Authentication', 'GuestSessions', 'Lists',
 
 API_KEY = os.environ.get('TMDB_API_KEY', None)
 API_VERSION = '3'
-REQUESTS_SESSION = None
+REQUESTS_SESSION = requests.Session()
