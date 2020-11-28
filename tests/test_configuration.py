@@ -13,6 +13,7 @@ Created by Celia Oakley on 2013-11-05
 """
 
 import unittest
+import re
 import tmdbsimple as tmdb
 
 from tests import API_KEY
@@ -58,8 +59,8 @@ class ConfigurationTestCase(unittest.TestCase):
     def test_configuration_countries(self):
         config = tmdb.Configuration()
         response = config.countries()
-        # First country is Andorra
-        self.assertEqual(response[0][ISO_3166_1], ANDORRA)
+        # Countries are two capital letters
+        self.assertTrue(re.match('^[A-Z]{2}$', response[0][ISO_3166_1]))
 
     def test_configuration_jobs(self):
         config = tmdb.Configuration()
@@ -69,8 +70,8 @@ class ConfigurationTestCase(unittest.TestCase):
     def test_configuration_languages(self):
         config = tmdb.Configuration()
         response = config.languages()
-        # First language is No Language
-        self.assertEqual(response[0][ISO_639_1], NO_LANGUAGE)
+        # Languages are two lowercase letters
+        self.assertTrue(re.match('^[a-z]{2}$', response[0][ISO_639_1]))
 
     def test_configuration_primary_translations(self):
         config = tmdb.Configuration()
