@@ -52,4 +52,4 @@ __all__ = ['Account', 'Authentication', 'GuestSessions', 'Lists',
 
 API_KEY = os.environ.get('TMDB_API_KEY', None)
 API_VERSION = '3'
-REQUESTS_SESSION = requests.Session()
+REQUESTS_SESSION = None
