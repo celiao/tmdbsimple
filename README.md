@@ -70,6 +70,13 @@ import tmdbsimple as tmdb
 tmdb.API_KEY = 'YOUR_API_KEY_HERE'
 ```
 
+_Optionally_, you can configure the library to use your own REQUESTS_SESSION.
+
+```python
+import requests
+tmdb.REQUESTS_SESSION = requests.Session()
+```
+
 To communicate with The Movie Database API, create an instance of one of the
 object types, call one of the methods on the instance, and access the instance
 attributes.  Use keys to access the values of attributes that are dictionaries.
