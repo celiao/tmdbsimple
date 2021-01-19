@@ -22,7 +22,7 @@ Constants
 """
 MOVIE_ID = 103332
 MOVIE_TITLE = 'Ruby Sparks'
-MOVIE_TITLE_FRENCH = "Elle s'appelle Ruby"
+MOVIE_TITLE_GERMAN = 'Ruby Sparks - Meine fabelhafte Freundin'
 MOVIE_ID_ALTERNATIVE = 550
 RATING = 7.5
 COLLECTION_ID = 10
@@ -52,9 +52,9 @@ class MoviesTestCase(unittest.TestCase):
 
     def test_movies_info_with_params(self):
         id = MOVIE_ID
-        title = MOVIE_TITLE_FRENCH
+        title = MOVIE_TITLE_GERMAN
         movie = tmdb.Movies(id)
-        movie.info(language='fr')
+        movie.info(language='de')
         self.assertEqual(movie.title, title)
 
     def test_movies_account_states(self):
