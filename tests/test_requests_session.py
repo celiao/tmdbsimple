@@ -11,12 +11,13 @@ Created by Celia Oakley on 2021-01-18
 :license: GPLv3, see LICENSE for more details.
 """
 
-import requests
 import unittest
 import tmdbsimple as tmdb
 
-from tests import API_KEY, SESSION_ID
+from tests import API_KEY
 tmdb.API_KEY = API_KEY
+
+import requests
 tmdb.REQUESTS_SESSION = requests.Session()    # specify an explicit session
 
 """
