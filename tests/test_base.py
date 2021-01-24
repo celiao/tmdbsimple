@@ -8,7 +8,7 @@ This test suite checks the methods of the TMDB class of tmdbsimple.
 
 Created by Celia Oakley on 2018-01-06
 
-:copyright: (c) 2018-2020 by Celia Oakley.
+:copyright: (c) 2018-2021 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
