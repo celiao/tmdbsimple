@@ -184,6 +184,12 @@ class MoviesTestCase(unittest.TestCase):
         movie.releases()
         self.assertTrue(hasattr(movie, 'countries'))
 
+    def test_movies_provides(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        movie.providers()
+        self.assertTrue(hasattr(movie, 'results'))
+
 
 class CollectionsTestCase(unittest.TestCase):
     def test_collections_info(self):
