@@ -51,6 +51,6 @@ __all__ = ['Account', 'Authentication', 'GuestSessions', 'Lists',
            ]
 
 API_KEY = os.environ.get('TMDB_API_KEY', None)
-REQUEST_TIMEOUT = os.environ.get('REQUEST_TIMEOUT', None)
 API_VERSION = '3'
 REQUESTS_SESSION = None
+REQUESTS_TIMEOUT = os.environ.get('TMDB_REQUESTS_TIMEOUT', None)

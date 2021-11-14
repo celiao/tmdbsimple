@@ -27,10 +27,11 @@ class TMDB(object):
     URLS = {}
 
     def __init__(self):
-        from . import API_VERSION, REQUESTS_SESSION
+        from . import API_VERSION, REQUESTS_SESSION, REQUESTS_TIMEOUT
         self.base_uri = 'https://api.themoviedb.org'
         self.base_uri += '/{version}'.format(version=API_VERSION)
         self.session = REQUESTS_SESSION
+        self.timeout = REQUESTS_TIMEOUT
 
     def _get_path(self, key):
         return self.BASE_PATH + self.URLS[key]
@@ -78,7 +79,6 @@ class TMDB(object):
         return params
 
     def _request(self, method, path, params=None, payload=None):
-        from . import REQUEST_TIMEOUT
         url = self._get_complete_url(path)
         params = self._get_params(params)
 
@@ -89,7 +89,7 @@ class TMDB(object):
                 url,
                 params=params,
                 data=json.dumps(payload) if payload else payload,
-                headers=self.headers, timeout=REQUEST_TIMEOUT)
+                headers=self.headers, timeout=self.timeout)
             )
 
         # Use the global requests session the user provided
@@ -99,7 +99,7 @@ class TMDB(object):
                 url,
                 params=params,
                 data=json.dumps(payload) if payload else payload,
-                headers=self.headers, timeout=REQUEST_TIMEOUT)
+                headers=self.headers, timeout=self.timeout)
             )
 
         response.raise_for_status()
