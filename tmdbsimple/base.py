@@ -89,7 +89,7 @@ class TMDB(object):
                 url,
                 params=params,
                 data=json.dumps(payload) if payload else payload,
-                headers=self.headers, timeout=self.timeout)
+                headers=self.headers, timeout=self.timeout
             )
 
         # Use the global requests session the user provided
@@ -99,7 +99,7 @@ class TMDB(object):
                 url,
                 params=params,
                 data=json.dumps(payload) if payload else payload,
-                headers=self.headers, timeout=self.timeout)
+                headers=self.headers, timeout=self.timeout
             )
 
         response.raise_for_status()
