@@ -8,7 +8,7 @@ This test suite checks the methods of the Account class of tmdbsimple.
 
 Created by Celia Oakley on 2013-11-05
 
-:copyright: (c) 2013-2020 by Celia Oakley.
+:copyright: (c) 2013-2021 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
@@ -252,6 +252,6 @@ class ListsTestCase(unittest.TestCase):
         # TODO: add list_delete check when list delete bug is fixed:
         # https://www.themoviedb.org/talk/5e7bb85aeec4f30018aa327c#5f0b5ff91f98d100361f3037.
         # Deletes list, but returns 500 error rather than 201.
-        #status_code = SUCCESSFUL_DELETE
-        #lst.list_delete()
-        #self.assertEqual(lst.status_code, status_code)
+        # status_code = SUCCESSFUL_DELETE
+        # lst.list_delete()
+        # self.assertEqual(lst.status_code, status_code)

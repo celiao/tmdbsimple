@@ -81,6 +81,13 @@ tmdb.REQUEST_TIMEOUT = (2, 5)  # seconds
 ```
 More details can be found [here](https://requests.readthedocs.io/en/master/user/advanced/#timeouts).
 
+_Optionally_, you can configure the library to use your own REQUESTS_SESSION.
+
+```python
+import requests
+tmdb.REQUESTS_SESSION = requests.Session()
+```
+
 To communicate with The Movie Database API, create an instance of one of the
 object types, call one of the methods on the instance, and access the instance
 attributes.  Use keys to access the values of attributes that are dictionaries.

@@ -7,7 +7,7 @@ This module implements the base class of tmdbsimple.
 
 Created by Celia Oakley on 2013-10-31.
 
-:copyright: (c) 2013-2020 by Celia Oakley
+:copyright: (c) 2013-2021 by Celia Oakley
 :license: GPLv3, see LICENSE for more details
 """
 
@@ -27,9 +27,10 @@ class TMDB(object):
     URLS = {}
 
     def __init__(self):
-        from . import API_VERSION
+        from . import API_VERSION, REQUESTS_SESSION
         self.base_uri = 'https://api.themoviedb.org'
         self.base_uri += '/{version}'.format(version=API_VERSION)
+        self.session = REQUESTS_SESSION
 
     def _get_path(self, key):
         return self.BASE_PATH + self.URLS[key]
@@ -81,10 +82,25 @@ class TMDB(object):
         url = self._get_complete_url(path)
         params = self._get_params(params)
 
-        response = requests.request(
-            method, url, params=params,
-            data=json.dumps(payload) if payload else payload,
-            headers=self.headers, timeout=REQUEST_TIMEOUT)
+        # Create a new request session if no global session is defined
+        if self.session is None:
+            response = requests.request(
+                method,
+                url,
+                params=params,
+                data=json.dumps(payload) if payload else payload,
+                headers=self.headers, timeout=REQUEST_TIMEOUT)
+            )
+
+        # Use the global requests session the user provided
+        else:
+            response = self.session.request(
+                method,
+                url,
+                params=params,
+                data=json.dumps(payload) if payload else payload,
+                headers=self.headers, timeout=REQUEST_TIMEOUT)
+            )
 
         response.raise_for_status()
         response.encoding = 'utf-8'

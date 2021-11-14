@@ -12,17 +12,18 @@ http://www.themoviedb.org/documentation/api and documentation page
 https://developers.themoviedb.org/3/getting-started
 https://www.themoviedb.org/documentation/api/status-codes
 
-:copyright: (c) 2013-2020 by Celia Oakley.
+:copyright: (c) 2013-2021 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details
 """
 
 __title__ = 'tmdbsimple'
-__version__ = '2.6.6'
+__version__ = '2.8.0'
 __author__ = 'Celia Oakley'
-__copyright__ = 'Copyright (c) 2013-2020 Celia Oakley'
+__copyright__ = 'Copyright (c) 2013-2021 Celia Oakley'
 __license__ = 'GPLv3'
 
 import os
+import requests
 
 from .account import Account, Authentication, GuestSessions, Lists
 from .base import APIKeyError
@@ -52,3 +53,4 @@ __all__ = ['Account', 'Authentication', 'GuestSessions', 'Lists',
 API_KEY = os.environ.get('TMDB_API_KEY', None)
 REQUEST_TIMEOUT = os.environ.get('REQUEST_TIMEOUT', None)
 API_VERSION = '3'
+REQUESTS_SESSION = None
