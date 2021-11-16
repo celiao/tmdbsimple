@@ -70,7 +70,19 @@ import tmdbsimple as tmdb
 tmdb.API_KEY = 'YOUR_API_KEY_HERE'
 ```
 
-_Optionally_, you can configure the library to use your own REQUESTS_SESSION.
+_Optionally_, set a timeout for requests. See [here](https://docs.python-requests.org/en/master/user/advanced/#timeouts) for more info.
+
+```python
+tmdb.REQUESTS_TIMEOUT = 5  # seconds, for both connect and read
+```
+
+or
+
+```python
+tmdb.REQUESTS_TIMEOUT = (2, 5)  # seconds, for connect and read specifically 
+```
+
+_Optionally_, configure the library to use your own REQUESTS_SESSION. See [here](https://docs.python-requests.org/en/master/user/advanced/#session-objects) for more info.
 
 ```python
 import requests
