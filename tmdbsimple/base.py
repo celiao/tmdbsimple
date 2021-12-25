@@ -72,8 +72,8 @@ class TMDB(object):
             params['api_key'] = API_KEY
 
         for key, value in params.items():
-            if isinstance(params[key], bool):
-                params[key] = 'true' if value is True else 'false'
+            if isinstance(value, bool):
+                params[key] = str(value).lower()
 
         return params
 

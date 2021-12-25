@@ -65,6 +65,7 @@ class TMDBTestCase(unittest.TestCase):
     # _get_params (1) adds the api key as a parameter and (2) turns all booleans into their string form.
     # this test ensures these pieces of functionality when api_key is defined globally.
     def test_get_params_only_api_key(self):
+        tmdb.API_KEY = API_KEY
         tmdb_object = tmdb.base.TMDB()
         expected = {'api_key': API_KEY}
         actual = tmdb_object._get_params(params={})
