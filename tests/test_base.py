@@ -77,6 +77,7 @@ class TMDBTestCase(unittest.TestCase):
         tmdb.API_KEY = None
         with self.assertRaises(tmdb.base.APIKeyError):
             tmdb_no_api_defined._get_params(params={})
+        tmdb.API_KEY = API_KEY
 
     # confirm _get_params will NOT error when API_KEY is not defined but is added to the params
     # also confirm boolean conversion works
@@ -87,3 +88,15 @@ class TMDBTestCase(unittest.TestCase):
         expected = {'api_key': API_KEY, 'one_plus_one_is_two': 'true', 'cats=dogs': 'false'}
         actual = tmdb_no_api_defined._get_params(params=input_params)
         self.assertEqual(actual, expected)
+        tmdb.API_KEY = API_KEY
+
+    # simulate a normal search query with no API key previously defined
+    def test_tmdb_get_params_no_api_with_search(self):
+        search = tmdb.Search()
+        tmdb.API_KEY = None
+        search.movie(query=MOVIEQUERY3, include_adult=True, api_key=API_KEY)
+        total_results1 = search.total_results
+        search.movie(query=MOVIEQUERY3, include_adult='true', api_key=API_KEY)
+        total_results2 = search.total_results
+        self.assertEqual(total_results1, total_results2)
+        tmdb.API_KEY = API_KEY
