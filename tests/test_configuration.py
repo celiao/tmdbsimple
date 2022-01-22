@@ -38,7 +38,7 @@ ISO_3166_1 = 'iso_3166_1'
 ANDORRA = 'AD'
 ISO_639_1 = 'iso_639_1'
 NO_LANGUAGE = 'xx'
-ARABIC = 'ar-AE'
+AFRIKAANS_SA = 'af-ZA'
 
 
 class ConfigurationTestCase(unittest.TestCase):
@@ -76,8 +76,8 @@ class ConfigurationTestCase(unittest.TestCase):
     def test_configuration_primary_translations(self):
         config = tmdb.Configuration()
         response = config.primary_translations()
-        # First primary translation is Arabic
-        self.assertEqual(response[0], ARABIC)
+        # First primary translation is Afrikaans (South Africa)
+        self.assertEqual(response[0], AFRIKAANS_SA)
 
     def test_configuration_timezones(self):
         config = tmdb.Configuration()
