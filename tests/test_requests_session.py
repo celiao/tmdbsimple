@@ -5,9 +5,9 @@ test_requests_session.py
 
 This test suite checks having a user-defined REQUESTS_SESSION with tmdbsimple.
 
-Created by Celia Oakley on 2021-01-18
+Created by Celia Oakley on 2022-01-18
 
-:copyright: (c) 2021 by Celia Oakley.
+:copyright: (c) 2013-2022 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 

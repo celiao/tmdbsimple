@@ -9,7 +9,7 @@ This test suite checks the methods of tmdbsimple.
 Use the following command to run all the tests:
     python -W ignore:ResourceWarning -m unittest discover tests
 
-:copyright: (c) 2013-2021 by Celia Oakley.
+:copyright: (c) 2013-2022 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details.
 """
 
