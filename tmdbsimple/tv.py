@@ -44,7 +44,7 @@ class TV(TMDB):
         'on_the_air': '/on_the_air',
         'popular': '/popular',
         'top_rated': '/top_rated',
-        'providers': '/{id}/watch/providers',
+        'watch_providers': '/{id}/watch/providers',
     }
 
     def __init__(self, id=0):
@@ -467,9 +467,9 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def providers(self, **kwargs):
+    def watch_providers(self, **kwargs):
         """
-        Get a list of watch providers for TV shows on TMDb.
+        Get a list of the availabilities per country by provider for tv.
 
         Args:
             None
@@ -477,7 +477,7 @@ class TV(TMDB):
         Returns:
             A dict respresentation of the JSON returned from the API.
         """
-        path = self._get_id_path('providers')
+        path = self._get_id_path('watch_providers')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)

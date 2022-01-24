@@ -46,7 +46,7 @@ class Movies(TMDB):
         'top_rated': '/top_rated',
         'upcoming': '/upcoming',
         'releases': '/{id}/releases',   # backward compatability
-        'providers': '/{id}/watch/providers',
+        'watch_providers': '/{id}/watch/providers',
     }
 
     def __init__(self, id=0):
@@ -513,9 +513,9 @@ class Movies(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    def providers(self, **kwargs):
+    def watch_providers(self, **kwargs):
         """
-        Get a list of watch providers for movies shows on TMDb.
+        Get a list of the availabilities per country by provider for movies.
 
         Args:
             None
@@ -523,7 +523,7 @@ class Movies(TMDB):
         Returns:
             A dict representation of the JSON returned from the API.
         """
-        path = self._get_id_path('providers')
+        path = self._get_id_path('watch_providers')
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)

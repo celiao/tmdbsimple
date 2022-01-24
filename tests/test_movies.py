@@ -184,10 +184,10 @@ class MoviesTestCase(unittest.TestCase):
         movie.releases()
         self.assertTrue(hasattr(movie, 'countries'))
 
-    def test_movies_provides(self):
+    def test_movies_watch_providers(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
-        movie.providers()
+        movie.watch_providers()
         self.assertTrue(hasattr(movie, 'results'))
 
 

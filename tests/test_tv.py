@@ -176,10 +176,10 @@ class TVTestCase(unittest.TestCase):
         tv.top_rated()
         self.assertTrue(hasattr(tv, 'results'))
 
-    def test_tv_providers(self):
+    def test_tv_watch_providers(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        tv.providers()
+        tv.watch_providers()
         self.assertTrue(hasattr(tv, 'results'))
 
 
