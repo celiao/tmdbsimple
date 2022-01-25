@@ -38,13 +38,13 @@ class TV(TMDB):
         'similar': '/{id}/similar',
         'translations': '/{id}/translations',
         'videos': '/{id}/videos',
+        'watch_providers': '/{id}/watch/providers',
         'rating': '/{id}/rating',
         'latest': '/latest',
         'airing_today': '/airing_today',
         'on_the_air': '/on_the_air',
         'popular': '/popular',
         'top_rated': '/top_rated',
-        'watch_providers': '/{id}/watch/providers',
     }
 
     def __init__(self, id=0):
@@ -321,6 +321,21 @@ class TV(TMDB):
         self._set_attrs_to_values(response)
         return response
 
+    def watch_providers(self, **kwargs):
+        """
+        Get a list of the availabilities per country by provider for tv.
+
+        Args:
+            None
+
+        Returns:
+            A dict respresentation of the JSON returned from the API.
+        """
+        path = self._get_id_path('watch_providers')
+
+        response = self._GET(path, kwargs)
+        self._set_attrs_to_values(response)
+
     def rating(self, **kwargs):
         """
         Rate a TV show.
@@ -466,21 +481,6 @@ class TV(TMDB):
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
         return response
-
-    def watch_providers(self, **kwargs):
-        """
-        Get a list of the availabilities per country by provider for tv.
-
-        Args:
-            None
-
-        Returns:
-            A dict respresentation of the JSON returned from the API.
-        """
-        path = self._get_id_path('watch_providers')
-
-        response = self._GET(path, kwargs)
-        self._set_attrs_to_values(response)
 
 
 class TV_Seasons(TMDB):

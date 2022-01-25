@@ -99,23 +99,11 @@ class MoviesTestCase(unittest.TestCase):
         movie.keywords()
         self.assertTrue(hasattr(movie, 'keywords'))
 
-    def test_movies_release_dates(self):
+    def test_movies_lists(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
-        movie.release_dates()
+        movie.lists()
         self.assertTrue(hasattr(movie, 'results'))
-
-    def test_movies_videos(self):
-        id = MOVIE_ID
-        movie = tmdb.Movies(id)
-        movie.videos()
-        self.assertTrue(hasattr(movie, 'results'))
-
-    def test_movies_translations(self):
-        id = MOVIE_ID_ALTERNATIVE
-        movie = tmdb.Movies(id)
-        movie.translations()
-        self.assertTrue(hasattr(movie, 'translations'))
 
     def test_movies_recommendations(self):
         id = MOVIE_ID
@@ -123,10 +111,10 @@ class MoviesTestCase(unittest.TestCase):
         movie.recommendations()
         self.assertTrue(hasattr(movie, 'results'))
 
-    def test_movies_similar_movies(self):
-        id = MOVIE_ID_ALTERNATIVE
+    def test_movies_release_dates(self):
+        id = MOVIE_ID
         movie = tmdb.Movies(id)
-        movie.similar_movies()
+        movie.release_dates()
         self.assertTrue(hasattr(movie, 'results'))
 
     def test_movies_reviews(self):
@@ -135,10 +123,28 @@ class MoviesTestCase(unittest.TestCase):
         movie.reviews()
         self.assertTrue(hasattr(movie, 'results'))
 
-    def test_movies_lists(self):
+    def test_movies_similar_movies(self):
+        id = MOVIE_ID_ALTERNATIVE
+        movie = tmdb.Movies(id)
+        movie.similar_movies()
+        self.assertTrue(hasattr(movie, 'results'))
+
+    def test_movies_translations(self):
+        id = MOVIE_ID_ALTERNATIVE
+        movie = tmdb.Movies(id)
+        movie.translations()
+        self.assertTrue(hasattr(movie, 'translations'))
+
+    def test_movies_videos(self):
         id = MOVIE_ID
         movie = tmdb.Movies(id)
-        movie.lists()
+        movie.videos()
+        self.assertTrue(hasattr(movie, 'results'))
+
+    def test_movies_watch_providers(self):
+        id = MOVIE_ID
+        movie = tmdb.Movies(id)
+        movie.watch_providers()
         self.assertTrue(hasattr(movie, 'results'))
 
     def test_movies_rating_and_rating_delete(self):
@@ -183,12 +189,6 @@ class MoviesTestCase(unittest.TestCase):
         movie = tmdb.Movies(id)
         movie.releases()
         self.assertTrue(hasattr(movie, 'countries'))
-
-    def test_movies_watch_providers(self):
-        id = MOVIE_ID
-        movie = tmdb.Movies(id)
-        movie.watch_providers()
-        self.assertTrue(hasattr(movie, 'results'))
 
 
 class CollectionsTestCase(unittest.TestCase):

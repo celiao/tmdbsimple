@@ -139,6 +139,12 @@ class TVTestCase(unittest.TestCase):
         tv.videos()
         self.assertTrue(hasattr(tv, 'results'))
 
+    def test_tv_watch_providers(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        tv.watch_providers()
+        self.assertTrue(hasattr(tv, 'results'))
+
     def test_tv_rating_and_rating_delete(self):
         status_code_create = SUCCESSFUL_CREATE
         status_code_update = SUCCESSFUL_UPDATE
@@ -174,12 +180,6 @@ class TVTestCase(unittest.TestCase):
     def test_tv_top_rated(self):
         tv = tmdb.TV()
         tv.top_rated()
-        self.assertTrue(hasattr(tv, 'results'))
-
-    def test_tv_watch_providers(self):
-        id = TV_ID
-        tv = tmdb.TV(id)
-        tv.watch_providers()
         self.assertTrue(hasattr(tv, 'results'))
 
 
