@@ -63,19 +63,18 @@ class TMDB(object):
         return '{base_uri}/{path}'.format(base_uri=self.base_uri, path=path)
 
     def _get_params(self, params):
-        from . import API_KEY
-        if not API_KEY:
-            raise APIKeyError
+        params = params if params else {}
 
-        api_dict = {'api_key': API_KEY}
-        if params:
-            params.update(api_dict)
-            for key, value in params.items():
-                if isinstance(params[key], bool):
-                    params[key] = 'true' if value is True else 'false'
+        if not params.get('api_key'):
+            from . import API_KEY
+            if not API_KEY:
+                raise APIKeyError
+            params['api_key'] = API_KEY
 
-        else:
-            params = api_dict
+        for key, value in params.items():
+            if isinstance(value, bool):
+                params[key] = str(value).lower()
+
         return params
 
     def _request(self, method, path, params=None, payload=None):
