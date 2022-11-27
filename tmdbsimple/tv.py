@@ -335,6 +335,7 @@ class TV(TMDB):
 
         response = self._GET(path, kwargs)
         self._set_attrs_to_values(response)
+        return response
 
     def rating(self, **kwargs):
         """
