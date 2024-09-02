@@ -39,7 +39,7 @@ class Genres(TMDB):
             language: (optional) ISO 639-1 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('movie_list')
 
@@ -55,7 +55,7 @@ class Genres(TMDB):
             language: (optional) ISO 639-1 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('tv_list')
 
@@ -79,7 +79,7 @@ class Genres(TMDB):
                            Expected value is: True or False.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('movies')
 

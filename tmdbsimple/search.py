@@ -41,7 +41,7 @@ class Search(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('company')
 
@@ -60,7 +60,7 @@ class Search(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('collection')
 
@@ -78,7 +78,7 @@ class Search(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('keyword')
 
@@ -105,7 +105,7 @@ class Search(TMDB):
                 specific primary release year.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('movie')
 
@@ -129,7 +129,7 @@ class Search(TMDB):
                 dates. Must be uppercase.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('multi')
 
@@ -152,7 +152,7 @@ class Search(TMDB):
                 dates. Must be uppercase.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('person')
 
@@ -175,7 +175,7 @@ class Search(TMDB):
                 shows that have an air date with with value.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('tv')
 

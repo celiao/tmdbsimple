@@ -23,7 +23,6 @@ __copyright__ = 'Copyright (c) 2013-2022 Celia Oakley'
 __license__ = 'GPLv3'
 
 import os
-import requests
 
 from .account import Account, Authentication, GuestSessions, Lists
 from .base import APIKeyError
@@ -36,19 +35,22 @@ from .movies import Movies, Collections, Companies, Keywords, Reviews
 from .people import People, Credits
 from .search import Search
 from .tv import TV, TV_Seasons, TV_Episodes, TV_Episode_Groups, TV_Changes, Networks
+from .watch_providers import WatchProviders
 
-__all__ = ['Account', 'Authentication', 'GuestSessions', 'Lists',
-           'APIKeyError',
-           'Changes',
-           'Configuration', 'Certifications',
-           'Discover',
-           'Find', 'Trending',
-           'Genres',
-           'Movies', 'Collections', 'Companies', 'Keywords', 'Reviews',
-           'People', 'Credits'
-           'Search',
-           'TV', 'TV_Seasons', 'TV_Episodes', 'TV_Episode_Groups', 'TV_Changes', 'Networks'
-           ]
+__all__ = [
+    'Account', 'Authentication', 'GuestSessions', 'Lists',
+    'APIKeyError',
+    'Changes',
+    'Configuration', 'Certifications',
+    'Discover',
+    'Find', 'Trending',
+    'Genres',
+    'Movies', 'Collections', 'Companies', 'Keywords', 'Reviews',
+    'People', 'Credits',
+    'Search',
+    'TV', 'TV_Seasons', 'TV_Episodes', 'TV_Episode_Groups', 'TV_Changes', 'Networks',
+    'WatchProviders',
+]
 
 API_KEY = os.environ.get('TMDB_API_KEY', None)
 API_VERSION = '3'

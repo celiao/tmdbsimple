@@ -49,7 +49,7 @@ class Find(TMDB):
                 instagram_id
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('info')
 
@@ -96,7 +96,7 @@ class Trending(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_media_type_time_window_path('info')
 
