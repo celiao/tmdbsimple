@@ -12,7 +12,7 @@ http://www.themoviedb.org/documentation/api and documentation page
 https://developers.themoviedb.org/3/getting-started
 https://www.themoviedb.org/documentation/api/status-codes
 
-:copyright: (c) 2013-2022 by Celia Oakley.
+:copyright: (c) 2013-2025 by Celia Oakley.
 :license: GPLv3, see LICENSE for more details
 """
 
