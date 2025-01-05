@@ -21,7 +21,7 @@ Features
 - Supports only [Python versions with TLS
   1.2](http://pyfound.blogspot.com/2017/01/time-to-upgrade-your-python-tls-v12.html).
   Keep it simple!
-- Tested with Python 3.6, 3.7, and 3.8.
+- Tested with Python 3.9, 3.10, and 3.11.
 - One-to-one mapping between *tmdbsimple* methods and TMDb endpoints.
 - Implements all TMDb methods, including Accounts and Authentication.
 - Easy to access data using Python class attributes.
