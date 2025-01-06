@@ -48,4 +48,4 @@ jobs:
       with:
         files: ./coverage.xml
         name: codecov-tmdbsimple
-        # token: ${{ secrets.CODECOV_TOKEN }} # commented out to see if works without token
+        # token: ${{ secrets.CODECOV_TOKEN }} # not needed for public repos

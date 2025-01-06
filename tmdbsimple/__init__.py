@@ -17,7 +17,7 @@ https://www.themoviedb.org/documentation/api/status-codes
 """
 
 __title__ = 'tmdbsimple'
-__version__ = '2.9.1'
+__version__ = '2.9.2'
 __author__ = 'Celia Oakley'
 __copyright__ = 'Copyright (c) 2013-2025 Celia Oakley'
 __license__ = 'GPLv3'
