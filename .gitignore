@@ -18,3 +18,4 @@ htmlcov
 ## Vim files
 .*.swp
 .idea
+.vscode
