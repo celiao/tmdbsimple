@@ -22,7 +22,6 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=['requests'],
-    python_requires='>=3.9',
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
