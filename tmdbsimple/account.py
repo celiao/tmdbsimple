@@ -48,7 +48,7 @@ class Account(TMDB):
         Args:
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('info')
         kwargs.update({'session_id': self.session_id})
@@ -68,7 +68,7 @@ class Account(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('lists')
         kwargs.update({'session_id': self.session_id})
@@ -87,7 +87,7 @@ class Account(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('favorite_movies')
         kwargs.update({'session_id': self.session_id})
@@ -106,7 +106,7 @@ class Account(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('favorite_tv')
         kwargs.update({'session_id': self.session_id})
@@ -125,7 +125,7 @@ class Account(TMDB):
             favorite: True (to add) | False (to remove).
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('favorite')
         kwargs.update({'session_id': self.session_id})
@@ -150,7 +150,7 @@ class Account(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('rated_movies')
         kwargs.update({'session_id': self.session_id})
@@ -169,7 +169,7 @@ class Account(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('rated_tv')
         kwargs.update({'session_id': self.session_id})
@@ -188,7 +188,7 @@ class Account(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('rated_tv_episodes')
         kwargs.update({'session_id': self.session_id})
@@ -207,7 +207,7 @@ class Account(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('watchlist_movies')
         kwargs.update({'session_id': self.session_id})
@@ -226,7 +226,7 @@ class Account(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('watchlist_tv')
         kwargs.update({'session_id': self.session_id})
@@ -245,7 +245,7 @@ class Account(TMDB):
             watchlist: True (to add) | False (to remove).
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('watchlist')
         kwargs.update({'session_id': self.session_id})
@@ -297,7 +297,7 @@ class Authentication(TMDB):
         Args:
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('guest_session_new')
 
@@ -314,7 +314,7 @@ class Authentication(TMDB):
         Args:
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('token_new')
 
@@ -335,7 +335,7 @@ class Authentication(TMDB):
                            used here.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('session_new')
 
@@ -364,7 +364,7 @@ class Authentication(TMDB):
             request_token: The token you generated for the user to approve.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('token_validate_with_login')
 
@@ -380,7 +380,7 @@ class Authentication(TMDB):
         Args:
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('session_delete')
 
@@ -419,7 +419,7 @@ class GuestSessions(TMDB):
             sort_by: (optional) Allowed Values: created_at.asc, created_at.desc
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_guest_session_id_path('rated_movies')
 
@@ -436,7 +436,7 @@ class GuestSessions(TMDB):
             sort_by: (optional) Allowed Values: created_at.asc, created_at.desc
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_guest_session_id_path('rated_tv')
 
@@ -453,7 +453,7 @@ class GuestSessions(TMDB):
             sort_by: (optional) Allowed Values: created_at.asc, created_at.desc
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_guest_session_id_path('rated_tv_episodes')
 
@@ -492,7 +492,7 @@ class Lists(TMDB):
             language: (optional) ISO 639-1 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('info')
 
@@ -509,7 +509,7 @@ class Lists(TMDB):
             movie_id: The id of the movie.  Minimum 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('item_status')
 
@@ -527,7 +527,7 @@ class Lists(TMDB):
             language: (optional) ISO 639-1 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('list_create')
         kwargs.update({'session_id': self.session_id})
@@ -551,7 +551,7 @@ class Lists(TMDB):
             media_id: A movie id.  Minimum 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('add_item')
         kwargs.update({'session_id': self.session_id})
@@ -572,7 +572,7 @@ class Lists(TMDB):
             media_id: A movie id.  Minimum 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('remove_item')
         kwargs.update({'session_id': self.session_id})
@@ -593,7 +593,7 @@ class Lists(TMDB):
             confirm: True (do it) | False (don't do it)
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('list_clear')
         kwargs.update({'session_id': self.session_id})
@@ -612,7 +612,7 @@ class Lists(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('list_delete')
         kwargs.update({'session_id': self.session_id})

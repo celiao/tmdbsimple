@@ -64,7 +64,7 @@ class TV(TMDB):
                 namespace to the response.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('info')
 
@@ -85,7 +85,7 @@ class TV(TMDB):
             guest_session_id: (optional) See Authentication.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('account_states')
 
@@ -101,7 +101,7 @@ class TV(TMDB):
             language: (optional) ISO 3166-1 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('alternative_titles')
 
@@ -118,7 +118,7 @@ class TV(TMDB):
             language: (optional) ISO 3166-1 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('content_ratings')
 
@@ -134,7 +134,7 @@ class TV(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('credits')
 
@@ -151,7 +151,7 @@ class TV(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('episode_groups')
 
@@ -174,7 +174,7 @@ class TV(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('external_ids')
 
@@ -196,7 +196,7 @@ class TV(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('images')
 
@@ -212,7 +212,7 @@ class TV(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('keywords')
 
@@ -229,7 +229,7 @@ class TV(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('recommendations')
 
@@ -246,7 +246,7 @@ class TV(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('reviews')
 
@@ -263,7 +263,7 @@ class TV(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('screened_theatrically')
 
@@ -281,7 +281,7 @@ class TV(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('similar')
 
@@ -297,7 +297,7 @@ class TV(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('translations')
 
@@ -313,7 +313,7 @@ class TV(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('videos')
 
@@ -329,7 +329,7 @@ class TV(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('watch_providers')
 
@@ -351,7 +351,7 @@ class TV(TMDB):
                 submit. The value is expected to be between 0.5 and 10.0.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('rating')
 
@@ -376,7 +376,7 @@ class TV(TMDB):
             guest_session_id: (optional) See Authentication.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('rating')
 
@@ -397,7 +397,7 @@ class TV(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('latest')
 
@@ -419,7 +419,7 @@ class TV(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('airing_today')
 
@@ -439,7 +439,7 @@ class TV(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('on_the_air')
 
@@ -457,7 +457,7 @@ class TV(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('popular')
 
@@ -474,7 +474,7 @@ class TV(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_path('top_rated')
 
@@ -517,7 +517,7 @@ class TV_Seasons(TMDB):
                 namespace to the response.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_path('info')
 
@@ -535,7 +535,7 @@ class TV_Seasons(TMDB):
             guest_session_id: (optional) See Authentication.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_path('account_states')
 
@@ -551,7 +551,7 @@ class TV_Seasons(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_path('credits')
 
@@ -572,7 +572,7 @@ class TV_Seasons(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_path('external_ids')
 
@@ -594,7 +594,7 @@ class TV_Seasons(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_path('images')
 
@@ -610,7 +610,7 @@ class TV_Seasons(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_path('videos')
 
@@ -656,7 +656,7 @@ class TV_Episodes(TMDB):
                 namespace to the response.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path('info')
 
@@ -673,7 +673,7 @@ class TV_Episodes(TMDB):
             guest_session_id: (optional) See Authentication.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path(
             'account_states')
@@ -690,7 +690,7 @@ class TV_Episodes(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path('credits')
 
@@ -712,7 +712,7 @@ class TV_Episodes(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path(
             'external_ids')
@@ -735,7 +735,7 @@ class TV_Episodes(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path('images')
 
@@ -751,7 +751,7 @@ class TV_Episodes(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path(
             'translations')
@@ -775,7 +775,7 @@ class TV_Episodes(TMDB):
                 submit. The value is expected to be between 0.5 and 10.0.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path('rating')
 
@@ -800,7 +800,7 @@ class TV_Episodes(TMDB):
             guest_session_id: (optional) See Authentication.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path('rating')
 
@@ -820,7 +820,7 @@ class TV_Episodes(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_tv_id_season_number_episode_number_path('videos')
 
@@ -860,7 +860,7 @@ class TV_Episode_Groups(TMDB):
             language: (optional) ISO 639 code.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('info')
 
@@ -909,7 +909,7 @@ class TV_Changes(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('series')
 
@@ -932,7 +932,7 @@ class TV_Changes(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('season')
 
@@ -955,7 +955,7 @@ class TV_Changes(TMDB):
             page: (optional) Minimum 1, maximum 1000, default 1.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('episode')
 
@@ -989,7 +989,7 @@ class Networks(TMDB):
             None
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         path = self._get_id_path('info')
 

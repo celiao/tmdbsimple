@@ -138,7 +138,7 @@ class Discover(TMDB):
                 filter results by their original language value.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         # Periods are not allowed in keyword arguments but several API
         # arguments contain periods. See both usages in tests/test_discover.py.
@@ -237,7 +237,7 @@ class Discover(TMDB):
                 keyword.
 
         Returns:
-            A dict respresentation of the JSON returned from the API.
+            A dict representation of the JSON returned from the API.
         """
         # Periods are not allowed in keyword arguments but several API
         # arguments contain periods. See both usages in tests/test_discover.py.
