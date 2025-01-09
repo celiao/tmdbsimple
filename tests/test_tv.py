@@ -142,7 +142,8 @@ class TVTestCase(unittest.TestCase):
     def test_tv_watch_providers(self):
         id = TV_ID
         tv = tmdb.TV(id)
-        tv.watch_providers()
+        response = tv.watch_providers()
+        self.assertIsInstance(response, dict)
         self.assertTrue(hasattr(tv, 'results'))
 
     def test_tv_rating_and_rating_delete(self):
