@@ -31,7 +31,7 @@ CHANGE_KEYS = ['adult', 'air_date', 'also_known_as', 'alternative_titles',
                'original_title', 'overview', 'parts', 'place_of_birth', 'plot_keywords',
                'production_code', 'production_companies', 'production_countries',
                'releases', 'revenue', 'runtime', 'season', 'season_number',
-               'season_regular', 'spoken_languages', 'status', 'tagline', 'title',
+               'season_regular', 'softcore', 'spoken_languages', 'status', 'tagline', 'title',
                'translations', 'tvdb_id', 'tvrage_id', 'type', 'video', 'videos'
                ]
 ISO_3166_1 = 'iso_3166_1'
