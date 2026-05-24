@@ -66,6 +66,13 @@ class TVTestCase(unittest.TestCase):
         tv.alternative_titles()
         self.assertTrue(hasattr(tv, 'results'))
 
+    def test_tv_aggregate_credits(self):
+        id = TV_ID
+        tv = tmdb.TV(id)
+        response = tv.aggregate_credits()
+        self.assertTrue(hasattr(tv, 'cast'))
+        self.assertIsNotNone(response)
+
     def test_tv_content_ratings(self):
         id = TV_ID
         tv = tmdb.TV(id)
@@ -222,12 +229,35 @@ class TVSeasonsTestCase(unittest.TestCase):
         tv_seasons.images()
         self.assertTrue(hasattr(tv_seasons, 'posters'))
 
+    def test_tv_seasons_aggregate_credits(self):
+        series_id = TV_SEASON_ID
+        season_number = TV_SEASON_NUMBER
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
+        response = tv_seasons.aggregate_credits()
+        self.assertTrue(hasattr(tv_seasons, 'cast'))
+        self.assertIsNotNone(response)
+
+    def test_tv_seasons_translations(self):
+        series_id = TV_SEASON_ID
+        season_number = TV_SEASON_NUMBER
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
+        response = tv_seasons.translations()
+        self.assertTrue(hasattr(tv_seasons, 'translations'))
+        self.assertIsNotNone(response)
+
     def test_tv_seasons_videos(self):
         series_id = TV_SEASON_ID
         season_number = TV_SEASON_NUMBER
         tv_seasons = tmdb.TV_Seasons(series_id, season_number)
         tv_seasons.videos()
         self.assertTrue(hasattr(tv_seasons, 'results'))
+
+    def test_tv_seasons_watch_providers(self):
+        series_id = TV_SEASON_ID
+        season_number = TV_SEASON_NUMBER
+        tv_seasons = tmdb.TV_Seasons(series_id, season_number)
+        response = tv_seasons.watch_providers()
+        self.assertIsNotNone(response)
 
 
 class TVEpisodesTestCase(unittest.TestCase):
