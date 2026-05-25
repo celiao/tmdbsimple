@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tmdbsimple"
-version = "2.9.5"
+version = "2.9.6"
 authors = [
     { name = "Celia Oakley", email = "celia.oakley@alumni.stanford.edu" },
 ]
