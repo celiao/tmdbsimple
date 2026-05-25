@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tmdbsimple"
+version = "2.9.5"
+authors = [
+    { name = "Celia Oakley", email = "celia.oakley@alumni.stanford.edu" },
+]
+description = "A Python wrapper for The Movie Database API v3"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GPLv3" }
+keywords = ["movie", "the movie database", "movie database", "tmdb",
+            "wrapper", "database", "themoviedb", "moviedb", "api"]
+dependencies = ["requests"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/celiao/tmdbsimple"
