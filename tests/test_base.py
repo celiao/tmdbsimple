@@ -57,6 +57,14 @@ class TMDBTestCase(unittest.TestCase):
         title2 = search.results[0]['original_title']
         self.assertNotEqual(title1, title2)
 
+    # Confirm USE_BEARER_AUTH with no API_KEY raises APIKeyError.
+    def test_tmdb_use_bearer_auth_no_api_key(self):
+        tmdb.USE_BEARER_AUTH = True
+        saved_key = tmdb.API_KEY
+        tmdb.API_KEY = ''
+        self.assertRaises(tmdb.APIKeyError, tmdb.Search)
+        tmdb.API_KEY = saved_key
+
     # Confirm USE_BEARER_AUTH adds Authorization header and omits api_key param.
     def test_tmdb_use_bearer_auth(self):
         tmdb.USE_BEARER_AUTH = True

@@ -18,7 +18,6 @@ from tests import API_KEY
 tmdb.API_KEY = API_KEY
 
 import requests
-tmdb.REQUESTS_SESSION = requests.Session()    # specify an explicit session
 
 """
 Constants
@@ -28,6 +27,12 @@ MOVIE_TITLE = 'Ruby Sparks'
 
 
 class RequestsSessionTestCase(unittest.TestCase):
+    def setUp(self):
+        tmdb.REQUESTS_SESSION = requests.Session()    # specify an explicit session
+
+    def tearDown(self):
+        tmdb.REQUESTS_SESSION = None
+
     def test_requests_session(self):
         id = MOVIE_ID
         title = MOVIE_TITLE
