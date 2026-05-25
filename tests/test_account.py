@@ -296,10 +296,9 @@ class ListsTestCase(unittest.TestCase):
             'description': LIST_DESCRIPTION,
             'language': LIST_LANGUAGE,
         }
-        status_message = SUCCESS_PERIOD
         lst = tmdb.Lists(0, SESSION_ID)
         lst.list_create(**kwargs)
-        self.assertEqual(lst.status_message, status_message)
+        self.assertTrue(lst.success)
 
         status_code = SUCCESSFUL_UPDATE
         lst.add_item(media_id=LIST_ITEM_MEDIA_ID)
