@@ -56,3 +56,4 @@ API_KEY = os.environ.get('TMDB_API_KEY', None)
 API_VERSION = '3'
 REQUESTS_SESSION = None
 REQUESTS_TIMEOUT = os.environ.get('TMDB_REQUESTS_TIMEOUT', None)
+USE_BEARER_AUTH = os.environ.get('TMDB_USE_BEARER_AUTH', 'no').lower() in ('y', 'yes', '1')

@@ -28,6 +28,10 @@ MOVIEQUERY3 = 'Kind'
 
 
 class TMDBTestCase(unittest.TestCase):
+    def tearDown(self):
+        # Always restore USE_BEARER_AUTH to avoid polluting subsequent tests.
+        tmdb.USE_BEARER_AUTH = False
+
     # We want to be able to call methods multiple times.
     # If a method returns a dict with a key of the same name as the method,
     # e.g., Movies.keywords(), an attribute won't be set.
@@ -52,6 +56,17 @@ class TMDBTestCase(unittest.TestCase):
         search.movie(query=MOVIEQUERY2)
         title2 = search.results[0]['original_title']
         self.assertNotEqual(title1, title2)
+
+    # Confirm USE_BEARER_AUTH adds Authorization header and omits api_key param.
+    def test_tmdb_use_bearer_auth(self):
+        tmdb.USE_BEARER_AUTH = True
+        search = tmdb.Search()
+        # Authorization header should be set with Bearer token.
+        self.assertIn('Authorization', search.headers)
+        self.assertTrue(search.headers['Authorization'].startswith('Bearer '))
+        # api_key should not be added to params when using bearer auth.
+        params = search._get_params({'query': MOVIEQUERY1})
+        self.assertNotIn('api_key', params)
 
     # Confirm boolean parameters are handled properly in _get_params().
     def test_tmdb_get_params_bool(self):
