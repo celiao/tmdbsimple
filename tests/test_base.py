@@ -76,6 +76,27 @@ class TMDBTestCase(unittest.TestCase):
         params = search._get_params({'query': MOVIEQUERY1})
         self.assertNotIn('api_key', params)
 
+    # Confirm TMDB_REQUESTS_TIMEOUT env var is coerced to float or tuple.
+    def test_tmdb_requests_timeout_float(self):
+        import os
+        os.environ['TMDB_REQUESTS_TIMEOUT'] = '5'
+        import importlib
+        import tmdbsimple
+        importlib.reload(tmdbsimple)
+        self.assertEqual(tmdbsimple.REQUESTS_TIMEOUT, 5.0)
+        del os.environ['TMDB_REQUESTS_TIMEOUT']
+        importlib.reload(tmdbsimple)
+
+    def test_tmdb_requests_timeout_tuple(self):
+        import os
+        os.environ['TMDB_REQUESTS_TIMEOUT'] = '2,5'
+        import importlib
+        import tmdbsimple
+        importlib.reload(tmdbsimple)
+        self.assertEqual(tmdbsimple.REQUESTS_TIMEOUT, (2.0, 5.0))
+        del os.environ['TMDB_REQUESTS_TIMEOUT']
+        importlib.reload(tmdbsimple)
+
     # Confirm boolean parameters are handled properly in _get_params().
     def test_tmdb_get_params_bool(self):
         search = tmdb.Search()

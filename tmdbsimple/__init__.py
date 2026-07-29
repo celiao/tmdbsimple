@@ -55,5 +55,11 @@ __all__ = ['Account', 'Authentication', 'GuestSessions', 'Lists',
 API_KEY = os.environ.get('TMDB_API_KEY', None)
 API_VERSION = '3'
 REQUESTS_SESSION = None
-REQUESTS_TIMEOUT = os.environ.get('TMDB_REQUESTS_TIMEOUT', None)
+_REQUESTS_TIMEOUT_ENV = os.environ.get('TMDB_REQUESTS_TIMEOUT', None)
+if _REQUESTS_TIMEOUT_ENV is None:
+    REQUESTS_TIMEOUT = None
+elif ',' in _REQUESTS_TIMEOUT_ENV:
+    REQUESTS_TIMEOUT = tuple(float(t) for t in _REQUESTS_TIMEOUT_ENV.split(','))
+else:
+    REQUESTS_TIMEOUT = float(_REQUESTS_TIMEOUT_ENV)
 USE_BEARER_AUTH = os.environ.get('TMDB_USE_BEARER_AUTH', 'no').lower() in ('y', 'yes', '1')
