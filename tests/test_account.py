@@ -292,7 +292,7 @@ class ListsTestCase(unittest.TestCase):
 
     def test_lists_create_add_remove_clear_delete(self):
         kwargs = {
-            'name': LIST_NAME,
+            'name': '{0} {1}'.format(LIST_NAME, int(time.time())),
             'description': LIST_DESCRIPTION,
             'language': LIST_LANGUAGE,
         }
