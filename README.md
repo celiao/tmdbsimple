@@ -3,8 +3,8 @@ tmdbsimple
 
 ![Python package](https://github.com/celiao/tmdbsimple/workflows/build/badge.svg)
 ![codecov](https://img.shields.io/codecov/c/github/celiao/tmdbsimple)
-![pypi](https://img.shields.io/pypi/pyversions/tmdbsimple?v=2.9.7)
-![pypi](https://img.shields.io/pypi/v/tmdbsimple?v=2.9.7)
+![pypi](https://img.shields.io/pypi/pyversions/tmdbsimple?v=2.9.8)
+![pypi](https://img.shields.io/pypi/v/tmdbsimple?v=2.9.8)
 
 A wrapper for The Movie Database API v3
 ---------------------------------------
